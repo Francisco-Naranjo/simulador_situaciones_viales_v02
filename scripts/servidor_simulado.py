@@ -21,46 +21,87 @@ _tiempos: deque = deque()
 _candado = threading.Lock()
 
 
+def _sin_tildes(texto: str) -> str:
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", texto.lower()) if unicodedata.category(c) != "Mn")
+
+
 def _escenario_simulado(mensajes: list[dict]) -> dict:
-    """Genera un escenario vial válido y coherente con la solicitud cuando se usa LLM_PRINCIPAL=simulado."""
+    """Genera un escenario vial válido y coherente con el tema y perfil solicitados."""
     import re as _re
     texto_usr = "\n".join(m.get("content", "") for m in mensajes if m.get("role") == "user")
-    perfil, nivel = "conductor_particular", "baja"
+    perfil, nivel, tema = "conductor_particular", "baja", ""
     m_sol = _re.search(r"<solicitud>\s*(\{.*?\})\s*</solicitud>", texto_usr, _re.S)
     if m_sol:
         try:
             sol = json.loads(m_sol.group(1))
-            perfil = sol.get("perfil", perfil)
-            nivel = sol.get("nivel_dificultad", nivel)
+            perfil = sol.get("perfil") or perfil
+            nivel = sol.get("nivel_dificultad") or nivel
+            tema = (sol.get("tema") or "").strip()
         except Exception:
             pass
-    id_contrav, articulo, desc = "CONT-COIP-ART389-1", "Art. 389 num. 1", "Desobedecer las órdenes de los agentes de tránsito."
+    id_contrav, articulo, desc = "CONT-COIP-ART389-1", "Art. 389 num. 1", "Desobedecer las órdenes de los agentes de tránsito, o que no respeten las señales manuales de dichos agentes, en general toda señalización colocada en las vías públicas, tales como: semáforos, pare, ceda el paso, cruce o preferencia de vías."
     m_tab = _re.search(r"<contravenciones_permitidas>\s*(\[.*?\])\s*</contravenciones_permitidas>", texto_usr, _re.S)
     if m_tab:
         try:
             lista = json.loads(m_tab.group(1))
             if lista:
-                elegida = random.choice(lista)
+                elegida = None
+                if tema:
+                    vacias = {"pasa", "paso", "pasar", "como", "para", "este", "esta", "cuando", "donde", "porque", "quien", "tengo", "puede", "hacer"}
+                    palabras = [p for p in _sin_tildes(tema).split() if len(p) >= 4 and p not in vacias]
+                    mejor_puntaje = 0
+                    for item in lista:
+                        texto_item = _sin_tildes(item.get("descripcion_infraccion", "") + " " + item.get("articulo", ""))
+                        if "semaforo" in _sin_tildes(tema) or "rojo" in _sin_tildes(tema):
+                            if item.get("id_contravencion") == "CONT-COIP-ART389-1":
+                                elegida = item
+                                break
+                        puntaje = sum(len(p) * len(p) for p in palabras if p in texto_item)
+                        if puntaje > mejor_puntaje:
+                            mejor_puntaje = puntaje
+                            elegida = item
+                if elegida is None:
+                    elegida = random.choice(lista)
                 id_contrav = elegida.get("id_contravencion", id_contrav)
                 articulo = elegida.get("articulo", articulo)
                 desc = elegida.get("descripcion_infraccion", desc)
         except Exception:
             pass
+    contexto_tema = f" ante una situación relacionada con «{tema}»" if tema else ""
+    ciudades = ["Quito (Av. 10 de Agosto)", "Guayaquil (Av. Francisco de Orellana)", "Ambato (Av. Cevallos)", "Cuenca (Av. Remigio Crespo)"]
+    ciudad = random.choice(ciudades)
+    textos_opciones = [
+        ("Priorizar la rapidez y ejecutar la maniobra esperando que no exista control ni fotorradar activo en el sector.", False),
+        (f"Acatar estrictamente la disposición vial ({articulo}), deteniendo o ajustando tu marcha de forma preventiva y segura.", True),
+        ("Utilizar las luces intermitentes o la bocina para exigir paso mientras realizas la acción prohibida.", False),
+        ("Seguir el ejemplo de otros vehículos cercanos que están irrespetando la señalización en ese instante.", False),
+    ]
+    random.shuffle(textos_opciones)
+    letras = ["A", "B", "C", "D"]
+    opciones = []
+    letra_correcta = "B"
+    for letra, (txt, corr) in zip(letras, textos_opciones):
+        opciones.append({"id_opcion": letra, "texto": txt, "es_correcta": corr})
+        if corr:
+            letra_correcta = letra
     return {
         "id_escenario": "ESC-SIM-01",
         "perfil": perfil,
         "nivel_dificultad": nivel,
-        "situacion": f"[Modo Simulado] Circulas como {perfil.replace('_', ' ')} (dificultad {nivel}) en una vía urbana de Ecuador. Se presenta una situación relacionada con: {desc.lower()} ¿Cuál es la conducta que cumple la normativa vigente?",
-        "opciones": [
-            {"id_opcion": "A", "texto": "Ignorar la señalización y continuar la marcha para no demorar el tráfico.", "es_correcta": False},
-            {"id_opcion": "B", "texto": f"Cumplir estrictamente la norma ({articulo}) priorizando la seguridad vial.", "es_correcta": True},
-            {"id_opcion": "C", "texto": "Realizar una maniobra evasiva rápida confiando en que no hay controles cerca.", "es_correcta": False},
-            {"id_opcion": "D", "texto": "Imitar la conducta de otros usuarios de la vía aunque contravenga el reglamento.", "es_correcta": False},
-        ],
-        "respuesta_correcta": "B",
+        "situacion": (
+            f"Te desplazas como {perfil.replace('_', ' ')} por {ciudad}{contexto_tema}. "
+            f"Con prisa por llegar a tu destino y bajo presión del tráfico circundante, te enfrentas a la tentación "
+            f"de incurrir en la siguiente conducta regulada por el COIP: {desc.lower()} ¿Qué decisión debes tomar?"
+        ),
+        "opciones": opciones,
+        "respuesta_correcta": letra_correcta,
         "id_contravencion_asociada": id_contrav,
         "articulo_norma": articulo,
-        "explicacion_educativa": f"Según el {articulo} del COIP, constituye contravención: {desc} La opción B es la única conducta segura y apegada a la ley.",
+        "explicacion_educativa": (
+            f"De acuerdo con el {articulo} del Código Orgánico Integral Penal (COIP), esta conducta está tipificada como contravención: "
+            f"«{desc}». Respetar la señalización y las normas de tránsito protege la vida de todos los actores viales y evita sanciones pecuniarias y reducción de puntos."
+        ),
     }
 
 

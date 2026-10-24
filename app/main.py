@@ -43,11 +43,15 @@ MAX_ESCENARIOS = 1000
 async def ciclo_de_vida(_: FastAPI):
     # Falla al ARRANCAR con un mensaje claro si falta la clave o la tabla está mal,
     # en lugar de fallar a mitad de una demo.
+    from dotenv import load_dotenv
+    load_dotenv(override=True)
+    obtener_llm.cache_clear()
     cfg = cargar_config()
     cargar_tabla()
     cargar_parametros()
     srv = None
-    if cfg.principal.nombre == "simulado":
+    usa_simulado = cfg.principal.nombre == "simulado" or (cfg.respaldo is not None and cfg.respaldo.nombre == "simulado")
+    if usa_simulado:
         import sys
         from app.config import CATALOGO
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
