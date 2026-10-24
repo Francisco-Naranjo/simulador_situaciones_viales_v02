@@ -26,7 +26,7 @@ try:
     llm = ClienteLLM()
     r = llm.generar_json(cargar_prompt("system_v3"), mensaje, EscenarioVialSchema)
 except ErrorLLM as e:
-    sys.exit(f"✗ {e.mensaje_usuario}")
+    sys.exit(f"[ERROR] {e.mensaje_usuario}")
 
 esc = r.datos
 print("=== Escenario generado ===")
@@ -34,6 +34,6 @@ print(esc.model_dump_json(indent=2))
 
 c = validar_escenario(esc, perfil, dificultad, tabla)
 sancion = calcular_sancion(c)
-print(f"\n✓ Contravención válida en tabla: {c.id_contravencion} ({c.clase})")
-print(f"✓ Sanción calculada por código: ${sancion.multa_usd:.2f} USD (SBU ${sancion.sbu_usd:.2f}) y -{sancion.puntos_reducidos} puntos")
-print(f"✓ Proveedor: {r.proveedor} · {r.modelo} · {r.latencia_ms} ms · tokens {r.tokens_entrada}+{r.tokens_salida} · intentos {r.intentos}")
+print(f"\n[OK] Contravencion valida en tabla: {c.id_contravencion} ({c.clase})")
+print(f"[OK] Sancion calculada por codigo: ${sancion.multa_usd:.2f} USD (SBU ${sancion.sbu_usd:.2f}) y -{sancion.puntos_reducidos} puntos")
+print(f"[OK] Proveedor: {r.proveedor} - {r.modelo} - {r.latencia_ms} ms - tokens {r.tokens_entrada}+{r.tokens_salida} - intentos {r.intentos}")
