@@ -50,18 +50,18 @@ def test_multa_rechaza_valores_imposibles(porcentaje, sbu):
         calcular_multa(porcentaje, sbu)
 
 
-def test_cambiar_sbu_en_configuracion_cambia_la_multa(tmp_path):
+def test_cambiar_sbu_en_configuracion_cambia_la_multa(monkeypatch):
     """Prueba mínima del caso 08: el 100 % de las sanciones usa el SBU leído de configuración."""
-    ruta = tmp_path / "parametros.json"
-    ruta.write_text(json.dumps({"sbu_usd": 500.0, "aviso_educativo": "x"}), encoding="utf-8")
-    assert calcular_sancion(CUARTA, cargar_parametros(ruta)).multa_usd == 150.00
+    from pathlib import Path
+    monkeypatch.setattr(Path, "read_text", lambda self, encoding="utf-8": json.dumps({"sbu_usd": 500.0, "aviso_educativo": "x"}))
+    assert calcular_sancion(CUARTA, cargar_parametros()).multa_usd == 150.00
 
 
-def test_parametros_rechaza_sbu_invalido(tmp_path):
-    ruta = tmp_path / "parametros.json"
-    ruta.write_text(json.dumps({"sbu_usd": "cuatrocientos"}), encoding="utf-8")
+def test_parametros_rechaza_sbu_invalido(monkeypatch):
+    from pathlib import Path
+    monkeypatch.setattr(Path, "read_text", lambda self, encoding="utf-8": json.dumps({"sbu_usd": "cuatrocientos"}))
     with pytest.raises(ValueError, match="sbu_usd"):
-        cargar_parametros(ruta)
+        cargar_parametros()
 
 
 # ------------------------------------------------------------ tabla canónica
