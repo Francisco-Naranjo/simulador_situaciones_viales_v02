@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 import servidor_simulado  # noqa: E402
 
-from app.config import Config, _proveedor  # noqa: E402
+from app.config import Config, Proveedor  # noqa: E402
 from app.schemas import Estricto  # noqa: E402
 from app.services.llm import ClienteLLM  # noqa: E402
 
@@ -20,9 +20,10 @@ class Simple(Estricto):
 
 
 def test_json_por_http_con_429_real():
-    srv = servidor_simulado.iniciar(puerto=8099, limite=1, ventana=1)
+    srv = servidor_simulado.iniciar(puerto=0, limite=1, ventana=1)
     try:
-        cfg = Config(principal=_proveedor("simulado"), respaldo=None, timeout_s=5, max_tokens=100, reintentos=4, razonamiento=None)
+        prov = Proveedor("simulado", f"http://127.0.0.1:{srv.server_port}/v1", "no-se-necesita", "simulado-1")
+        cfg = Config(principal=prov, respaldo=None, timeout_s=5, max_tokens=100, reintentos=4, razonamiento=None)
         llm = ClienteLLM(cfg)
         a = llm.generar_json("sys", "escenario", Simple)
         b = llm.generar_json("sys", "escenario", Simple)   # choca con el límite → espera y reintenta

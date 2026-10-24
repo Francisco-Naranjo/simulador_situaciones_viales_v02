@@ -18,6 +18,7 @@ import threading
 from collections import OrderedDict
 from contextlib import asynccontextmanager
 from functools import lru_cache
+from pathlib import Path
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -42,10 +43,26 @@ MAX_ESCENARIOS = 1000
 async def ciclo_de_vida(_: FastAPI):
     # Falla al ARRANCAR con un mensaje claro si falta la clave o la tabla está mal,
     # en lugar de fallar a mitad de una demo.
-    cargar_config()
+    cfg = cargar_config()
     cargar_tabla()
     cargar_parametros()
-    yield
+    srv = None
+    if cfg.principal.nombre == "simulado":
+        import sys
+        from app.config import CATALOGO
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+        import servidor_simulado
+        srv = servidor_simulado.iniciar(puerto=0, limite=100, ventana=10)
+        CATALOGO["simulado"]["base_url"] = f"http://127.0.0.1:{srv.server_port}/v1"
+        obtener_llm.cache_clear()
+    try:
+        yield
+    finally:
+        if srv is not None:
+            srv.shutdown()
+            srv.server_close()
+            CATALOGO["simulado"]["base_url"] = "http://127.0.0.1:8099/v1"
+            obtener_llm.cache_clear()
 
 
 app = FastAPI(title="Vía Segura · Simulador educativo de situaciones viales", version="0.2.0",

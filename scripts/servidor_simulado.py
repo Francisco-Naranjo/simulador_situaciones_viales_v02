@@ -21,6 +21,49 @@ _tiempos: deque = deque()
 _candado = threading.Lock()
 
 
+def _escenario_simulado(mensajes: list[dict]) -> dict:
+    """Genera un escenario vial válido y coherente con la solicitud cuando se usa LLM_PRINCIPAL=simulado."""
+    import re as _re
+    texto_usr = "\n".join(m.get("content", "") for m in mensajes if m.get("role") == "user")
+    perfil, nivel = "conductor_particular", "baja"
+    m_sol = _re.search(r"<solicitud>\s*(\{.*?\})\s*</solicitud>", texto_usr, _re.S)
+    if m_sol:
+        try:
+            sol = json.loads(m_sol.group(1))
+            perfil = sol.get("perfil", perfil)
+            nivel = sol.get("nivel_dificultad", nivel)
+        except Exception:
+            pass
+    id_contrav, articulo, desc = "CONT-COIP-ART389-1", "Art. 389 num. 1", "Desobedecer las órdenes de los agentes de tránsito."
+    m_tab = _re.search(r"<contravenciones_permitidas>\s*(\[.*?\])\s*</contravenciones_permitidas>", texto_usr, _re.S)
+    if m_tab:
+        try:
+            lista = json.loads(m_tab.group(1))
+            if lista:
+                elegida = random.choice(lista)
+                id_contrav = elegida.get("id_contravencion", id_contrav)
+                articulo = elegida.get("articulo", articulo)
+                desc = elegida.get("descripcion_infraccion", desc)
+        except Exception:
+            pass
+    return {
+        "id_escenario": "ESC-SIM-01",
+        "perfil": perfil,
+        "nivel_dificultad": nivel,
+        "situacion": f"[Modo Simulado] Circulas como {perfil.replace('_', ' ')} (dificultad {nivel}) en una vía urbana de Ecuador. Se presenta una situación relacionada con: {desc.lower()} ¿Cuál es la conducta que cumple la normativa vigente?",
+        "opciones": [
+            {"id_opcion": "A", "texto": "Ignorar la señalización y continuar la marcha para no demorar el tráfico.", "es_correcta": False},
+            {"id_opcion": "B", "texto": f"Cumplir estrictamente la norma ({articulo}) priorizando la seguridad vial.", "es_correcta": True},
+            {"id_opcion": "C", "texto": "Realizar una maniobra evasiva rápida confiando en que no hay controles cerca.", "es_correcta": False},
+            {"id_opcion": "D", "texto": "Imitar la conducta de otros usuarios de la vía aunque contravenga el reglamento.", "es_correcta": False},
+        ],
+        "respuesta_correcta": "B",
+        "id_contravencion_asociada": id_contrav,
+        "articulo_norma": articulo,
+        "explicacion_educativa": f"Según el {articulo} del COIP, constituye contravención: {desc} La opción B es la única conducta segura y apegada a la ley.",
+    }
+
+
 def _ejemplo(esquema: dict, defs: dict):
     """Inventa un valor que cumpla el esquema (es un simulador, no un modelo)."""
     if "$ref" in esquema:
@@ -69,8 +112,10 @@ class Manejador(BaseHTTPRequestHandler):
             time.sleep(OPC.lento)
         rf = cuerpo.get("response_format") or {}
         if rf.get("type") == "json_schema":
+            nombre_esq = rf["json_schema"].get("name", "")
             esq = rf["json_schema"]["schema"]
-            contenido = json.dumps(_ejemplo(esq, esq.get("$defs", {})), ensure_ascii=False)
+            obj = _escenario_simulado(cuerpo.get("messages", [])) if nombre_esq == "EscenarioVialSchema" else _ejemplo(esq, esq.get("$defs", {}))
+            contenido = json.dumps(obj, ensure_ascii=False)
             if random.random() < OPC.romper_json:
                 contenido = contenido[: len(contenido) // 2]
         else:
