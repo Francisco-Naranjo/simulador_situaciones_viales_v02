@@ -1,0 +1,362 @@
+[
+  {
+    "version": "system_v1",
+    "id": "1",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "2",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "3",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "4",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "5",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "6",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "7",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "8",
+    "tipo": "no_procesable",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "9",
+    "tipo": "no_procesable",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v1",
+    "id": "10",
+    "tipo": "fuera_dominio",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "1",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "2",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "3",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "4",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "5",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "6",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "7",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "8",
+    "tipo": "no_procesable",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "9",
+    "tipo": "no_procesable",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v2",
+    "id": "10",
+    "tipo": "fuera_dominio",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "1",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "2",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "3",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "4",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "5",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "6",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "7",
+    "tipo": "normal",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "8",
+    "tipo": "no_procesable",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "9",
+    "tipo": "no_procesable",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  },
+  {
+    "version": "system_v3",
+    "id": "10",
+    "tipo": "fuera_dominio",
+    "salida": {
+      "error": "SalidaInvalida",
+      "mensaje": ""
+    },
+    "tokens": 0,
+    "ms": 0,
+    "proveedor": "-"
+  }
+]

@@ -1,0 +1,1 @@
+Genera un escenario de educación vial de Ecuador para el perfil y la dificultad indicados, con cuatro opciones de respuesta (A, B, C, D) y una sola correcta. Usa una de las contravenciones permitidas. Responde en JSON.

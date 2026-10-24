@@ -1,0 +1,8 @@
+# Versiones probadas el 19 de octubre de 2026 (Python 3.11 o superior)
+openai==3.35.1          # un solo cliente para Gemini y Groq (ambos aceptan la API de OpenAI)
+pydantic==2.13.5        # esquemas y validación de la salida del modelo
+python-dotenv==1.2.3    # lee el archivo .env
+fastapi==0.150.0        # endpoint de ejemplo
+uvicorn==0.53.0
+pytest==9.1.1           # pruebas con un doble (mock) del modelo
+httpx==0.28.1           # lo usa el TestClient de FastAPI

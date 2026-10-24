@@ -1,0 +1,11 @@
+{
+  "sbu_usd": 460.00,
+  "sbu_anio": 2024,
+  "sbu_fuente": "Ministerio del Trabajo · Acuerdo ministerial del salario básico unificado vigente (verificar en https://www.trabajo.gob.ec antes de cada despliegue)",
+  "limite_tasa": {
+    "capacidad": 5,
+    "recarga_por_segundo": 0.1
+  },
+  "max_intentos_generacion": 2,
+  "aviso_educativo": "Material educativo generado con IA y validado contra la tabla de contravenciones. No reemplaza la asesoría legal ni la normativa oficial de la ANT."
+}
