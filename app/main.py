@@ -43,15 +43,11 @@ MAX_ESCENARIOS = 1000
 async def ciclo_de_vida(_: FastAPI):
     # Falla al ARRANCAR con un mensaje claro si falta la clave o la tabla está mal,
     # en lugar de fallar a mitad de una demo.
-    from dotenv import load_dotenv
-    load_dotenv(override=True)
-    obtener_llm.cache_clear()
     cfg = cargar_config()
     cargar_tabla()
     cargar_parametros()
     srv = None
-    usa_simulado = cfg.principal.nombre == "simulado" or (cfg.respaldo is not None and cfg.respaldo.nombre == "simulado")
-    if usa_simulado:
+    if cfg.principal.nombre == "simulado":
         import sys
         from app.config import CATALOGO
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
@@ -127,6 +123,19 @@ def clave_sesion(request: Request) -> str:
 @app.get("/health")
 def health():
     return {"estado": "ok"}
+
+
+@app.get("/rag/buscar")
+def buscar_rag(q: str, top_k: int = 5, documento: str | None = None, clase: str | None = None):
+    """Recupera artículos vigentes del índice RAG aplicando filtros de metadatos antes de top_k."""
+    from dataclasses import asdict
+    from app.services.rag import recuperar
+    filtro = {"vigente": "true"}
+    if documento:
+        filtro["documento"] = documento
+    if clase:
+        filtro["clase"] = clase
+    return asdict(recuperar(q, top_k=min(max(1, top_k), 10), where=filtro))
 
 
 @app.post("/escenarios", response_model=EscenarioPublico)

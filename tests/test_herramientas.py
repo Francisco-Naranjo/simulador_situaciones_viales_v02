@@ -67,23 +67,25 @@ def test_parametros_rechaza_sbu_invalido(monkeypatch):
 # ------------------------------------------------------------ tabla canónica
 def test_tabla_real_carga_y_es_coherente():
     tabla = cargar_tabla()
-    assert len(tabla) >= 15
+    assert len(tabla) == 90
     for c in tabla.values():
         assert c.id_contravencion.startswith("CONT-") and c.articulo.startswith("Art.")
-    for perfil in ("conductor_particular", "conductor_profesional", "peaton"):
+    for perfil in ("conductor_particular", "conductor_profesional", "motociclista", "ciclista", "peaton"):
         assert candidatas(perfil, tabla), f"no hay contravenciones para {perfil}"
 
 
 def test_misma_clase_misma_sancion_en_la_tabla():
     """En el COIP la sanción económica depende estrictamente de la CLASE (porcentaje SBU).
-    Los puntos de licencia son fijos por clase para conductores; para peatones es 0 (no tienen licencia)."""
+    Los puntos de licencia son fijos por clase para conductores; para peatones y ciclistas es 0 (Art. 373 COIP).
+    Además, tras la reforma RO 512 (2021), puntos_aplicables es 0 de la 3.ª a la 7.ª clase."""
     porcentaje_por_clase = {}
     for c in cargar_tabla().values():
         porcentaje_por_clase.setdefault((c.norma, c.clase), set()).add(c.porcentaje_sbu)
-        if "peaton" in c.perfiles_aplicables and len(c.perfiles_aplicables) == 1:
-            assert c.puntos_reducidos == 0.0, "Los peatones no pierden puntos de licencia"
+        if set(c.perfiles_aplicables).issubset({"peaton", "ciclista"}):
+            assert c.puntos_reducidos == 0.0, "Peatones y ciclistas no pierden puntos de licencia"
         elif c.clase == "Séptima Clase":
-            assert c.puntos_reducidos == 1.5, "Los conductores en 7ma clase pierden 1.5 puntos"
+            assert c.puntos_reducidos == 1.5, "El texto del Art. 392 prevé 1.5 puntos para conductores"
+            assert c.puntos_aplicables == 0.0, "La reforma de 2021 suprimió la reducción de puntos en 7ma clase"
     assert all(len(v) == 1 for v in porcentaje_por_clase.values()), porcentaje_por_clase
 
 

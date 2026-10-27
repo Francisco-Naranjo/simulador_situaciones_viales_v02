@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // Tipos del contrato OpenAPI / Pydantic
-type Perfil = 'conductor_particular' | 'conductor_profesional' | 'peaton';
+type Perfil = 'conductor_particular' | 'conductor_profesional' | 'motociclista' | 'ciclista' | 'peaton';
 type Dificultad = 'baja' | 'media' | 'alta';
 type IdOpcion = 'A' | 'B' | 'C' | 'D';
 
@@ -27,16 +27,20 @@ interface Sancion {
   sbu_usd: number;
   multa_usd: number;
   puntos_reducidos: number;
+  puntos_aplicables?: number | null;
+  pena_adicional?: string | null;
   dias_privacion_libertad: number;
   fuente_sbu: string;
 }
 
 interface ContravencionPublica {
   id_contravencion: string;
+  codigo_csv?: string | null;
   clase: string;
   articulo: string;
   norma: string;
   descripcion_infraccion: string;
+  texto_literal_coip?: string | null;
 }
 
 interface ResultadoEvaluacion {
@@ -293,8 +297,10 @@ export default function App() {
                 cursor: 'pointer'
               }}
             >
-              <option value="conductor_particular">Conductor Particular</option>
-              <option value="conductor_profesional">Conductor Profesional</option>
+              <option value="conductor_particular">Conductor Particular (Lic. B)</option>
+              <option value="conductor_profesional">Conductor Profesional (Lic. C/D/E)</option>
+              <option value="motociclista">Motociclista (Lic. A)</option>
+              <option value="ciclista">Ciclista</option>
               <option value="peaton">Peatón</option>
             </select>
           </div>
@@ -575,15 +581,31 @@ export default function App() {
                   </div>
 
                   <div>
-                    <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 600 }}>Reducción de Puntos</span>
+                    <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#9ca3af', fontWeight: 600 }}>Puntos COIP / Vigentes (RO 512)</span>
                     <div style={{ fontWeight: 800, color: '#f43f5e', fontSize: '1.15rem' }}>
-                      -{resultado.sancion.puntos_reducidos} puntos
+                      -{resultado.sancion.puntos_reducidos} pts <span style={{ fontSize: '0.85rem', color: '#9ca3af', fontWeight: 600 }}>(Hoy: -{resultado.sancion.puntos_aplicables ?? resultado.sancion.puntos_reducidos} pts)</span>
                     </div>
                     <div style={{ fontSize: '0.8rem', color: '#6b7280' }}>
-                      {resultado.sancion.dias_privacion_libertad > 0 ? `+ ${resultado.sancion.dias_privacion_libertad} días privación libertad` : 'Sin privación de libertad'}
+                      {resultado.sancion.pena_adicional ? resultado.sancion.pena_adicional : resultado.sancion.dias_privacion_libertad > 0 ? `+ ${resultado.sancion.dias_privacion_libertad} días privación libertad` : 'Reforma 2021: sin resta de puntos en 3ª–7ª clase'}
                     </div>
                   </div>
                 </div>
+                {resultado.contravencion.texto_literal_coip && (
+                  <div style={{
+                    marginTop: '1rem',
+                    padding: '0.85rem 1rem',
+                    borderRadius: '10px',
+                    background: 'rgba(17, 24, 39, 0.75)',
+                    borderLeft: '3px solid #10b981',
+                    fontSize: '0.88rem',
+                    color: '#d1d5db'
+                  }}>
+                    <strong style={{ color: '#34d399', display: 'block', marginBottom: '0.2rem' }}>
+                      Cita literal verificada ({resultado.contravencion.articulo} · {resultado.contravencion.norma}):
+                    </strong>
+                    «{resultado.contravencion.texto_literal_coip}»
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

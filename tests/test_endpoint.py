@@ -72,8 +72,9 @@ def test_evaluar_respuesta_correcta_e_incorrecta():
     res = r_eval.json()
     assert res["es_correcta"] is False
     assert res["respuesta_correcta"] == "B"
-    assert res["sancion"]["multa_usd"] == 138.00  # 30% SBU ($460.00)
+    assert res["sancion"]["multa_usd"] == 144.60  # 30% SBU ($482.00)
     assert res["sancion"]["puntos_reducidos"] == 6.0
+    assert res["sancion"]["puntos_aplicables"] == 0.0  # Reforma RO 512 (2021)
     assert res["contravencion"]["articulo"] == "Art. 389 num. 1"
 
 

@@ -1,0 +1,91 @@
+id,clase,articulo,numeral,descripcion,porcentaje_sbu,puntos_texto_coip,puntos_aplicables,pena_adicional,perfil_aplica,solo_multa_ciclista_peaton,documento_fuente,estado_verificacion
+C-386-01,1,386,1,Conducir sin haber obtenido licencia,100,10,0,3 días de prisión,particular;profesional,no,COIP,verificado
+C-386-02,1,386,2,Agredir físicamente a la autoridad o agente de tránsito,100,10,10,3 días de prisión,particular;profesional;motociclista,no,COIP,verificado
+C-386-03,1,386,3,Exceder el límite de velocidad fuera del rango moderado,100,10,10,3 días de prisión,particular;profesional;motociclista,no,COIP,verificado
+C-386-B-01,1,386,inc.2 1,Transportar pasajeros o bienes sin título habilitante o prestar un servicio distinto al autorizado,200,10,10,retención del vehículo mínimo 7 días,profesional,no,COIP,verificado
+C-386-B-02,1,386,inc.2 2,Conducir con licencia de categoría diferente a la exigible para el vehículo,200,10,10,retención del vehículo mínimo 7 días,particular;profesional,no,COIP,verificado
+C-386-B-03,1,386,inc.2 3,Participar con vehículo a motor en competencias en la vía pública,200,10,10,retención del vehículo mínimo 7 días,particular;profesional;motociclista,no,COIP,verificado
+C-387-01,2,387,1,Causar un accidente con solo daños materiales inferiores a dos SBU,50,9,9,,particular;profesional;motociclista,si,COIP,verificado
+C-387-02,2,387,2,"Conducir con licencia caducada, anulada, revocada o suspendida (se retira la licencia)",50,9,9,retiro inmediato de la licencia,particular;profesional;motociclista,si,COIP,verificado
+C-387-03,2,387,3,Adolescente mayor de 16 con permiso que exige acompañante adulto y no cumple,50,9,9,,particular,si,COIP,verificado
+C-387-04,2,387,4,Conductor extranjero que presta transporte comercial en zona de frontera,50,9,9,,profesional,si,COIP,verificado
+C-387-05,2,387,5,Exceder el número de pasajeros o el volumen de carga permitido (transporte propio o comercial),50,9,9,,profesional,si,COIP,verificado
+C-388-01,3,388,1,"Detener o estacionar en sitios peligrosos (curvas, puentes, túneles, cruces, pendientes) sin tomar medidas de seguridad",40,7.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-388-02,3,388,2,Dañar la superficie de la vía con el vehículo o su carga,40,7.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-388-03,3,388,3,"Derramar sustancias deslizantes, inflamables o contaminantes en la vía (salvo caso fortuito)",40,7.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-388-04,3,388,4,"Transportar material inflamable, explosivo o peligroso sin vehículo acondicionado o sin permiso",40,7.5,0,,profesional,si,COIP,verificado
+C-388-05,3,388,5,Construir reductores de velocidad sin autorización,40,7.5,0,,particular;profesional,si,COIP,verificado
+C-388-06,3,388,6,Romper o dañar la vía sin autorización o dejar escombros tras una obra,40,7.5,0,,particular;profesional,si,COIP,verificado
+C-388-07,3,388,7,"Circular con personas en estribos, baldes de camioneta, parachoques o colgadas de la carrocería",40,7.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-388-08,3,388,8,Transporte público/comercial sin franjas retroreflectivas,40,7.5,0,,profesional,si,COIP,verificado
+C-388-09,3,388,9,Conductor de transporte público o comercial que se niega a prestar el servicio,40,7.5,0,,profesional,si,COIP,verificado
+C-389-01,4,389,1,"Desobedecer a los agentes o no respetar semáforos, pare, ceda el paso u otra señalización",30,6,0,,todos,si,COIP,verificado
+C-389-02,4,389,2,"Adelantar en zonas peligrosas (curvas, puentes, túneles, cima) o contra la señalización",30,6,0,,particular;profesional;motociclista,si,COIP,verificado
+C-389-03,4,389,3,Colocar obstáculos en la vía sin autorización ni avisos,30,6,0,,particular;profesional;motociclista,si,COIP,verificado
+C-389-04,4,389,4,Transporte escolar sin distintivos y luces de parqueo en paradas de estudiantes,30,6,0,,profesional,si,COIP,verificado
+C-389-05,4,389,5,Faltar de palabra a la autoridad o agente de tránsito,30,6,0,,particular;profesional;motociclista,si,COIP,verificado
+C-389-06,4,389,6,Exceder los límites de velocidad dentro del rango moderado,30,6,0,,particular;profesional;motociclista,si,COIP,verificado
+C-389-07,4,389,7,Conducir un vehículo que no cumple las condiciones técnico-mecánicas (se retiene hasta superar la causa),30,6,0,retención del vehículo hasta corregir,particular;profesional;motociclista,si,COIP,verificado
+C-389-08,4,389,8,Conductor profesional que presta servicio fuera del ámbito geográfico autorizado,30,6,0,,profesional,si,COIP,verificado
+C-389-09,4,389,9,Propietario de vehículo que confía su conducción a personas no autorizadas,30,6,0,,particular;profesional,si,COIP,verificado
+C-389-10,4,389,10,Transportar carga sin banderines rojos (día) o luces (noche) en los extremos sobresalientes,30,6,0,,profesional,si,COIP,verificado
+C-389-11,4,389,11,Motociclista o acompañante sin casco homologado o sin prendas retroreflectivas de noche,30,6,0,,motociclista,si,COIP,verificado
+C-389-12,4,389,12,"Conducir sin placas, o con placas alteradas u ocultas",30,6,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-01,5,390,1,Apagar el motor del vehículo al descender una pendiente,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-02,5,390,2,Realizar acciones ilícitas para evadir el pago de peajes,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-03,5,390,3,Conducir en sentido contrario a la vía (con señalización clara y visible),15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-04,5,390,4,Vehículo diésel con tubo de escape mal instalado,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-05,5,390,5,Propietario o conductor que se niega a prestar ayuda en emergencia o calamidad pública,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-06,5,390,6,No dejar la vía libre ante alarma o sirena de vehículo de emergencia (conductor),15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-07,5,390,7,Detener o estacionar en lugares no permitidos para dejar o recoger pasajeros o carga,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-08,5,390,8,Estacionar sin las precauciones reglamentarias o abandonar el vehículo en la vía,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-09,5,390,9,"Taxista que no usa el taxímetro, lo altera o no lo ubica visible",15,4.5,0,,profesional,si,COIP,verificado
+C-390-10,5,390,10,Conductor que no exige el cinturón a sus acompañantes cuando es obligatorio,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-11,5,390,11,Cambio brusco o indebido de carril,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-12,5,390,12,Conductor de transporte masivo que carga combustible con pasajeros,15,4.5,0,,profesional,si,COIP,verificado
+C-390-13,5,390,13,"Llevar personas, animales u objetos en brazos o en sitios no adecuados",15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-14,5,390,14,"Conducir sin luces o en mal estado, no cambiarlas a tiempo o no usar direccionales al virar o estacionar",15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-15,5,390,15,Adelantar a un bus escolar detenido mientras suben o bajan estudiantes,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-16,5,390,16,Conducir vehículo oficial fuera de horario sin salvoconducto,15,4.5,0,,profesional,si,COIP,verificado
+C-390-17,5,390,17,Transporte masivo que se niega a transportar ciclistas con bicicleta (si tiene facilidades),15,4.5,0,,profesional,si,COIP,verificado
+C-390-18,5,390,18,No respetar el derecho preferente de los ciclistas,15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-19,5,390,19,"Invadir vías exclusivas de ciclistas, circulando o estacionando",15,4.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-390-20,5,390,20,"Transportar más personas que la capacidad permitida en moto, motoneta, bicimoto, tricar o cuadrón",15,4.5,0,,motociclista,si,COIP,verificado
+C-390-21,5,390,21,Colocar obstáculos en la vía que afecten la seguridad peatonal sin autorización,15,4.5,0,,peaton;particular,si,COIP,verificado
+C-390-22,5,390,22,Dejar niñas o niños solos dentro del vehículo sin supervisión adulta,15,4.5,0,,particular,si,COIP,verificado
+C-391-01,6,391,1,Circular incumpliendo las normas de emisión de gases,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-02,6,391,2,No conducir por la derecha en vías de doble dirección,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-03,6,391,3,Invadir vías exclusivas de buses de transporte rápido,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-04,6,391,4,No llevar botiquín equipado y extintor cargado,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-05,6,391,5,"Estacionar en sitios prohibidos, plazas para discapacidad o embarazadas, rampas, garajes o zonas peatonales",10,3,0,traslado a retención vehicular si el conductor no está,particular;profesional;motociclista,si,COIP,verificado
+C-391-06,6,391,6,Obstaculizar el tránsito por quedarse sin combustible,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-07,6,391,7,Transportar niños en vehículo particular sin las seguridades reglamentarias,10,3,0,,particular,si,COIP,verificado
+C-391-08,6,391,8,No detenerse antes de cruzar una línea férrea o vía exclusiva de buses rápidos,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-09,6,391,9,Instalar o usar sirenas o balizas sin autorización,10,3,0,retiro de sirenas o balizas,particular;profesional;motociclista,si,COIP,verificado
+C-391-10,6,391,10,No usar o colocar mal los triángulos de seguridad tras un desperfecto,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-11,6,391,11,"Vidrios con películas oscuras, polarizados o adhesivos que impiden la visibilidad (salvo autorizados o de fábrica)",10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-12,6,391,12,Usar el celular al conducir sin manos libres homologado,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-13,6,391,13,"Transporte masivo que incumple tarifas preferenciales (niños, estudiantes, adultos mayores, discapacidad)",10,3,0,,profesional,si,COIP,verificado
+C-391-14,6,391,14,No encender las luces de noche o en sitios oscuros como túneles,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-391-15,6,391,15,"Conductor, controlador o ayudante de transporte que maltrata a los usuarios",10,3,0,,profesional,si,COIP,verificado
+C-391-16,6,391,16,Realizar actividades o competencias deportivas en la vía pública con vehículos de tracción humana o animal sin permiso,10,3,0,,ciclista;peaton,si,COIP,verificado
+C-391-17,6,391,17,Talleres o estaciones de servicio que prestan servicio en la vía pública,10,3,0,,profesional,si,COIP,verificado
+C-391-18,6,391,18,Instalar video o televisión que pueda distraer al conductor,10,3,0,,particular;profesional,si,COIP,verificado
+C-391-19,6,391,19,Transporte urbano que circula con las puertas abiertas,10,3,0,,profesional,si,COIP,verificado
+C-391-20,6,391,20,Vehículos pesados que circulan por zonas restringidas,10,3,0,,profesional,si,COIP,verificado
+C-391-21,6,391,21,Conducir sin portar la licencia de conducir,10,3,0,,particular;profesional;motociclista,si,COIP,verificado
+C-392-01,7,392,1,Uso inadecuado y reiterado de la bocina u otros dispositivos sonoros,5,1.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-392-02,7,392,2,Transporte masivo o comercial sin distintivos e identificación del servicio,5,1.5,0,,profesional,si,COIP,verificado
+C-392-03,7,392,3,Persona con discapacidad que conduce un vehículo adaptado sin identificación o distintivo,5,1.5,0,,particular,si,COIP,verificado
+C-392-04,7,392,4,Transporte interprovincial o internacional sin lista de pasajeros,5,1.5,0,,profesional,si,COIP,verificado
+C-392-05,7,392,5,No mantener la distancia prudente de seguimiento,5,1.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-392-06,7,392,6,No utilizar el cinturón de seguridad,5,1.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-392-07,7,392,7,Transporte público o comercial sin recipientes para basura de los pasajeros,5,1.5,0,,profesional,si,COIP,verificado
+C-392-08,7,392,8,Peatón que no transita por las aceras o sitios de seguridad,5,1.5,0,,peaton,si,COIP,verificado
+C-392-09,7,392,9,Peatón que no deja la vía libre ante alarma o sirena de emergencia,5,1.5,0,,peaton,si,COIP,verificado
+C-392-10,7,392,10,Arrojar desechos contaminantes a la vía desde el vehículo,5,1.5,0,,particular;profesional;motociclista,si,COIP,verificado
+C-392-11,7,392,11,Ejercer actividad comercial o de servicio en zonas de seguridad peatonal o calzadas,5,1.5,0,,peaton,si,COIP,verificado
+C-392-12,7,392,12,Ciclista o motociclista que circula por sitios no permitidos,5,1.5,0,,ciclista;motociclista,si,COIP,verificado
+C-392-13,7,392,13,Comprador que no registra el traspaso de dominio en 30 días,5,1.5,0,,particular,si,COIP,verificado
+C-392-14,7,392,14,Ciclista o conductor de tracción animal que no respeta la señalización,5,1.5,0,,ciclista;peaton,si,COIP,verificado
+C-392-15,7,392,15,"Propietario que instala luces, faros o neblineros en sitios prohibidos sin autorización",5,1.5,0,,particular,si,COIP,verificado

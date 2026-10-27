@@ -43,9 +43,13 @@ def validar_escenario(esc: EscenarioVialSchema, perfil: str, nivel: str,
                       tabla: dict[str, Contravencion] | None = None) -> Contravencion:
     """Validación determinista cruzada (Documento Maestro §6). Devuelve la contravención canónica."""
     tabla = tabla or cargar_tabla()
-    if esc.id_contravencion_asociada.strip().upper() == MARCA_FUERA_DE_DOMINIO:
+    id_buscado = esc.id_contravencion_asociada.strip()
+    if id_buscado.upper() == MARCA_FUERA_DE_DOMINIO:
         raise FueraDeDominio()
-    c = tabla.get(esc.id_contravencion_asociada)
+    c = tabla.get(id_buscado)
+    if c is None:
+        # También acepta el código corto del CSV (ej. C-389-01)
+        c = next((item for item in tabla.values() if item.codigo_csv == id_buscado), None)
     if c is None:
         raise EscenarioInvalido(f"contravención inexistente en la tabla: {esc.id_contravencion_asociada!r}")
     if perfil not in c.perfiles_aplicables:

@@ -1,254 +1,1730 @@
 [
   {
     "id_contravencion": "CONT-COIP-ART386-1",
+    "codigo_csv": "C-386-01",
     "clase": "Primera Clase",
     "articulo": "Art. 386 num. 1",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Conducir sin haber obtenido licencia de conducir.",
+    "descripcion_infraccion": "Conducir sin haber obtenido licencia.",
+    "texto_literal_coip": "La persona que conduzca sin haber obtenido licencia.",
+    "porcentaje_sbu": 100.0,
+    "puntos_reducidos": 0.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": "3 días de prisión",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 3,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART386-2",
+    "codigo_csv": "C-386-02",
+    "clase": "Primera Clase",
+    "articulo": "Art. 386 num. 2",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Agredir físicamente a la autoridad o agente de tránsito.",
+    "texto_literal_coip": "La o el conductor que falte de obra a la autoridad o agente de tránsito.",
     "porcentaje_sbu": 100.0,
     "puntos_reducidos": 10.0,
+    "puntos_aplicables": 10.0,
+    "pena_adicional": "3 días de prisión",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 3,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART386-3",
+    "codigo_csv": "C-386-03",
     "clase": "Primera Clase",
     "articulo": "Art. 386 num. 3",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Exceder los límites de velocidad fuera del rango moderado establecido por la ley.",
+    "descripcion_infraccion": "Exceder el límite de velocidad fuera del rango moderado.",
+    "texto_literal_coip": "La o el conductor que con un vehículo automotor, exceda los límites de velocidad fuera del rango moderado, establecidos en el reglamento correspondiente.",
     "porcentaje_sbu": 100.0,
     "puntos_reducidos": 10.0,
+    "puntos_aplicables": 10.0,
+    "pena_adicional": "3 días de prisión",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 3,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART386-B1",
+    "codigo_csv": "C-386-B-01",
+    "clase": "Primera Clase (Inciso 2)",
+    "articulo": "Art. 386 inc. 2 num. 1",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transportar pasajeros o bienes sin título habilitante o prestar un servicio distinto al autorizado.",
+    "texto_literal_coip": "La o el conductor que transporte pasajeros o bienes, sin contar con el título habilitante correspondiente, la autorización de frecuencia o que realice un servicio diferente para el que fue autorizado. Si además el vehículo ha sido pintado ilegalmente con el mismo color y características de los vehículos autorizados, la o el juzgador dispondrá que el vehículo sea pintado con un color distinto al de las unidades de transporte público o comercial y prohibirá su circulación, hasta tanto se cumpla con dicho mandamiento. El cumplimiento de esta orden solo será probado con la certificación que para el efecto extenderá el responsable del sitio de retención vehicular al que será trasladado el vehículo no autorizado. Los costos del cambio de pintura del vehículo estarán a cargo de la persona contraventora.",
+    "porcentaje_sbu": 200.0,
+    "puntos_reducidos": 10.0,
+    "puntos_aplicables": 10.0,
+    "pena_adicional": "retención del vehículo mínimo 7 días",
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART386-B2",
+    "codigo_csv": "C-386-B-02",
+    "clase": "Primera Clase (Inciso 2)",
+    "articulo": "Art. 386 inc. 2 num. 2",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conducir con licencia de categoría diferente a la exigible para el vehículo.",
+    "texto_literal_coip": "La persona que conduzca un vehículo con una licencia de categoría diferente a la exigible para el tipo de vehículo que conduce.",
+    "porcentaje_sbu": 200.0,
+    "puntos_reducidos": 10.0,
+    "puntos_aplicables": 10.0,
+    "pena_adicional": "retención del vehículo mínimo 7 días",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART386-B3",
+    "codigo_csv": "C-386-B-03",
+    "clase": "Primera Clase (Inciso 2)",
+    "articulo": "Art. 386 inc. 2 num. 3",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Participar con vehículo a motor en competencias en la vía pública.",
+    "texto_literal_coip": "Las personas que participen con vehículos a motor en competencias en la vía pública.",
+    "porcentaje_sbu": 200.0,
+    "puntos_reducidos": 10.0,
+    "puntos_aplicables": 10.0,
+    "pena_adicional": "retención del vehículo mínimo 7 días",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART387-1",
+    "codigo_csv": "C-387-01",
     "clase": "Segunda Clase",
     "articulo": "Art. 387 num. 1",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Ocasionar un accidente de tránsito cuyo costo de daños materiales no supere dos salarios básicos.",
+    "descripcion_infraccion": "Causar un accidente con solo daños materiales inferiores a dos SBU.",
+    "texto_literal_coip": "La o el conductor que ocasione un accidente de tránsito del que resulten solamente daños materiales, cuyos costos sean inferiores a dos salarios básicos unificados del trabajador en general.",
     "porcentaje_sbu": 50.0,
     "puntos_reducidos": 9.0,
+    "puntos_aplicables": 9.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART387-2",
+    "codigo_csv": "C-387-02",
     "clase": "Segunda Clase",
     "articulo": "Art. 387 num. 2",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Conducir con licencia caducada, suspendida temporal o definitivamente.",
+    "descripcion_infraccion": "Conducir con licencia caducada, anulada, revocada o suspendida (se retira la licencia).",
+    "texto_literal_coip": "La persona que conduzca con licencia caducada, anulada, revocada o suspendida, la misma que deberá ser retirada inmediatamente por el agente de tránsito.",
     "porcentaje_sbu": 50.0,
     "puntos_reducidos": 9.0,
+    "puntos_aplicables": 9.0,
+    "pena_adicional": "retiro inmediato de la licencia",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART387-3",
+    "codigo_csv": "C-387-03",
     "clase": "Segunda Clase",
     "articulo": "Art. 387 num. 3",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Conducir vehículo de transporte público o comercial sin portar los permisos de operación correspondientes.",
+    "descripcion_infraccion": "Adolescente mayor de 16 con permiso que exige acompañante adulto y no cumple.",
+    "texto_literal_coip": "La persona adolescente, mayor a dieciséis años, que posea un permiso de conducción que requiera compañía de un adulto que posea licencia y no cumpla con lo normado.",
     "porcentaje_sbu": 50.0,
     "puntos_reducidos": 9.0,
+    "puntos_aplicables": 9.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART387-4",
+    "codigo_csv": "C-387-04",
+    "clase": "Segunda Clase",
+    "articulo": "Art. 387 num. 4",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conductor extranjero que presta transporte comercial en zona de frontera.",
+    "texto_literal_coip": "La o el conductor extranjero que habiendo ingresado legalmente al país se encuentre brindando servicio de transporte comercial dentro de las zonas de frontera.",
+    "porcentaje_sbu": 50.0,
+    "puntos_reducidos": 9.0,
+    "puntos_aplicables": 9.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART387-5",
+    "codigo_csv": "C-387-05",
+    "clase": "Segunda Clase",
+    "articulo": "Art. 387 num. 5",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Exceder el número de pasajeros o el volumen de carga permitido (transporte propio o comercial).",
+    "texto_literal_coip": "La o el conductor de transporte por cuenta propia o comercial que exceda el número de pasajeros o volumen de carga de capacidad del automotor.",
+    "porcentaje_sbu": 50.0,
+    "puntos_reducidos": 9.0,
+    "puntos_aplicables": 9.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART388-1",
+    "codigo_csv": "C-388-01",
     "clase": "Tercera Clase",
     "articulo": "Art. 388 num. 1",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Derramar sobre la vía pública sustancias, basura o materiales que pongan en peligro la seguridad vial.",
+    "descripcion_infraccion": "Detener o estacionar en sitios peligrosos (curvas, puentes, túneles, cruces, pendientes) sin tomar medidas de seguridad.",
+    "texto_literal_coip": "La o el conductor que detengan o estacionen vehículos en sitios o zonas que entrañen peligro, tales como: zonas de seguridad, curvas, puentes, ingresos y salidas de los mismos, túneles, así como el ingreso y salida de estos, zonas estrechas, de poca visibilidad, cruces de caminos, cambios de rasante, pendientes, o pasos a desnivel, sin tomar las medidas de seguridad señaladas en los reglamentos.",
     "porcentaje_sbu": 40.0,
     "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART388-2",
+    "codigo_csv": "C-388-02",
     "clase": "Tercera Clase",
     "articulo": "Art. 388 num. 2",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Transportar material inflamable, explosivo o peligroso en vehículos no acondicionados ni autorizados.",
+    "descripcion_infraccion": "Dañar la superficie de la vía con el vehículo o su carga.",
+    "texto_literal_coip": "La o el conductor que con un vehículo automotor o con los bienes que transporta, cause daños o deterioro a la superficie de la vía pública.",
     "porcentaje_sbu": 40.0,
     "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART388-3",
+    "codigo_csv": "C-388-03",
+    "clase": "Tercera Clase",
+    "articulo": "Art. 388 num. 3",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Derramar sustancias deslizantes, inflamables o contaminantes en la vía (salvo caso fortuito).",
+    "texto_literal_coip": "La o el conductor que derrame en la vía pública sustancias o materiales deslizantes, inflamables o contaminantes, salvo caso fortuito o fuerza mayor debidamente comprobados.",
+    "porcentaje_sbu": 40.0,
+    "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART388-4",
+    "codigo_csv": "C-388-04",
+    "clase": "Tercera Clase",
+    "articulo": "Art. 388 num. 4",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transportar material inflamable, explosivo o peligroso sin vehículo acondicionado o sin permiso.",
+    "texto_literal_coip": "La o el conductor que transporte material inflamable, explosivo o peligroso en vehículos no acondicionados para el efecto o sin el permiso de la autoridad competente y las o los conductores no profesionales que realizaren esta actividad con un vehículo calificado para el efecto.",
+    "porcentaje_sbu": 40.0,
+    "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART388-5",
+    "codigo_csv": "C-388-05",
+    "clase": "Tercera Clase",
+    "articulo": "Art. 388 num. 5",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Construir reductores de velocidad sin autorización.",
+    "texto_literal_coip": "La persona que construya o mande a construir reductores de velocidad sobre la calzada de las vías, sin previa autorización o inobservando las disposiciones de los respectivos reglamentos.",
+    "porcentaje_sbu": 40.0,
+    "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART388-6",
+    "codigo_csv": "C-388-06",
     "clase": "Tercera Clase",
     "articulo": "Art. 388 num. 6",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "No respetar los límites de velocidad dentro del rango moderado establecido por la ley.",
+    "descripcion_infraccion": "Romper o dañar la vía sin autorización o dejar escombros tras una obra.",
+    "texto_literal_coip": "Las personas que roturen o dañen las vías de circulación vehicular sin la respectiva autorización, dejen escombros o no retiren los desperdicios de la vía pública luego de terminadas las obras.",
     "porcentaje_sbu": 40.0,
     "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART388-7",
+    "codigo_csv": "C-388-07",
+    "clase": "Tercera Clase",
+    "articulo": "Art. 388 num. 7",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Circular con personas en estribos, baldes de camioneta, parachoques o colgadas de la carrocería.",
+    "texto_literal_coip": "La o el conductor de un vehículo automotor que circule con personas en los estribos o pisaderas, baldes de camionetas, parachoques o colgados de las carrocerías de los vehículos.",
+    "porcentaje_sbu": 40.0,
+    "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART388-8",
+    "codigo_csv": "C-388-08",
+    "clase": "Tercera Clase",
+    "articulo": "Art. 388 num. 8",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transporte público/comercial sin franjas retroreflectivas.",
+    "texto_literal_coip": "La o el conductor de transporte público, comercial o independiente que realice el servicio de transporte de pasajeros y carga en cuyo vehículo no porte las franjas retroreflectivas previstas en los reglamentos de tránsito.",
+    "porcentaje_sbu": 40.0,
+    "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART388-9",
+    "codigo_csv": "C-388-09",
+    "clase": "Tercera Clase",
+    "articulo": "Art. 388 num. 9",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conductor de transporte público o comercial que se niega a prestar el servicio.",
+    "texto_literal_coip": "La o el conductor de transporte público o comercial que se niegue a brindar el servicio.",
+    "porcentaje_sbu": 40.0,
+    "puntos_reducidos": 7.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART389-1",
+    "codigo_csv": "C-389-01",
     "clase": "Cuarta Clase",
     "articulo": "Art. 389 num. 1",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Desobedecer las órdenes de los agentes de tránsito o las señales manuales reglamentarias.",
+    "descripcion_infraccion": "Desobedecer a los agentes o no respetar semáforos, pare, ceda el paso u otra señalización.",
+    "texto_literal_coip": "La o el conductor que desobedezca las órdenes de los agentes de tránsito, o que no respete las señales manuales de dichos agentes, en general toda señalización colocada en las vías públicas, tales como: semáforos, pare, ceda el paso, cruce o preferencia de vías.",
     "porcentaje_sbu": 30.0,
     "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista",
+      "ciclista",
+      "peaton"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-2",
+    "codigo_csv": "C-389-02",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 2",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Adelantar en zonas peligrosas (curvas, puentes, túneles, cima) o contra la señalización.",
+    "texto_literal_coip": "La persona que adelante a otro vehículo en movimiento en zonas o sitios peligrosos, tales como: curvas, puentes, túneles, al coronar una cuesta o contraviniendo expresas normas reglamentarias o de señalización.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-3",
+    "codigo_csv": "C-389-03",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 3",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Colocar obstáculos en la vía sin autorización ni avisos.",
+    "texto_literal_coip": "La o el conductor que altere la circulación y la seguridad del tránsito vehicular, por colocar obstáculos en la vía pública sin la respectiva autorización o sin fijar los avisos correspondientes.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-4",
+    "codigo_csv": "C-389-04",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 4",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transporte escolar sin distintivos y luces de parqueo en paradas de estudiantes.",
+    "texto_literal_coip": "Las o los conductores de vehículos de transporte escolar que no porten elementos distintivos y luces especiales de parqueo, que reglamentariamente deben ser utilizadas en las paradas para embarcar o desembarcar estudiantes.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-5",
+    "codigo_csv": "C-389-05",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 5",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Faltar de palabra a la autoridad o agente de tránsito.",
+    "texto_literal_coip": "La o el conductor que falte de palabra a la autoridad o agente de tránsito.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART389-6",
+    "codigo_csv": "C-389-06",
     "clase": "Cuarta Clase",
     "articulo": "Art. 389 num. 6",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Llevar exceso de pasajeros en vehículos de transporte público o comercial superando la capacidad autorizada.",
+    "descripcion_infraccion": "Exceder los límites de velocidad dentro del rango moderado.",
+    "texto_literal_coip": "La o el conductor que con un vehículo automotor exceda dentro de un rango moderado los límites de velocidad permitidos, de conformidad con los reglamentos de tránsito correspondientes.",
     "porcentaje_sbu": 30.0,
     "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-7",
+    "codigo_csv": "C-389-07",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 7",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conducir un vehículo que no cumple las condiciones técnico-mecánicas (se retiene hasta superar la causa).",
+    "texto_literal_coip": "La o el conductor que conduzca un vehículo a motor que no cumpla las normas y condiciones técnico mecánicas adecuadas conforme lo establezcan los reglamentos de tránsito respectivos, debiendo además retenerse el vehículo hasta que supere la causa de la infracción.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": "retención del vehículo hasta corregir",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-8",
+    "codigo_csv": "C-389-08",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 8",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conductor profesional que presta servicio fuera del ámbito geográfico autorizado.",
+    "texto_literal_coip": "La o el conductor profesional que sin autorización, preste servicio de transporte público, comercial, o por cuenta propia fuera del ámbito geográfico de prestación autorizada en el título habilitante correspondiente; se exceptúa el conductor de taxi fletado o de transporte mixto fletado que excepcionalmente transporte pasajeros fuera del ámbito de operación, quedando prohibido establecer rutas y frecuencias.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-9",
+    "codigo_csv": "C-389-09",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 9",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Propietario de vehículo que confía su conducción a personas no autorizadas.",
+    "texto_literal_coip": "La o el propietario de un automotor de servicio público, comercial o privado que confíe su conducción a personas no autorizadas.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-10",
+    "codigo_csv": "C-389-10",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 10",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transportar carga sin banderines rojos (día) o luces (noche) en los extremos sobresalientes.",
+    "texto_literal_coip": "La o el conductor que transporte carga sin colocar en los extremos sobresalientes de la misma, banderines rojos en el día o luces en la noche, de acuerdo con lo establecido en los reglamentos de tránsito o sin observar los requisitos exigidos en los mismos.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART389-11",
+    "codigo_csv": "C-389-11",
     "clase": "Cuarta Clase",
     "articulo": "Art. 389 num. 11",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Conducir utilizando el teléfono celular u otro dispositivo que implique distracción manual.",
+    "descripcion_infraccion": "Motociclista o acompañante sin casco homologado o sin prendas retroreflectivas de noche.",
+    "texto_literal_coip": "La o el conductor y los acompañantes, en caso de haberlos, de motocicletas, motonetas, bicimotos, tricar y cuadrones que no utilicen adecuadamente casco de seguridad homologados de conformidad con lo establecido en los reglamentos de tránsito o, que en la noche no utilicen prendas visibles retroreflectivas",
     "porcentaje_sbu": 30.0,
     "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART389-12",
+    "codigo_csv": "C-389-12",
+    "clase": "Cuarta Clase",
+    "articulo": "Art. 389 num. 12",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conducir sin placas, o con placas alteradas u ocultas.",
+    "texto_literal_coip": "La persona que conduzca un vehículo automotor sin las placas de identificación correspondientes o con las placas alteradas u ocultas y de conformidad con lo establecido en los reglamentos de tránsito.",
+    "porcentaje_sbu": 30.0,
+    "puntos_reducidos": 6.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART390-1",
+    "codigo_csv": "C-390-01",
     "clase": "Quinta Clase",
     "articulo": "Art. 390 num. 1",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Estacionar un vehículo en sitios no permitidos por la autoridad de tránsito.",
+    "descripcion_infraccion": "Apagar el motor del vehículo al descender una pendiente.",
+    "texto_literal_coip": "La o el conductor que, al descender por una pendiente, apague el motor de su vehículo.",
     "porcentaje_sbu": 15.0,
     "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-2",
+    "codigo_csv": "C-390-02",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 2",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Realizar acciones ilícitas para evadir el pago de peajes.",
+    "texto_literal_coip": "La o el conductor que realice cualquier acción ilícita para evadir el pago de los peajes en los sitios legalmente establecidos.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-3",
+    "codigo_csv": "C-390-03",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 3",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conducir en sentido contrario a la vía (con señalización clara y visible).",
+    "texto_literal_coip": "La o el conductor que conduzca un vehículo en sentido contrario a la vía normal de circulación, siempre que la respectiva señalización esté clara y visible.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-4",
+    "codigo_csv": "C-390-04",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 4",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Vehículo diésel con tubo de escape mal instalado.",
+    "texto_literal_coip": "La o el conductor de un vehículo a diesel cuyo tubo de escape no esté instalado de conformidad con los reglamentos de tránsito.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-5",
+    "codigo_csv": "C-390-05",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 5",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Propietario o conductor que se niega a prestar ayuda en emergencia o calamidad pública.",
+    "texto_literal_coip": "La o el propietario o conductor de un vehículo automotor que, en caso de emergencia o calamidad pública, luego de ser requeridos, se niegue a prestar la ayuda solicitada.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-6",
+    "codigo_csv": "C-390-06",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 6",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "No dejar la vía libre ante alarma o sirena de vehículo de emergencia (conductor).",
+    "texto_literal_coip": "La o el conductor de vehículos a motor que, ante las señales de alarma o toque de sirena de un vehículo de emergencia, no deje la vía libre.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-7",
+    "codigo_csv": "C-390-07",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 7",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Detener o estacionar en lugares no permitidos para dejar o recoger pasajeros o carga.",
+    "texto_literal_coip": "La o el conductor que detenga o estacione un vehículo automotor en lugares no permitidos, para dejar o recoger pasajeros o carga, o por cualquier otro motivo.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-8",
+    "codigo_csv": "C-390-08",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 8",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Estacionar sin las precauciones reglamentarias o abandonar el vehículo en la vía.",
+    "texto_literal_coip": "La o el conductor que estacione un vehículo automotor en cualquier tipo de vías, sin tomar las precauciones reglamentariamente previstas para evitar un accidente de tránsito o lo deje abandonado en la vía pública.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-9",
+    "codigo_csv": "C-390-09",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 9",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Taxista que no usa el taxímetro, lo altera o no lo ubica visible.",
+    "texto_literal_coip": "La o el conductor de un taxi, que no utilice el taxímetro las veinticuatro horas, altere su funcionamiento o no lo ubique en un lugar visible al usuario.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART390-10",
+    "codigo_csv": "C-390-10",
     "clase": "Quinta Clase",
     "articulo": "Art. 390 num. 10",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "No utilizar el cinturón de seguridad los conductores y sus acompañantes.",
+    "descripcion_infraccion": "Conductor que no exige el cinturón a sus acompañantes cuando es obligatorio.",
+    "texto_literal_coip": "La o el conductor de un vehículo automotor que tenga, según los reglamentos de tránsito, la obligación de contar con cinturones de seguridad y no exija el uso del mismo a sus usuarios o acompañantes.",
     "porcentaje_sbu": 15.0,
     "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-11",
+    "codigo_csv": "C-390-11",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 11",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Cambio brusco o indebido de carril.",
+    "texto_literal_coip": "La o el conductor que haga cambio brusco o indebido de carril.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-12",
+    "codigo_csv": "C-390-12",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 12",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conductor de transporte masivo que carga combustible con pasajeros.",
+    "texto_literal_coip": "La o el conductor de un vehículo de transporte público masivo de pasajeros que cargue combustible cuando se encuentren prestando el servicio de transporte.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-13",
+    "codigo_csv": "C-390-13",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 13",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Llevar personas, animales u objetos en brazos o en sitios no adecuados.",
+    "texto_literal_coip": "La o el conductor que lleve en sus brazos o en sitios no adecuados a personas, animales u objetos.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-14",
+    "codigo_csv": "C-390-14",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 14",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conducir sin luces o en mal estado, no cambiarlas a tiempo o no usar direccionales al virar o estacionar.",
+    "texto_literal_coip": "La o el conductor que conduzca un vehículo sin luces, en mal estado de funcionamiento, no realice el cambio de las mismas en las horas y circunstancias que establecen los reglamentos de tránsito o no utilice las luces direccionales luminosas antes de efectuar un viraje o estacionamiento.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-15",
+    "codigo_csv": "C-390-15",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 15",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Adelantar a un bus escolar detenido mientras suben o bajan estudiantes.",
+    "texto_literal_coip": "La o el conductor que adelante a un vehículo de transporte escolar mientras este se encuentre estacionado, en lugares autorizados para tal efecto, y sus pasajeros estén embarcando o desembarcando.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-16",
+    "codigo_csv": "C-390-16",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 16",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conducir vehículo oficial fuera de horario sin salvoconducto.",
+    "texto_literal_coip": "La o el conductor de vehículos de propiedad del sector público ecuatoriano que conduzca el vehículo oficial fuera de las horas de oficina, sin portar el respectivo salvoconducto.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-17",
+    "codigo_csv": "C-390-17",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 17",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transporte masivo que se niega a transportar ciclistas con bicicleta (si tiene facilidades).",
+    "texto_literal_coip": "La o el conductor de vehículo de transporte público masivo que se niegue a transportar a los ciclistas con sus bicicletas, siempre que el vehículo cuente con las facilidades para transportarlas.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART390-18",
+    "codigo_csv": "C-390-18",
     "clase": "Quinta Clase",
     "articulo": "Art. 390 num. 18",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "No respetar el paso cebra o el derecho de paso preferencial de peatones en intersecciones.",
+    "descripcion_infraccion": "No respetar el derecho preferente de los ciclistas.",
+    "texto_literal_coip": "La o el conductor que no respete el derecho preferente de los ciclistas en los desvíos, avenidas y carreteras, cruce de caminos, intersecciones no señalizadas y ciclovías.",
     "porcentaje_sbu": 15.0,
     "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-19",
+    "codigo_csv": "C-390-19",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 19",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Invadir vías exclusivas de ciclistas, circulando o estacionando.",
+    "texto_literal_coip": "La o el conductor que invada con su vehículo, circulando o estacionándose, las vías asignadas para uso exclusivo de los ciclistas.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-20",
+    "codigo_csv": "C-390-20",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 20",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transportar más personas que la capacidad permitida en moto, motoneta, bicimoto, tricar o cuadrón.",
+    "texto_literal_coip": "La o el conductor de motocicletas, motonetas, bicimotos, tricar y cuadrones que transporte un número de personas superior a la capacidad permitida, de conformidad con lo establecido en los reglamentos de tránsito.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-21",
+    "codigo_csv": "C-390-21",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 21",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Colocar obstáculos en la vía que afecten la seguridad peatonal sin autorización.",
+    "texto_literal_coip": "La persona que altere la circulación y la seguridad peatonal por colocar obstáculos en la vía pública sin la respectiva autorización o sin fijar los avisos correspondientes.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "peaton",
+      "conductor_particular"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART390-22",
+    "codigo_csv": "C-390-22",
+    "clase": "Quinta Clase",
+    "articulo": "Art. 390 num. 22",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Dejar niñas o niños solos dentro del vehículo sin supervisión adulta.",
+    "texto_literal_coip": "La o el conductor que deje en el interior del vehículo a niñas o niños solos, sin supervisión de una persona adulta.",
+    "porcentaje_sbu": 15.0,
+    "puntos_reducidos": 4.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART391-1",
+    "codigo_csv": "C-391-01",
     "clase": "Sexta Clase",
     "articulo": "Art. 391 num. 1",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Hacer uso inadecuado o abusivo de la bocina (pito) o instalar dispositivos sonoros no autorizados.",
+    "descripcion_infraccion": "Circular incumpliendo las normas de emisión de gases.",
+    "texto_literal_coip": "La o el conductor de un vehículo automotor que circule contraviniendo las normas previstas en los reglamentos de tránsito y demás disposiciones aplicables, relacionadas con la emanación de gases.",
     "porcentaje_sbu": 10.0,
     "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-2",
+    "codigo_csv": "C-391-02",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 2",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "No conducir por la derecha en vías de doble dirección.",
+    "texto_literal_coip": "La persona que no conduzca su vehículo por la derecha en las vías de doble dirección.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-3",
+    "codigo_csv": "C-391-03",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 3",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Invadir vías exclusivas de buses de transporte rápido.",
+    "texto_literal_coip": "La o el conductor que invada con su vehículo las vías exclusivas asignadas a los buses de transporte rápido.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART391-4",
+    "codigo_csv": "C-391-04",
     "clase": "Sexta Clase",
     "articulo": "Art. 391 num. 4",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Circular sin portar las placas de identificación vehicular reglamentarias o con placas alteradas.",
+    "descripcion_infraccion": "No llevar botiquín equipado y extintor cargado.",
+    "texto_literal_coip": "La o el conductor de un vehículo automotor que no lleve en el mismo, un botiquín de primeros auxilios equipado y un extintor de incendios cargado y funcionando, de conformidad con lo establecido en los reglamentos de tránsito.",
     "porcentaje_sbu": 10.0,
     "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-5",
+    "codigo_csv": "C-391-05",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 5",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Estacionar en sitios prohibidos, plazas para discapacidad o embarazadas, rampas, garajes o zonas peatonales.",
+    "texto_literal_coip": "La o el conductor que estacione un vehículo en los sitios prohibidos por la ley o los reglamentos de tránsito; o que, sin derecho, estacione su vehículo en los espacios destinados a un uso exclusivo de personas con discapacidad o mujeres embarazadas; o estacione su vehículo obstaculizando rampas de acceso para discapacitados, puertas de garaje o zonas de circulación peatonal. En caso que el conductor no se encuentre en el vehículo este será trasladado a uno de los sitios de retención vehicular",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": "traslado a retención vehicular si el conductor no está",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-6",
+    "codigo_csv": "C-391-06",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 6",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Obstaculizar el tránsito por quedarse sin combustible.",
+    "texto_literal_coip": "La persona que obstaculice el tránsito vehicular al quedarse sin combustible.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-7",
+    "codigo_csv": "C-391-07",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 7",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transportar niños en vehículo particular sin las seguridades reglamentarias.",
+    "texto_literal_coip": "La o el conductor de un vehículo automotor particular que transporte a niños sin las correspondientes seguridades, de conformidad con lo establecido en los reglamentos de tránsito.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-8",
+    "codigo_csv": "C-391-08",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 8",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "No detenerse antes de cruzar una línea férrea o vía exclusiva de buses rápidos.",
+    "texto_literal_coip": "La o el conductor que no detenga el vehículo, antes de cruzar una línea férrea, de buses de transporte rápido en vías exclusivas o similares.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-9",
+    "codigo_csv": "C-391-09",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 9",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Instalar o usar sirenas o balizas sin autorización.",
+    "texto_literal_coip": "La persona que conduzca o instale, sin autorización del organismo competente, en los vehículos particulares o públicos, sirenas o balizas de cualquier tipo, en cuyo caso además de la sanción prevista en el presente artículo, se le retirarán las balizas, o sirenas del vehículo.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": "retiro de sirenas o balizas",
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART391-10",
+    "codigo_csv": "C-391-10",
     "clase": "Sexta Clase",
     "articulo": "Art. 391 num. 10",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "No encender las luces en horas nocturnas o en túneles conforme al reglamento.",
+    "descripcion_infraccion": "No usar o colocar mal los triángulos de seguridad tras un desperfecto.",
+    "texto_literal_coip": "La o el conductor que en caso de desperfecto mecánico no use o no coloque adecuadamente los triángulos de seguridad, conforme lo establecido en los reglamentos de tránsito.",
     "porcentaje_sbu": 10.0,
     "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-11",
+    "codigo_csv": "C-391-11",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 11",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Vidrios con películas oscuras, polarizados o adhesivos que impiden la visibilidad (salvo autorizados o de fábrica).",
+    "texto_literal_coip": "La persona que conduzca un vehículo con vidrios con películas antisolares oscuras, polarizados o cualquier tipo de adhesivo que impidan la visibilidad del conductor, excepto los autorizados en el reglamento correspondiente o cuyo polarizado de origen sea de fábrica.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-12",
+    "codigo_csv": "C-391-12",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 12",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Usar el celular al conducir sin manos libres homologado.",
+    "texto_literal_coip": "La o el conductor que utilice el teléfono celular mientras conduce y no haga uso del dispositivo homologado de manos libres.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-13",
+    "codigo_csv": "C-391-13",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 13",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transporte masivo que incumple tarifas preferenciales (niños, estudiantes, adultos mayores, discapacidad).",
+    "texto_literal_coip": "La o el conductor de transporte público de servicio masivo que incumpla las tarifas preferenciales fijadas por la ley en beneficio de los niños, estudiantes, personas adultas mayores de sesenta y cinco años de edad y personas con capacidades especiales.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-14",
+    "codigo_csv": "C-391-14",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 14",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "No encender las luces de noche o en sitios oscuros como túneles.",
+    "texto_literal_coip": "La o el conductor que no encienda las luces del vehículo en horas de la noche o conduzca en sitios oscuros como túneles, con las luces apagadas.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-15",
+    "codigo_csv": "C-391-15",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 15",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conductor, controlador o ayudante de transporte que maltrata a los usuarios.",
+    "texto_literal_coip": "La o el conductor, controlador o ayudante de transporte público o comercial que maltrate de obra o de palabra a los usuarios.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-16",
+    "codigo_csv": "C-391-16",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 16",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Realizar actividades o competencias deportivas en la vía pública con vehículos de tracción humana o animal sin permiso.",
+    "texto_literal_coip": "Las (sic) personas que, sin permiso de la autoridad de tránsito competente, realice actividades o competencias deportivas en las vías públicas, con vehículos de tracción humana o animal.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 0.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "ciclista",
+      "peaton"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-17",
+    "codigo_csv": "C-391-17",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 17",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Talleres o estaciones de servicio que prestan servicio en la vía pública.",
+    "texto_literal_coip": "La o el propietario de mecánicas, estaciones de servicio, talleres de bicicletas, motocicletas y de locales de reparación o adecuación de vehículos en general, que preste sus servicios en la vía pública.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-18",
+    "codigo_csv": "C-391-18",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 18",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Instalar video o televisión que pueda distraer al conductor.",
+    "texto_literal_coip": "La o el propietario de vehículos de servicio público, comercial o privado que instale en sus vehículos equipos de vídeo o televisión en sitios que puedan provocar la distracción del conductor.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-19",
+    "codigo_csv": "C-391-19",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 19",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transporte urbano que circula con las puertas abiertas.",
+    "texto_literal_coip": "La o el conductor de un vehículo que presta servicio de transporte urbano que circule con las puertas abiertas.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-20",
+    "codigo_csv": "C-391-20",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 20",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Vehículos pesados que circulan por zonas restringidas.",
+    "texto_literal_coip": "La o el conductor de vehículos pesados que circule por zonas restringidas sin perjuicio de que se cumpla con lo estipulado en las ordenanzas municipales.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART391-21",
+    "codigo_csv": "C-391-21",
+    "clase": "Sexta Clase",
+    "articulo": "Art. 391 num. 21",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Conducir sin portar la licencia de conducir.",
+    "texto_literal_coip": "La persona que conduzca un vehículo automotor sin portar su licencia de conducir.",
+    "porcentaje_sbu": 10.0,
+    "puntos_reducidos": 3.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART392-1",
+    "codigo_csv": "C-392-01",
     "clase": "Séptima Clase",
     "articulo": "Art. 392 num. 1",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Cruzar la calzada los peatones por lugares no autorizados o sin utilizar los pasos peatonales y puentes.",
+    "descripcion_infraccion": "Uso inadecuado y reiterado de la bocina u otros dispositivos sonoros.",
+    "texto_literal_coip": "La o el conductor que use inadecuada y reiteradamente la bocina u otros dispositivos sonoros contraviniendo las normas previstas en los reglamentos de tránsito y demás normas aplicables, referente a la emisión de ruidos.",
     "porcentaje_sbu": 5.0,
-    "puntos_reducidos": 0.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["peaton"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART392-2",
+    "codigo_csv": "C-392-02",
     "clase": "Séptima Clase",
     "articulo": "Art. 392 num. 2",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "Caminar o transitar a pie por vías de circulación rápida o autopistas reservadas exclusivamente para vehículos.",
+    "descripcion_infraccion": "Transporte masivo o comercial sin distintivos e identificación del servicio.",
+    "texto_literal_coip": "La o el conductor de transporte público de servicio masivo de personas y comercial cuyo vehículo circule sin los distintivos e identificación reglamentarios, sobre el tipo de servicio que presta la unidad que conduce.",
     "porcentaje_sbu": 5.0,
-    "puntos_reducidos": 0.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["peaton"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART392-3",
+    "codigo_csv": "C-392-03",
     "clase": "Séptima Clase",
     "articulo": "Art. 392 num. 3",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "No portar en forma física o digital la licencia de conducir o matrícula vehicular al momento del control.",
+    "descripcion_infraccion": "Persona con discapacidad que conduce un vehículo adaptado sin identificación o distintivo.",
+    "texto_literal_coip": "La persona con discapacidad que conduzca un vehículo adaptado a su discapacidad sin la identificación o distintivo correspondiente.",
     "porcentaje_sbu": 5.0,
     "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["conductor_particular", "conductor_profesional"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-4",
+    "codigo_csv": "C-392-04",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 4",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transporte interprovincial o internacional sin lista de pasajeros.",
+    "texto_literal_coip": "La o el conductor de un vehículo de servicio público que no presente la lista de pasajeros, cuando se trate de transporte público interprovincial o internacional.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-5",
+    "codigo_csv": "C-392-05",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 5",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "No mantener la distancia prudente de seguimiento.",
+    "texto_literal_coip": "La o el conductor que no mantenga la distancia prudente de seguimiento, de conformidad con los reglamentos de tránsito.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-6",
+    "codigo_csv": "C-392-06",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 6",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "No utilizar el cinturón de seguridad.",
+    "texto_literal_coip": "La o el conductor que no utilice el cinturón de seguridad.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-7",
+    "codigo_csv": "C-392-07",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 7",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Transporte público o comercial sin recipientes para basura de los pasajeros.",
+    "texto_literal_coip": "La o el conductor de un vehículo de transporte público o comercial que no ponga a disposición de los pasajeros recipientes o fundas para recolección de basura o desechos.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_profesional"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-8",
+    "codigo_csv": "C-392-08",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 8",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Peatón que no transita por las aceras o sitios de seguridad.",
+    "texto_literal_coip": "La o el peatón que en las vías públicas no transite por las aceras o sitios de seguridad destinados para el efecto.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 0.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "peaton"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-9",
+    "codigo_csv": "C-392-09",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 9",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Peatón que no deja la vía libre ante alarma o sirena de emergencia.",
+    "texto_literal_coip": "La o el peatón que, ante las señales de alarma o toque de sirena de un vehículo de emergencia, no deje la vía libre.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 0.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "peaton"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-10",
+    "codigo_csv": "C-392-10",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 10",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Arrojar desechos contaminantes a la vía desde el vehículo.",
+    "texto_literal_coip": "La persona que desde el interior de un vehículo arroje a la vía pública desechos que contaminen el ambiente.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular",
+      "conductor_profesional",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-11",
+    "codigo_csv": "C-392-11",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 11",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Ejercer actividad comercial o de servicio en zonas de seguridad peatonal o calzadas.",
+    "texto_literal_coip": "La persona que ejerza actividad comercial o de servicio sobre las zonas de seguridad peatonal o calzadas.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 0.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "peaton"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   },
   {
     "id_contravencion": "CONT-COIP-ART392-12",
+    "codigo_csv": "C-392-12",
     "clase": "Séptima Clase",
     "articulo": "Art. 392 num. 12",
     "norma": "Código Orgánico Integral Penal",
-    "descripcion_infraccion": "No utilizar el paso cebra o transitar intempestivamente entre vehículos detenidos.",
+    "descripcion_infraccion": "Ciclista o motociclista que circula por sitios no permitidos.",
+    "texto_literal_coip": "La o el ciclista o motociclista que circule por sitios en los que no le esté permitido.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "ciclista",
+      "motociclista"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-13",
+    "codigo_csv": "C-392-13",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 13",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Comprador que no registra el traspaso de dominio en 30 días.",
+    "texto_literal_coip": "La o el comprador de un vehículo automotor que no registre, en el organismo de tránsito correspondiente, el traspaso de dominio del bien, dentro del plazo de treinta días, contado a partir de la fecha del respectivo contrato.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-14",
+    "codigo_csv": "C-392-14",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 14",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Ciclista o conductor de tracción animal que no respeta la señalización.",
+    "texto_literal_coip": "La o el ciclista y conductor de vehículos de tracción animal que no respete la señalización reglamentaria respectiva.",
     "porcentaje_sbu": 5.0,
     "puntos_reducidos": 0.0,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "ciclista",
+      "peaton"
+    ],
     "dias_privacion_libertad": 0,
-    "perfiles_aplicables": ["peaton"],
-    "fuente_url": "https://www.ant.gob.ec"
+    "fuente_url": "https://www.ant.gob.ec/"
+  },
+  {
+    "id_contravencion": "CONT-COIP-ART392-15",
+    "codigo_csv": "C-392-15",
+    "clase": "Séptima Clase",
+    "articulo": "Art. 392 num. 15",
+    "norma": "Código Orgánico Integral Penal",
+    "descripcion_infraccion": "Propietario que instala luces, faros o neblineros en sitios prohibidos sin autorización.",
+    "texto_literal_coip": "La o el propietario de un vehículo que instale, luces, faros o neblineros en sitios prohibidos del automotor, sin la respectiva autorización.",
+    "porcentaje_sbu": 5.0,
+    "puntos_reducidos": 1.5,
+    "puntos_aplicables": 0.0,
+    "pena_adicional": null,
+    "perfiles_aplicables": [
+      "conductor_particular"
+    ],
+    "dias_privacion_libertad": 0,
+    "fuente_url": "https://www.ant.gob.ec/"
   }
 ]

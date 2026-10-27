@@ -13,7 +13,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-Perfil = Literal["conductor_particular", "conductor_profesional", "peaton"]
+Perfil = Literal["conductor_particular", "conductor_profesional", "motociclista", "ciclista", "peaton"]
 Dificultad = Literal["baja", "media", "alta"]
 IdOpcion = Literal["A", "B", "C", "D"]
 
@@ -98,12 +98,16 @@ class EscenarioVialSchema(Estricto):
 class Contravencion(Estricto):
     """Un registro de data/raw/contravenciones_lotttsv.json (única fuente de verdad)."""
     id_contravencion: str
+    codigo_csv: str | None = None
     clase: str
     articulo: str
     norma: str
     descripcion_infraccion: str
-    porcentaje_sbu: float = Field(ge=0, le=100)
+    texto_literal_coip: str | None = None
+    porcentaje_sbu: float = Field(ge=0, le=200)
     puntos_reducidos: float = Field(ge=0, le=30)
+    puntos_aplicables: float | None = Field(default=None, ge=0, le=30)
+    pena_adicional: str | None = None
     perfiles_aplicables: list[Perfil] = Field(min_length=1)
     dias_privacion_libertad: int = Field(default=0, ge=0)
     fuente_url: str | None = None
@@ -131,16 +135,20 @@ class Sancion(Estricto):
     sbu_usd: float
     multa_usd: float
     puntos_reducidos: float
+    puntos_aplicables: float | None = None
+    pena_adicional: str | None = None
     dias_privacion_libertad: int
     fuente_sbu: str
 
 
 class ContravencionPublica(Estricto):
     id_contravencion: str
+    codigo_csv: str | None = None
     clase: str
     articulo: str
     norma: str
     descripcion_infraccion: str
+    texto_literal_coip: str | None = None
 
 
 class ResultadoEvaluacion(Estricto):

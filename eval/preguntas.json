@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "pregunta": "Pasé un semáforo en rojo por apuro, ¿qué artículo aplica y cuántos puntos dice la ley?",
+    "esperado": "Art. 389",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 2,
+    "pregunta": "¿Cuál es la sanción por usar el celular manejando sin manos libres?",
+    "esperado": "Art. 391",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 3,
+    "pregunta": "¿Qué pasa si manejo con 0,4 gramos de alcohol por litro de sangre?",
+    "esperado": "Art. 385",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 4,
+    "pregunta": "Me detuvieron conduciendo sin haber obtenido nunca la licencia de conducir, ¿me dan prisión?",
+    "esperado": "Art. 386",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 5,
+    "pregunta": "¿Qué contravención cometo si conduzco con la licencia caducada o suspendida?",
+    "esperado": "Art. 387",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 6,
+    "pregunta": "Si manejo con las llantas lisas o en mal estado, ¿cuántos días de privación de libertad son?",
+    "esperado": "Art. 383",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 7,
+    "pregunta": "¿Cuál es la multa si no utilizo el cinturón de seguridad al conducir?",
+    "esperado": "Art. 392",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 8,
+    "pregunta": "Un motociclista circula de noche sin casco homologado ni chaleco retroreflectivo, ¿qué artículo incumple?",
+    "esperado": "Art. 389",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 9,
+    "pregunta": "¿Qué sanción tiene estacionar o invadir la ciclovía o vía exclusiva de ciclistas?",
+    "esperado": "Art. 390",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 10,
+    "pregunta": "Olvidé mi licencia en casa pero sí tengo licencia vigente, ¿qué artículo del COIP se aplica por no portarla?",
+    "esperado": "Art. 391",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 11,
+    "pregunta": "¿Qué pasa si un peatón no camina por la acera o no deja libre la vía ante una ambulancia con sirena?",
+    "esperado": "Art. 392",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 12,
+    "pregunta": "¿Cuál es la contravención por dejar niños solos encerrados dentro del vehículo sin supervisión adulta?",
+    "esperado": "Art. 390",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 13,
+    "pregunta": "Si un conductor lleva personas en el balde de la camioneta o en los estribos, ¿qué clase de contravención es?",
+    "esperado": "Art. 388",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 14,
+    "pregunta": "¿Qué artículo sanciona circular sin placas o con las placas ocultas o alteradas?",
+    "esperado": "Art. 389",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 15,
+    "pregunta": "¿Qué dice el COIP si el responsable del accidente es un peatón o pasajero respecto a la pérdida de puntos?",
+    "esperado": "Art. 373",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 16,
+    "pregunta": "¿Qué sanción aplica por no llevar botiquín de primeros auxilios y extintor cargado en el vehículo?",
+    "esperado": "Art. 391",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 17,
+    "pregunta": "¿Me pueden quitar la licencia por acumular puntos de hace 6 años o ya prescribieron en el sistema?",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "deriva"
+  },
+  {
+    "id": 18,
+    "pregunta": "Quiero sacar un turno en la ANT para convenio de pago y consultar cuántos puntos me quedan en mi cédula",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "deriva"
+  },
+  {
+    "id": 19,
+    "pregunta": "¿Cómo calculo el pago de la décima tercera remuneración y mi liquidación laboral por despido?",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "sin"
+  },
+  {
+    "id": 20,
+    "pregunta": "Mi hijo tiene fiebre alta y dolor abdominal, ¿qué dosis de ibuprofeno le doy para el dengue?",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "sin"
+  }
+]

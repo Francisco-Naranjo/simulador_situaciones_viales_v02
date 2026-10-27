@@ -1,0 +1,262 @@
+{
+  "total_preguntas": 20,
+  "preguntas_con_fuente": 16,
+  "preguntas_abstencion": 4,
+  "hit_at_1": 1.0,
+  "hit_at_5": 1.0,
+  "precision_silencio": 1.0,
+  "detalle": [
+    {
+      "id": 1,
+      "pregunta": "Pasé un semáforo en rojo por apuro, ¿qué artículo aplica y cuántos puntos dice la ley?",
+      "esperado": "Art. 389",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 389",
+        "Art. 392",
+        "Art. 373",
+        "Art. 265",
+        "Art. 211"
+      ]
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuál es la sanción por usar el celular manejando sin manos libres?",
+      "esperado": "Art. 391",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 391",
+        "Art. 392",
+        "Art. 267",
+        "Art. 302",
+        "Art. 198"
+      ]
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué pasa si manejo con 0,4 gramos de alcohol por litro de sangre?",
+      "esperado": "Art. 385",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 385",
+        "Art. 392",
+        "Art. 244",
+        "Art. 247",
+        "Art. 4"
+      ]
+    },
+    {
+      "id": 4,
+      "pregunta": "Me detuvieron conduciendo sin haber obtenido nunca la licencia de conducir, ¿me dan prisión?",
+      "esperado": "Art. 386",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 386",
+        "Art. 392",
+        "Art. 90",
+        "Art. 377",
+        "Art. 135"
+      ]
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué contravención cometo si conduzco con la licencia caducada o suspendida?",
+      "esperado": "Art. 387",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 387",
+        "Art. 374",
+        "Art. 380",
+        "Art. 378",
+        "Art. 98"
+      ]
+    },
+    {
+      "id": 6,
+      "pregunta": "Si manejo con las llantas lisas o en mal estado, ¿cuántos días de privación de libertad son?",
+      "esperado": "Art. 383",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 383",
+        "Art. 377",
+        "Art. 385",
+        "Art. 172",
+        "Art. 390"
+      ]
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuál es la multa si no utilizo el cinturón de seguridad al conducir?",
+      "esperado": "Art. 392",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 392",
+        "Art. 390",
+        "Art. 392",
+        "Art. 389",
+        "Art. 391"
+      ]
+    },
+    {
+      "id": 8,
+      "pregunta": "Un motociclista circula de noche sin casco homologado ni chaleco retroreflectivo, ¿qué artículo incumple?",
+      "esperado": "Art. 389",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 389",
+        "Art. 391",
+        "Art. 392",
+        "Art. 300",
+        "Art. 302"
+      ]
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué sanción tiene estacionar o invadir la ciclovía o vía exclusiva de ciclistas?",
+      "esperado": "Art. 390",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 390",
+        "Art. 391",
+        "Art. 392",
+        "Art. 388",
+        "Art. 389"
+      ]
+    },
+    {
+      "id": 10,
+      "pregunta": "Olvidé mi licencia en casa pero sí tengo licencia vigente, ¿qué artículo del COIP se aplica por no portarla?",
+      "esperado": "Art. 391",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 391",
+        "Art. 392",
+        "Art. 379",
+        "Art. 155",
+        "Art. 386"
+      ]
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué pasa si un peatón no camina por la acera o no deja libre la vía ante una ambulancia con sirena?",
+      "esperado": "Art. 392",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 392",
+        "Art. 392",
+        "Art. 390",
+        "Art. 373",
+        "Art. 198"
+      ]
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Cuál es la contravención por dejar niños solos encerrados dentro del vehículo sin supervisión adulta?",
+      "esperado": "Art. 390",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 390",
+        "Art. 298",
+        "Art. 392",
+        "Art. 240",
+        "Art. 389"
+      ]
+    },
+    {
+      "id": 13,
+      "pregunta": "Si un conductor lleva personas en el balde de la camioneta o en los estribos, ¿qué clase de contravención es?",
+      "esperado": "Art. 388",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 388",
+        "Art. 292",
+        "Art. 62",
+        "Art. 392",
+        "Art. 389"
+      ]
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué artículo sanciona circular sin placas o con las placas ocultas o alteradas?",
+      "esperado": "Art. 389",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 389",
+        "Art. 177",
+        "Art. 392",
+        "Art. 50",
+        "Art. 176"
+      ]
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué dice el COIP si el responsable del accidente es un peatón o pasajero respecto a la pérdida de puntos?",
+      "esperado": "Art. 373",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 373",
+        "Art. 392",
+        "Art. 392",
+        "Art. 385",
+        "Art. 339"
+      ]
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué sanción aplica por no llevar botiquín de primeros auxilios y extintor cargado en el vehículo?",
+      "esperado": "Art. 391",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 391",
+        "Art. 170",
+        "Art. 26",
+        "Art. 373",
+        "Art. 341"
+      ]
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Me pueden quitar la licencia por acumular puntos de hace 6 años o ya prescribieron en el sistema?",
+      "tipo": "deriva",
+      "abstencion_correcta": true,
+      "recuperados": []
+    },
+    {
+      "id": 18,
+      "pregunta": "Quiero sacar un turno en la ANT para convenio de pago y consultar cuántos puntos me quedan en mi cédula",
+      "tipo": "deriva",
+      "abstencion_correcta": true,
+      "recuperados": []
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cómo calculo el pago de la décima tercera remuneración y mi liquidación laboral por despido?",
+      "tipo": "sin",
+      "abstencion_correcta": true,
+      "recuperados": []
+    },
+    {
+      "id": 20,
+      "pregunta": "Mi hijo tiene fiebre alta y dolor abdominal, ¿qué dosis de ibuprofeno le doy para el dengue?",
+      "tipo": "sin",
+      "abstencion_correcta": true,
+      "recuperados": []
+    }
+  ]
+}

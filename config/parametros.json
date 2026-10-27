@@ -1,6 +1,6 @@
 {
-  "sbu_usd": 460.00,
-  "sbu_anio": 2024,
+  "sbu_usd": 482.00,
+  "sbu_anio": 2026,
   "sbu_fuente": "Ministerio del Trabajo · Acuerdo ministerial del salario básico unificado vigente (verificar en https://www.trabajo.gob.ec antes de cada despliegue)",
   "limite_tasa": {
     "capacidad": 5,

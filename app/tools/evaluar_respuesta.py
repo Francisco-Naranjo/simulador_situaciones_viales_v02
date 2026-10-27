@@ -20,7 +20,7 @@ def evaluar_respuesta(esc: EscenarioVialSchema, contravencion: Contravencion, re
         respuesta_correcta=esc.respuesta_correcta,
         explicacion_educativa=esc.explicacion_educativa,
         contravencion=ContravencionPublica(**contravencion.model_dump(
-            include={"id_contravencion", "clase", "articulo", "norma", "descripcion_infraccion"})),
+            include={"id_contravencion", "codigo_csv", "clase", "articulo", "norma", "descripcion_infraccion", "texto_literal_coip"})),
         sancion=calcular_sancion(contravencion, p),
         aviso=p["aviso_educativo"],
     )
