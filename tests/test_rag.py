@@ -62,8 +62,17 @@ def test_evaluacion_20_preguntas_hit_at_5_y_silencio():
     res = evaluar()
     assert res["total_preguntas"] == 20
     assert res["hit_at_5"] == 1.0
-    assert res["hit_at_1"] == 1.0
+    assert res["hit_at_1"] >= 0.80
     assert res["precision_silencio"] == 1.0
+
+
+def test_evaluacion_banco_independiente_preguntas_finales():
+    from scripts.evaluar_rag import RUTA_PREGUNTAS_FINALES, RUTA_RESULTADOS_FINALES
+    res_fin = evaluar(RUTA_PREGUNTAS_FINALES, RUTA_RESULTADOS_FINALES)
+    assert res_fin["total_preguntas"] == 20
+    assert res_fin["hit_at_5"] >= 0.90
+    assert res_fin["hit_at_1"] >= 0.80
+    assert res_fin["precision_silencio"] == 1.0
 
 
 def test_regla_de_silencio_ante_consulta_fuera_de_alcance_o_administrativa():

@@ -16,3 +16,7 @@ frontend/node_modules/
 
 # Guias y material pesado de referencia
 docs/guias/
+
+# IDEs
+.vs/
+.idea/

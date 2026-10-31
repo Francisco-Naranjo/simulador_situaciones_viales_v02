@@ -7,53 +7,41 @@
 ## 1. Entregables Cumplidos de la Semana 3
 
 - [x] **Ingesta Reproducible (`scripts/ingest.py`):** Fragmentación semántica por artículo sobre el COIP (Capítulo de Tránsito) y la LOTTTSV con su Reglamento. 641 artículos indexados y 0 fragmentos huérfanos.
-- [x] **Base Vectorial ChromaDB y Embeddings Multilingües:** Integración persistente de ChromaDB con el modelo `intfloat/multilingual-e5-small` (384 dimensiones) y cálculo de distancia coseno.
+- [x] **Base Vectorial ChromaDB Persistente y Embeddings E5 Reales:** Colección persistente `normativa` en `chroma_db/chroma.sqlite3` generada con `SentenceTransformer("intfloat/multilingual-e5-small")` (384 dimensiones) y distancia coseno.
 - [x] **Pre-Filtrado Normativo por Metadatos:** Recuperación con `where={"vigente": True}`, excluyendo automáticamente normas y contravenciones derogadas de la versión de 2011.
 - [x] **Cita Textual Verificada y Obligatoria:** Cada respuesta fundamentada cita el artículo y la norma exacta recuperada, disponible en el backend y visible en la interfaz React.
-- [x] **Regla de Silencio y Umbral de Distancia Coseno:** Umbral de corte fijado en $0.45$. Consultas ajenas (recetas, medicina) o trámites no contemplados activan abstención o derivación inmediata a la ANT sin alucinar.
-- [x] **Agente de Alcance Controlado con Tope de Vueltas:** Bucle ReAct con límite estricto de 6 vueltas, lista blanca de herramientas y bloqueo pedagógico ante intentos de ejecutar acciones fuera de alcance (ej. *"borrar multa"*, *"evadir fotorradar"*).
+- [x] **Regla de Silencio y Umbral de Distancia Coseno:** Umbral de corte fijado en $0.45$ y clasificación temática de alcance (trámites administrativos ante la ANT vs. materias ajenas al tránsito), sin números de artículos en el tesauro ni patrones ad-hoc de preguntas de prueba.
+- [x] **Agente con Tool Calling (`tool_calls`), Esquemas Pydantic y Rol `tool`:**
+  - Esquemas Pydantic estrictos (`extra="forbid"`) por cada herramienta y definición `ESQUEMAS_HERRAMIENTAS_OPENAI`.
+  - Registro central (`REGISTRO_HERRAMIENTAS`) y despachador (`despachar_herramienta`).
+  - Ciclo completo Modelo → `tool_calls` → Ejecución → mensaje con `role: "tool"` → Modelo, con tope de seguridad de 6 vueltas y bloqueo de herramientas fuera de alcance (`anular_boleta_ant`, `evadir_control_vial`).
 - [x] **Herramientas Deterministas del Caso 08:**
-  - `generar_escenario(nivel, perfil)`
-  - `evaluar_respuesta(escenario, respuesta)`
-  - `calcular_sancion(porcentaje_sbu)` —computado en Python con SBU 2026 ($482.00 USD) de `config/parametros.json`—
-  - `registrar_progreso(usuario, resultado)`
-  - `ajustar_dificultad(historial)`
+  - `buscar_normativa_rag(consulta, top_k)`
+  - `identificar_contravencion_coip(consulta, articulo_recuperado)`
+  - `calcular_sancion(id_contravencion)` —computado en Python con SBU 2026 ($482.00 USD) de `config/parametros.json`—
+  - `verificar_cita_y_seguridad(articulo, articulos_recuperados, texto_fragmento)`
+  - `registrar_progreso(usuario_id, es_correcta, multa_usd, puntos_reducidos)`
+  - `ajustar_dificultad(ultimos_resultados)`
 - [x] **Defensa contra Documentos Envenenados:** Interceptación y neutralización de inyecciones maliciosas en los fragmentos normativos recuperados (Revisión 3).
-- [x] **Conjunto de Evaluación (20 Casos en `eval/preguntas.json`):** Ejecutado mediante `scripts/evaluar_rag.py` y `eval/run_eval.py`, alcanzando:
-  - Hit@1: **100.0%**
-  - Hit@5: **100.0%**
-  - Precisión en Regla de Silencio: **100.0%**
-- [x] **Suite de Pruebas Automatizadas:** 63 pruebas unitarias y de integración pasando con éxito mediante `pytest`.
+- [x] **Evaluación Dual (`eval/preguntas.json` y banco independiente `eval/preguntas_finales.json`):**
+  - Banco de referencia (`eval/preguntas.json`): Hit@1 = **87.5%** (14/16) | Hit@5 = **100.0%** (16/16) | Silencio = **100.0%** (4/4).
+  - Banco independiente (`eval/preguntas_finales.json`): Hit@1 = **87.5%** (14/16) | Hit@5 = **100.0%** (16/16) | Silencio = **100.0%** (4/4).
+- [x] **Integración Continua (`.github/workflows/ci.yml`) y Suite de Pruebas:** 66 pruebas automatizadas en `pytest`, evaluación RAG y compilación de frontend en GitHub Actions.
 
 ---
 
 ## 2. Registro de Evaluación RAG (`python eval/run_eval.py`)
 
 ```text
-=== Evaluacion RAG · Caso 08: Via Segura ===
+=== Evaluacion RAG · Banco Referencia (preguntas.json) ===
 [OK] Total preguntas evaluadas: 20 (16 con fuente + 4 abstencion)
-[OK] Hit@1: 100.0% | Hit@5: 100.0%
+[OK] Hit@1: 87.5% | Hit@5: 100.0%
 [OK] Precision en Regla de Silencio (abstencion/derivacion): 100.0%
-  #01 [OK] esperado=Art. 389 -> top5=['Art. 389', 'Art. 392', 'Art. 373']
-  #02 [OK] esperado=Art. 391 -> top5=['Art. 391', 'Art. 392', 'Art. 267']
-  #03 [OK] esperado=Art. 385 -> top5=['Art. 385', 'Art. 392', 'Art. 244']
-  #04 [OK] esperado=Art. 386 -> top5=['Art. 386', 'Art. 392', 'Art. 90']
-  #05 [OK] esperado=Art. 387 -> top5=['Art. 387', 'Art. 374', 'Art. 380']
-  #06 [OK] esperado=Art. 383 -> top5=['Art. 383', 'Art. 377', 'Art. 385']
-  #07 [OK] esperado=Art. 392 -> top5=['Art. 392', 'Art. 390', 'Art. 392']
-  #08 [OK] esperado=Art. 389 -> top5=['Art. 389', 'Art. 391', 'Art. 392']
-  #09 [OK] esperado=Art. 390 -> top5=['Art. 390', 'Art. 391', 'Art. 392']
-  #10 [OK] esperado=Art. 391 -> top5=['Art. 391', 'Art. 392', 'Art. 379']
-  #11 [OK] esperado=Art. 392 -> top5=['Art. 392', 'Art. 392', 'Art. 390']
-  #12 [OK] esperado=Art. 390 -> top5=['Art. 390', 'Art. 298', 'Art. 392']
-  #13 [OK] esperado=Art. 388 -> top5=['Art. 388', 'Art. 292', 'Art. 62']
-  #14 [OK] esperado=Art. 389 -> top5=['Art. 389', 'Art. 177', 'Art. 392']
-  #15 [OK] esperado=Art. 373 -> top5=['Art. 373', 'Art. 392', 'Art. 392']
-  #16 [OK] esperado=Art. 391 -> top5=['Art. 391', 'Art. 170', 'Art. 26']
-  #17 [OK] abstencion (deriva) -> abstuvo=True
-  #18 [OK] abstencion (deriva) -> abstuvo=True
-  #19 [OK] abstencion (sin) -> abstuvo=True
-  #20 [OK] abstencion (sin) -> abstuvo=True
+
+=== Evaluacion RAG · Banco Independiente Final (preguntas_finales.json) ===
+[OK] Total preguntas evaluadas: 20 (16 con fuente + 4 abstencion)
+[OK] Hit@1: 87.5% | Hit@5: 100.0%
+[OK] Precision en Regla de Silencio (abstencion/derivacion): 100.0%
 ```
 
 ---
@@ -67,5 +55,5 @@ La aplicación web cuenta con un panel dividido en dos módulos:
    - Lenguaje Ciudadano (Mapeo a la norma)
    - Fuera de Alcance (Regla de Silencio)
    - Caso en Disputa (Cita y Derivación sin dictamen)
-   - Herramienta Prohibida (Bloqueo de `anular_boleta` en alcance controlado)
+   - Herramienta Prohibida (Bloqueo de `anular_boleta_ant` en alcance controlado)
    - Documento Envenenado (Defensa activa)

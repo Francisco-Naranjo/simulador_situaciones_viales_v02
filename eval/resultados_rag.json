@@ -1,8 +1,9 @@
 {
+  "banco": "preguntas.json",
   "total_preguntas": 20,
   "preguntas_con_fuente": 16,
   "preguntas_abstencion": 4,
-  "hit_at_1": 1.0,
+  "hit_at_1": 0.875,
   "hit_at_5": 1.0,
   "precision_silencio": 1.0,
   "detalle": [
@@ -14,10 +15,10 @@
       "hit_5": true,
       "recuperados": [
         "Art. 389",
-        "Art. 392",
         "Art. 373",
-        "Art. 265",
-        "Art. 211"
+        "Art. 390",
+        "Art. 392",
+        "Art. 391"
       ]
     },
     {
@@ -28,10 +29,10 @@
       "hit_5": true,
       "recuperados": [
         "Art. 391",
-        "Art. 392",
+        "Art. 385",
         "Art. 267",
-        "Art. 302",
-        "Art. 204"
+        "Art. 378",
+        "Art. 375"
       ]
     },
     {
@@ -42,9 +43,9 @@
       "hit_5": true,
       "recuperados": [
         "Art. 385",
-        "Art. 392",
         "Art. 244",
         "Art. 247",
+        "Art. 392",
         "Art. 4"
       ]
     },
@@ -56,10 +57,10 @@
       "hit_5": true,
       "recuperados": [
         "Art. 386",
-        "Art. 392",
-        "Art. 90",
         "Art. 377",
-        "Art. 135"
+        "Art. 381",
+        "Art. 374",
+        "Art. 379"
       ]
     },
     {
@@ -73,7 +74,7 @@
         "Art. 374",
         "Art. 380",
         "Art. 378",
-        "Art. 98"
+        "Art. 386"
       ]
     },
     {
@@ -87,21 +88,21 @@
         "Art. 377",
         "Art. 385",
         "Art. 172",
-        "Art. 390"
+        "Art. 302"
       ]
     },
     {
       "id": 7,
       "pregunta": "¿Cuál es la multa si no utilizo el cinturón de seguridad al conducir?",
       "esperado": "Art. 392",
-      "hit_1": true,
+      "hit_1": false,
       "hit_5": true,
       "recuperados": [
-        "Art. 392",
-        "Art. 390",
-        "Art. 392",
         "Art. 389",
-        "Art. 391"
+        "Art. 392",
+        "Art. 385",
+        "Art. 386",
+        "Art. 390"
       ]
     },
     {
@@ -113,23 +114,23 @@
       "recuperados": [
         "Art. 389",
         "Art. 391",
-        "Art. 392",
         "Art. 300",
-        "Art. 302"
+        "Art. 302",
+        "Art. 392"
       ]
     },
     {
       "id": 9,
       "pregunta": "¿Qué sanción tiene estacionar o invadir la ciclovía o vía exclusiva de ciclistas?",
       "esperado": "Art. 390",
-      "hit_1": true,
+      "hit_1": false,
       "hit_5": true,
       "recuperados": [
-        "Art. 390",
         "Art. 391",
+        "Art. 390",
+        "Art. 388",
         "Art. 392",
-        "Art. 392",
-        "Art. 388"
+        "Art. 389"
       ]
     },
     {
@@ -140,10 +141,10 @@
       "hit_5": true,
       "recuperados": [
         "Art. 391",
-        "Art. 392",
+        "Art. 390",
         "Art. 379",
-        "Art. 155",
-        "Art. 386"
+        "Art. 388",
+        "Art. 389"
       ]
     },
     {
@@ -154,10 +155,10 @@
       "hit_5": true,
       "recuperados": [
         "Art. 392",
-        "Art. 392",
         "Art. 390",
-        "Art. 373",
-        "Art. 198"
+        "Art. 392",
+        "Art. 198",
+        "Art. 219"
       ]
     },
     {
@@ -169,9 +170,9 @@
       "recuperados": [
         "Art. 390",
         "Art. 298",
-        "Art. 392",
-        "Art. 240",
-        "Art. 389"
+        "Art. 389",
+        "Art. 391",
+        "Art. 372"
       ]
     },
     {
@@ -182,10 +183,10 @@
       "hit_5": true,
       "recuperados": [
         "Art. 388",
-        "Art. 292",
+        "Art. 389",
         "Art. 62",
-        "Art. 392",
-        "Art. 389"
+        "Art. 386",
+        "Art. 377"
       ]
     },
     {
@@ -197,9 +198,9 @@
       "recuperados": [
         "Art. 389",
         "Art. 177",
-        "Art. 392",
-        "Art. 176",
-        "Art. 50"
+        "Art. 391",
+        "Art. 390",
+        "Art. 176"
       ]
     },
     {
@@ -210,10 +211,10 @@
       "hit_5": true,
       "recuperados": [
         "Art. 373",
-        "Art. 392",
-        "Art. 392",
         "Art. 385",
-        "Art. 339"
+        "Art. 377",
+        "Art. 379",
+        "Art. 389"
       ]
     },
     {
@@ -227,7 +228,7 @@
         "Art. 170",
         "Art. 26",
         "Art. 373",
-        "Art. 349"
+        "Art. 376"
       ]
     },
     {

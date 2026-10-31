@@ -10,11 +10,16 @@ sys.path.insert(0, str(RAIZ))
 from app.services.rag import recuperar  # noqa: E402
 
 RUTA_PREGUNTAS = RAIZ / "eval" / "preguntas.json"
+RUTA_PREGUNTAS_FINALES = RAIZ / "eval" / "preguntas_finales.json"
 RUTA_RESULTADOS = RAIZ / "eval" / "resultados_rag.json"
+RUTA_RESULTADOS_FINALES = RAIZ / "eval" / "resultados_finales.json"
 
 
-def evaluar() -> dict:
-    preguntas = json.loads(RUTA_PREGUNTAS.read_text(encoding="utf-8"))
+def evaluar(
+    ruta_preguntas: Path = RUTA_PREGUNTAS,
+    ruta_salida: Path = RUTA_RESULTADOS,
+) -> dict:
+    preguntas = json.loads(ruta_preguntas.read_text(encoding="utf-8"))
     con_respuesta = [p for p in preguntas if not p["debe_abstenerse"]]
     sin_respuesta = [p for p in preguntas if p["debe_abstenerse"]]
 
@@ -55,6 +60,7 @@ def evaluar() -> dict:
             })
 
     resumen = {
+        "banco": ruta_preguntas.name,
         "total_preguntas": len(preguntas),
         "preguntas_con_fuente": len(con_respuesta),
         "preguntas_abstencion": len(sin_respuesta),
@@ -63,13 +69,12 @@ def evaluar() -> dict:
         "precision_silencio": round(aciertos_silencio / max(1, len(sin_respuesta)), 4),
         "detalle": detalle,
     }
-    RUTA_RESULTADOS.write_text(json.dumps(resumen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    ruta_salida.write_text(json.dumps(resumen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return resumen
 
 
-if __name__ == "__main__":
-    res = evaluar()
-    print("=== Evaluacion RAG · Caso 08: Via Segura ===")
+def imprimir_reporte(titulo: str, res: dict) -> None:
+    print(f"=== {titulo} ({res.get('banco', 'preguntas.json')}) ===")
     print(f"[OK] Total preguntas evaluadas: {res['total_preguntas']} ({res['preguntas_con_fuente']} con fuente + {res['preguntas_abstencion']} abstencion)")
     print(f"[OK] Hit@1: {res['hit_at_1']*100:.1f}% | Hit@5: {res['hit_at_5']*100:.1f}%")
     print(f"[OK] Precision en Regla de Silencio (abstencion/derivacion): {res['precision_silencio']*100:.1f}%")
@@ -80,3 +85,12 @@ if __name__ == "__main__":
         else:
             marca = "[OK]" if d["abstencion_correcta"] else "[FALLO]"
             print(f"  #{d['id']:02d} {marca} abstencion ({d['tipo']}) -> abstuvo={d['abstencion_correcta']}")
+
+
+if __name__ == "__main__":
+    res_base = evaluar(RUTA_PREGUNTAS, RUTA_RESULTADOS)
+    imprimir_reporte("Evaluacion RAG · Banco Referencia", res_base)
+    if RUTA_PREGUNTAS_FINALES.exists():
+        print()
+        res_final = evaluar(RUTA_PREGUNTAS_FINALES, RUTA_RESULTADOS_FINALES)
+        imprimir_reporte("Evaluacion RAG · Banco Independiente Final", res_final)

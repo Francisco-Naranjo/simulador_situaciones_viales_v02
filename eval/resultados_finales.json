@@ -1,0 +1,263 @@
+{
+  "banco": "preguntas_finales.json",
+  "total_preguntas": 20,
+  "preguntas_con_fuente": 16,
+  "preguntas_abstencion": 4,
+  "hit_at_1": 0.875,
+  "hit_at_5": 1.0,
+  "precision_silencio": 1.0,
+  "detalle": [
+    {
+      "id": 1,
+      "pregunta": "Conduje superando el límite máximo de velocidad dentro del rango moderado, ¿en qué artículo del COIP se sanciona?",
+      "esperado": "Art. 389",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 389",
+        "Art. 386",
+        "Art. 191",
+        "Art. 385",
+        "Art. 193"
+      ]
+    },
+    {
+      "id": 2,
+      "pregunta": "Un conductor de bus urbano lleva las puertas abiertas mientras el vehículo está en circulación, ¿qué artículo del COIP aplica?",
+      "esperado": "Art. 391",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 391",
+        "Art. 390",
+        "Art. 373",
+        "Art. 392",
+        "Art. 386"
+      ]
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué pena establece el COIP cuando una persona conduce bajo efectos de sustancias estupefacientes o psicotrópicas?",
+      "esperado": "Art. 384",
+      "hit_1": false,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 379",
+        "Art. 376",
+        "Art. 384",
+        "Art. 391",
+        "Art. 377"
+      ]
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Cuál es el artículo del COIP para el conductor que agrede físicamente a un agente de tránsito?",
+      "esperado": "Art. 386",
+      "hit_1": false,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 389",
+        "Art. 387",
+        "Art. 386",
+        "Art. 377",
+        "Art. 391"
+      ]
+    },
+    {
+      "id": 5,
+      "pregunta": "Si un adolescente menor de edad maneja un automóvil, ¿qué artículo del COIP sanciona al adulto responsable?",
+      "esperado": "Art. 387",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 387",
+        "Art. 379",
+        "Art. 386",
+        "Art. 378",
+        "Art. 385"
+      ]
+    },
+    {
+      "id": 6,
+      "pregunta": "Un conductor se estaciona en un sitio prohibido o destinado exclusivamente a personas con discapacidad, ¿qué artículo del COIP se aplica?",
+      "esperado": "Art. 391",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 391",
+        "Art. 386",
+        "Art. 389",
+        "Art. 373",
+        "Art. 392"
+      ]
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Qué artículo del COIP sanciona usar la bocina o pito de forma excesiva e injustificada generando ruido?",
+      "esperado": "Art. 392",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 392",
+        "Art. 174",
+        "Art. 373",
+        "Art. 225",
+        "Art. 214"
+      ]
+    },
+    {
+      "id": 8,
+      "pregunta": "¿En qué artículo del COIP se sanciona arrojar basura o desechos desde el interior de un vehículo hacia la vía pública?",
+      "esperado": "Art. 392",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 392",
+        "Art. 390",
+        "Art. 388",
+        "Art. 389",
+        "Art. 391"
+      ]
+    },
+    {
+      "id": 9,
+      "pregunta": "Si un conductor derrama en la vía pública sustancias deslizantes o inflamables o deja escombros, ¿qué artículo del COIP lo sanciona?",
+      "esperado": "Art. 388",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 388",
+        "Art. 389",
+        "Art. 390",
+        "Art. 391",
+        "Art. 378"
+      ]
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué artículo del COIP sanciona conducir un vehículo con vidrios con películas antisolares oscuras o polarizados no autorizados?",
+      "esperado": "Art. 391",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 391",
+        "Art. 149",
+        "Art. 386",
+        "Art. 390",
+        "Art. 379"
+      ]
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué artículo del COIP aplica al taxista que no utiliza el taxímetro las veinticuatro horas o altera su funcionamiento?",
+      "esperado": "Art. 390",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 390",
+        "Art. 385",
+        "Art. 384",
+        "Art. 391",
+        "Art. 373"
+      ]
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué artículo del COIP sanciona evadir el pago de los peajes en sitios legalmente establecidos?",
+      "esperado": "Art. 390",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 390",
+        "Art. 386",
+        "Art. 391",
+        "Art. 388",
+        "Art. 392"
+      ]
+    },
+    {
+      "id": 13,
+      "pregunta": "¿En qué artículo del COIP se definen las circunstancias agravantes en infracciones de tránsito?",
+      "esperado": "Art. 374",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 374",
+        "Art. 390",
+        "Art. 373",
+        "Art. 371",
+        "Art. 372"
+      ]
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué artículo del COIP tipifica la muerte causada por conductor en estado de embriaguez o bajo efecto de sustancias?",
+      "esperado": "Art. 376",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 376",
+        "Art. 379",
+        "Art. 385",
+        "Art. 384",
+        "Art. 388"
+      ]
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué artículo del COIP establece el concepto general de infracciones de tránsito y que son culposas?",
+      "esperado": "Art. 371",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 371",
+        "Art. 391",
+        "Art. 374",
+        "Art. 372",
+        "Art. 378"
+      ]
+    },
+    {
+      "id": 16,
+      "pregunta": "Cuando el conductor de transporte público maltrata de obra o de palabra a los usuarios, ¿qué artículo del COIP aplica?",
+      "esperado": "Art. 391",
+      "hit_1": true,
+      "hit_5": true,
+      "recuperados": [
+        "Art. 391",
+        "Art. 389",
+        "Art. 386",
+        "Art. 373",
+        "Art. 390"
+      ]
+    },
+    {
+      "id": 17,
+      "pregunta": "Necesito agendar un turno en línea en el sistema informático de la ANT para renovar placas y revisar mi convenio de pago",
+      "tipo": "deriva",
+      "abstencion_correcta": true,
+      "recuperados": []
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cómo puedo consultar mis multas pendientes en el sistema de la ANT y saber si ya prescribieron las de hace 7 años?",
+      "tipo": "deriva",
+      "abstencion_correcta": true,
+      "recuperados": []
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuáles son los ingredientes tradicionales para preparar una receta de fanesca ecuatoriana en Semana Santa?",
+      "tipo": "sin",
+      "abstencion_correcta": true,
+      "recuperados": []
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cómo se declara el impuesto a la renta ante el SRI y cómo calculo mi indemnización por despido laboral?",
+      "tipo": "sin",
+      "abstencion_correcta": true,
+      "recuperados": []
+    }
+  ]
+}

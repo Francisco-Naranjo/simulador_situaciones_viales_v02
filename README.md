@@ -23,7 +23,7 @@ Los conductores y peatones en Ecuador desconocen con frecuencia qué conductas c
 
 ## 3. Estado del Proyecto y Despliegue
 - **Fase Actual:** Semanas 1, 2 y 3 (MVP, integración con IA Generativa y sistema RAG normativo completados al 100%)
-- **Estado de Pruebas:** 63 pruebas automatizadas pasando con éxito (`pytest`) y evaluación RAG con `Hit@1 = 100%` y `Hit@5 = 100%` (`eval/preguntas.json`)
+- **Estado de Pruebas:** 67 pruebas automatizadas pasando con éxito (`pytest`), flujo CI en `.github/workflows/ci.yml` y evaluación RAG dual con `Hit@1 = 87.5%` y `Hit@5 = 100.0%` tanto en el banco base (`eval/preguntas.json`) como en el banco independiente (`eval/preguntas_finales.json`)
 - **URL Local del Backend + Frontend:** `http://127.0.0.1:8000/` (FastAPI sirve el build compilado de React)
 - **Documentación Interactiva Swagger / OpenAPI:** `http://127.0.0.1:8000/docs`
 - **Endpoints de la Semana 3:** `POST /chat` (Asistente RAG con agente de alcance controlado) y `GET /rag/buscar` (Buscador semántico en ChromaDB)

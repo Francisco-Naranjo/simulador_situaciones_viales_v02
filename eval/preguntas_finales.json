@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "pregunta": "Conduje superando el límite máximo de velocidad dentro del rango moderado, ¿en qué artículo del COIP se sanciona?",
+    "esperado": "Art. 389",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 2,
+    "pregunta": "Un conductor de bus urbano lleva las puertas abiertas mientras el vehículo está en circulación, ¿qué artículo del COIP aplica?",
+    "esperado": "Art. 391",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 3,
+    "pregunta": "¿Qué pena establece el COIP cuando una persona conduce bajo efectos de sustancias estupefacientes o psicotrópicas?",
+    "esperado": "Art. 384",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 4,
+    "pregunta": "¿Cuál es el artículo del COIP para el conductor que agrede físicamente a un agente de tránsito?",
+    "esperado": "Art. 386",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 5,
+    "pregunta": "Si un adolescente menor de edad maneja un automóvil, ¿qué artículo del COIP sanciona al adulto responsable?",
+    "esperado": "Art. 387",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 6,
+    "pregunta": "Un conductor se estaciona en un sitio prohibido o destinado exclusivamente a personas con discapacidad, ¿qué artículo del COIP se aplica?",
+    "esperado": "Art. 391",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 7,
+    "pregunta": "¿Qué artículo del COIP sanciona usar la bocina o pito de forma excesiva e injustificada generando ruido?",
+    "esperado": "Art. 392",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 8,
+    "pregunta": "¿En qué artículo del COIP se sanciona arrojar basura o desechos desde el interior de un vehículo hacia la vía pública?",
+    "esperado": "Art. 392",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 9,
+    "pregunta": "Si un conductor derrama en la vía pública sustancias deslizantes o inflamables o deja escombros, ¿qué artículo del COIP lo sanciona?",
+    "esperado": "Art. 388",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 10,
+    "pregunta": "¿Qué artículo del COIP sanciona conducir un vehículo con vidrios con películas antisolares oscuras o polarizados no autorizados?",
+    "esperado": "Art. 391",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 11,
+    "pregunta": "¿Qué artículo del COIP aplica al taxista que no utiliza el taxímetro las veinticuatro horas o altera su funcionamiento?",
+    "esperado": "Art. 390",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 12,
+    "pregunta": "¿Qué artículo del COIP sanciona evadir el pago de los peajes en sitios legalmente establecidos?",
+    "esperado": "Art. 390",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 13,
+    "pregunta": "¿En qué artículo del COIP se definen las circunstancias agravantes en infracciones de tránsito?",
+    "esperado": "Art. 374",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 14,
+    "pregunta": "¿Qué artículo del COIP tipifica la muerte causada por conductor en estado de embriaguez o bajo efecto de sustancias?",
+    "esperado": "Art. 376",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 15,
+    "pregunta": "¿Qué artículo del COIP establece el concepto general de infracciones de tránsito y que son culposas?",
+    "esperado": "Art. 371",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 16,
+    "pregunta": "Cuando el conductor de transporte público maltrata de obra o de palabra a los usuarios, ¿qué artículo del COIP aplica?",
+    "esperado": "Art. 391",
+    "debe_abstenerse": false,
+    "tipo": "con"
+  },
+  {
+    "id": 17,
+    "pregunta": "Necesito agendar un turno en línea en el sistema informático de la ANT para renovar placas y revisar mi convenio de pago",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "deriva"
+  },
+  {
+    "id": 18,
+    "pregunta": "¿Cómo puedo consultar mis multas pendientes en el sistema de la ANT y saber si ya prescribieron las de hace 7 años?",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "deriva"
+  },
+  {
+    "id": 19,
+    "pregunta": "¿Cuáles son los ingredientes tradicionales para preparar una receta de fanesca ecuatoriana en Semana Santa?",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "sin"
+  },
+  {
+    "id": 20,
+    "pregunta": "¿Cómo se declara el impuesto a la renta ante el SRI y cómo calculo mi indemnización por despido laboral?",
+    "esperado": null,
+    "debe_abstenerse": true,
+    "tipo": "sin"
+  }
+]
