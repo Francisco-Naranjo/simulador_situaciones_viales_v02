@@ -115,8 +115,10 @@ class ClienteLLM:
             try:
                 r = cliente.chat.completions.create(model=p.modelo, messages=mensajes, **opciones)
                 ms = int((time.monotonic() - t0) * 1000)
-                contenido = (r.choices[0].message.content or "") if r.choices else ""
-                if not contenido.strip():
+                msg = r.choices[0].message if r.choices else None
+                contenido = (msg.content or "") if msg else ""
+                tool_calls = getattr(msg, "tool_calls", None) if msg else None
+                if not contenido.strip() and not tool_calls:
                     raise _RespuestaVacia()
                 uso = getattr(r, "usage", None)
                 _registrar(
@@ -177,6 +179,11 @@ class ClienteLLM:
             ms,
             intentos,
         )
+
+    def llamar_con_herramientas(self, mensajes: list[dict], tools: list[dict], tool_choice: str = "auto"):
+        extra = {"tools": tools, "tool_choice": tool_choice} if tools else {}
+        p, r, ms, intentos = self._con_respaldo(mensajes, extra)
+        return r.choices[0].message, p.nombre, p.modelo, ms, intentos
 
     def generar_json(self, system: str, usuario: str, esquema: type[T]) -> Resultado[T]:
         formato = {

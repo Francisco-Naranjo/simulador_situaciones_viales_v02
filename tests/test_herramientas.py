@@ -168,3 +168,72 @@ def test_registrar_progreso_acumula_multas_y_puntos():
     p2 = registrar_progreso("usr-test-1", es_correcta=True)
     assert p2.total_evaluados == 2 and p2.aciertos == 1 and p2.multas_acumuladas_usd == 144.60
     reiniciar_progreso("usr-test-1")
+
+
+def test_esquemas_pydantic_y_registro_herramientas_agente():
+    from app.services.agente import (
+        ESQUEMAS_HERRAMIENTAS_OPENAI,
+        HERRAMIENTAS_PERMITIDAS,
+        REGISTRO_HERRAMIENTAS,
+        ArgsCalcularSancion,
+        HerramientaNoPermitidaError,
+        despachar_herramienta,
+    )
+
+    assert set(REGISTRO_HERRAMIENTAS.keys()) == set(HERRAMIENTAS_PERMITIDAS)
+    assert len(ESQUEMAS_HERRAMIENTAS_OPENAI) == len(HERRAMIENTAS_PERMITIDAS)
+    for t in ESQUEMAS_HERRAMIENTAS_OPENAI:
+        assert t["type"] == "function"
+        assert "parameters" in t["function"]
+
+    res_calc = despachar_herramienta("calcular_sancion", {"id_contravencion": "C-389-01"})
+    assert res_calc["multa_usd"] == 144.60
+    assert res_calc["porcentaje_sbu"] == 30.0
+
+    with pytest.raises(ValidationError):
+        ArgsCalcularSancion(id_contravencion="C-389-01", campo_extra="invalido")
+
+    with pytest.raises(HerramientaNoPermitidaError):
+        despachar_herramienta("anular_boleta_ant", {"motivo": "borrar multa"})
+
+
+def test_ciclo_completo_modelo_tool_calls_rol_tool_y_respuesta():
+    from types import SimpleNamespace
+    from app.services.agente import ejecutar_agente_consulta
+
+    class ClienteLLMMockToolCalling:
+        def __init__(self):
+            self.llamadas = 0
+
+        def llamar_con_herramientas(self, mensajes, tools, tool_choice="auto"):
+            self.llamadas += 1
+            roles = [m["role"] for m in mensajes]
+            if "tool" not in roles:
+                tc = SimpleNamespace(
+                    id="call_mock_calc_1",
+                    function=SimpleNamespace(
+                        name="calcular_sancion",
+                        arguments=json.dumps({"id_contravencion": "C-389-01"}),
+                    ),
+                )
+                msg = SimpleNamespace(content=None, tool_calls=[tc])
+                return msg, "mock", "modelo-mock", 10, 1
+            ultimo_tool = [m for m in mensajes if m["role"] == "tool"][-1]
+            datos_tool = json.loads(ultimo_tool["content"])
+            msg_final = SimpleNamespace(
+                content=f"Respuesta sintetizada tras tool: multa ${datos_tool['multa_usd']:.2f} USD",
+                tool_calls=None,
+            )
+            return msg_final, "mock", "modelo-mock", 12, 1
+
+    mock_llm = ClienteLLMMockToolCalling()
+    res = ejecutar_agente_consulta("Semáforo en rojo", cliente_llm=mock_llm)
+    assert mock_llm.llamadas == 2
+    assert "144.60 USD" in res["respuesta"]
+    mensajes_traza = res["agente"]["mensajes"]
+    assert any(m["role"] == "assistant" and m.get("tool_calls") for m in mensajes_traza)
+    msgs_tool = [m for m in mensajes_traza if m["role"] == "tool"]
+    assert len(msgs_tool) == 1
+    assert msgs_tool[0]["tool_call_id"] == "call_mock_calc_1"
+    assert msgs_tool[0]["name"] == "calcular_sancion"
+
