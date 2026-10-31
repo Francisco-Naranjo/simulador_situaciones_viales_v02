@@ -6,7 +6,7 @@
   "total_fragmentos": 641,
   "huerfanos": 0,
   "chromadb": {
-    "motor": "chromadb_persistente_coseno",
+    "motor": "chromadb_persistent_cosine",
     "modelo_embeddings": "intfloat/multilingual-e5-small",
     "dimensiones": 384,
     "distancia": "cosine",
@@ -8354,7 +8354,7 @@
       }
     },
     {
-      "id": "LOTTTSV-ART-55",
+      "id": "LOTTTSV-ART-55_2",
       "texto": "Art.\n55.- La Dirección Nacional de Control del Tránsito y Seguridad Vial, es el organismo responsable de\ncontrolar las actividades del tránsito y seguridad vial en las jurisdicciones señaladas por la Ley.\"\nLa presente Ley entrará en vigencia a partir de la fecha de su Publicación en el Registro Oficial.\nDado y suscrito en el Centro Cívico \"Ciudad Alfaro\", ubicado en el cantón Montecristi, provincia de\nManabí de la República del Ecuador, a los veinte y cuatro días del mes de julio de dos mil ocho.\nLEY ORGANICA DE TRANSPORTE TERRESTRE TRANSITO Y SEGURIDAD VIAL - Página 79\neSilec Profesional - www.lexis.com.ec",
       "metadatos": {
         "documento": "LOTTTSV",

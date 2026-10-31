@@ -36,75 +36,71 @@ VACIAS = {
 }
 
 TESAURO_VIAL = {
-    "rojo": ["semaforo", "señalizacion", "389"],
-    "semaforo": ["semaforos", "señalizacion", "pare", "ceda", "389"],
-    "pare": ["semaforos", "señalizacion", "ceda", "389"],
-    "celular": ["telefono", "manos", "libres", "391"],
-    "telefono": ["celular", "manos", "libres", "391"],
-    "chatear": ["telefono", "celular", "manos", "libres", "391"],
-    "alcohol": ["embriaguez", "gramos", "sangre", "385"],
-    "borracho": ["embriaguez", "alcohol", "sangre", "385"],
-    "embriaguez": ["alcohol", "gramos", "sangre", "385"],
-    "cerveza": ["embriaguez", "alcohol", "sangre", "385"],
-    "cinturon": ["seguridad", "utilice", "392", "390"],
-    "pito": ["bocina", "sonoros", "ruidos", "392"],
-    "bocina": ["sonoros", "ruidos", "392"],
-    "llantas": ["lisas", "mal", "estado", "383"],
-    "lisas": ["llantas", "estado", "383"],
-    "botiquin": ["primeros", "auxilios", "extintor", "391"],
-    "extintor": ["botiquin", "incendios", "391"],
-    "velocidad": ["exceda", "limites", "rango", "moderado", "386", "389"],
-    "correr": ["velocidad", "exceda", "limites", "386", "389"],
-    "casco": ["motocicletas", "homologados", "retroreflectivas", "389"],
-    "moto": ["motocicletas", "casco", "capacidad", "389", "390"],
-    "placas": ["identificacion", "ocultas", "alteradas", "389"],
-    "placa": ["placas", "identificacion", "ocultas", "389"],
-    "polarizado": ["vidrios", "peliculas", "antisolares", "oscuras", "391"],
-    "polarizados": ["vidrios", "peliculas", "antisolares", "oscuras", "391"],
-    "acera": ["peaton", "aceras", "seguridad", "392"],
-    "peaton": ["aceras", "sitios", "seguridad", "392", "373"],
-    "ciclovia": ["ciclistas", "exclusivo", "invada", "390"],
-    "ciclista": ["ciclistas", "preferente", "ciclovias", "390", "392"],
-    "bicicleta": ["ciclistas", "transporte", "390"],
-    "niños": ["solos", "supervision", "interior", "seguridades", "390", "391"],
-    "bebe": ["niños", "seguridades", "solos", "390", "391"],
-    "ambulancia": ["emergencia", "sirena", "alarma", "libre", "390", "392"],
-    "sirena": ["emergencia", "alarma", "libre", "390", "391", "392"],
-    "basura": ["desechos", "contaminen", "arroje", "recipientes", "392"],
-    "caducada": ["licencia", "anulada", "revocada", "suspendida", "387"],
-    "olvidar": ["portar", "licencia", "391"],
-    "olvide": ["portar", "licencia", "391"],
-    "portar": ["licencia", "391"],
-    "peaje": ["peajes", "evadir", "390"],
-    "puertas": ["abiertas", "urbano", "391"],
-    "taximetro": ["taxi", "veinticuatro", "390"],
-    "balde": ["baldes", "estribos", "pisaderas", "camionetas", "388"],
-    "estribos": ["pisaderas", "baldes", "carrocerias", "388"],
+    "rojo": ["semaforo", "luminosa", "luz", "pare"],
+    "semaforo": ["luminosas", "luz", "rojo", "pare", "senales"],
+    "pare": ["semaforo", "senales", "ceda", "detencion"],
+    "celular": ["telefono", "manos", "libres", "dispositivo"],
+    "telefono": ["celular", "manos", "libres"],
+    "chatear": ["telefono", "celular", "manos", "libres"],
+    "alcohol": ["embriaguez", "gramos", "sangre", "alcotest"],
+    "borracho": ["embriaguez", "alcohol", "sangre"],
+    "embriaguez": ["alcohol", "gramos", "sangre"],
+    "cerveza": ["embriaguez", "alcohol", "sangre"],
+    "cinturon": ["seguridad", "ocupantes"],
+    "pito": ["bocina", "sonoros", "ruidos"],
+    "bocina": ["sonoros", "ruidos", "pito"],
+    "llantas": ["lisas", "neumaticos", "estado", "rodamiento"],
+    "lisas": ["llantas", "neumaticos", "estado"],
+    "botiquin": ["primeros", "auxilios", "extintor"],
+    "extintor": ["botiquin", "incendios", "primeros", "auxilios"],
+    "velocidad": ["exceda", "limites", "rango", "moderado"],
+    "correr": ["velocidad", "exceda", "limites"],
+    "casco": ["motocicletas", "homologados", "retroreflectivas", "chaleco"],
+    "moto": ["motocicletas", "casco", "capacidad"],
+    "placas": ["identificacion", "ocultas", "alteradas", "portar"],
+    "placa": ["placas", "identificacion", "ocultas"],
+    "polarizado": ["vidrios", "peliculas", "antisolares", "oscuras"],
+    "polarizados": ["vidrios", "peliculas", "antisolares", "oscuras"],
+    "acera": ["peaton", "aceras", "seguridad"],
+    "peaton": ["aceras", "seguridad", "cruce"],
+    "ciclovia": ["ciclistas", "exclusivo", "bicicleta"],
+    "ciclista": ["ciclistas", "preferente", "ciclovias"],
+    "bicicleta": ["ciclistas", "transporte", "ciclovias"],
+    "niños": ["menores", "solos", "supervision", "asientos"],
+    "bebe": ["niños", "menores", "supervision", "asientos"],
+    "ambulancia": ["emergencia", "sirena", "alarma", "libre"],
+    "sirena": ["emergencia", "alarma", "libre"],
+    "basura": ["desechos", "contaminen", "arroje", "recipientes"],
+    "caducada": ["licencia", "anulada", "revocada", "suspendida"],
+    "olvidar": ["portar", "porte", "licencia"],
+    "olvide": ["portar", "porte", "licencia"],
+    "portar": ["licencia", "porte"],
+    "portarla": ["portar", "licencia"],
+    "peaje": ["peajes", "evadir", "pago"],
+    "puertas": ["abiertas", "urbano", "transporte"],
+    "taximetro": ["taxi", "reloj", "veinticuatro"],
+    "balde": ["estribos", "parachoques", "carrocerias", "camionetas"],
+    "estribos": ["balde", "carrocerias", "pisaderas"],
 }
 
-PATRONES_DERIVACION_O_ABSTENCION = [
-    r"hace\s+\d+\s+a[ñn]os",
-    r"prescrib",
-    r"prescripci[oó]n",
-    r"exoner",
-    r"amnist[ií]a",
-    r"convenio\s+de\s+pago",
-    r"impugn",
-    r"apelaci[oó]n",
-    r"juez\s+de\s+tr[aá]nsito",
+PATRONES_TRAMITES_ADMINISTRATIVOS_ANT = [
+    r"\bturno\b",
+    r"\bconvenio\s+de\s+pago\b",
+    r"\bprescrib",
+    r"cu[aá]ntos\s+puntos\s+me\s+quedan",
+    r"consultar\s+(?:mis\s+)?multas",
     r"sistema\s+inform[aá]tico\s+de\s+la\s+ant",
-    r"turno\s+en\s+la\s+ant",
-    r"cu[aá]ntos\s+puntos\s+me\s+quedan\s+en\s+mi\s+c[eé]dula",
-    r"consultar\s+mis\s+multas\s+por\s+placa",
-    r"d[eé]cimo\s+tercer",
-    r"impuesto\s+a\s+la\s+renta",
-    r"receta\s+de",
-    r"dengue",
-    r"cacao",
-    r"divorcio",
-    r"liquidaci[oó]n\s+laboral",
-    r"capital\s+de\s+francia",
-    r"matr[ií]cula\s+en\s+la\s+universidad",
+    r"anular\s+boleta",
+    r"hace\s+\d+\s+a[ñn]os",
+]
+
+PATRONES_FUERA_DE_AMBITO_VIAL = [
+    r"\b(?:salud|m[eé]dico|dosis|ibuprofeno|paracetamol|fiebre|enfermedad|s[ií]ntoma)\b",
+    r"\b(?:laboral|despido|liquidaci[oó]n|indemnizaci[oó]n|remuneraci[oó]n|c[oó]digo\s+del\s+trabajo)\b",
+    r"\b(?:receta|cocina|preparar|encebollado|ingrediente)\b",
+    r"\b(?:impuesto\s+a\s+la\s+renta|sri|tributario)\b",
+    r"\b(?:divorcio|alimentos|penal\s+comun)\b",
+    r"\b(?:capital\s+de|matr[ií]cula\s+en\s+la\s+universidad)\b",
 ]
 
 PATRONES_DISPUTA_LITIGIOSA = [
@@ -185,11 +181,26 @@ def cargar_indice() -> list[dict]:
 
 
 @lru_cache
+def obtener_coleccion_chroma():
+    import chromadb
+    client = chromadb.PersistentClient(path=str(RAIZ / "chroma_db"))
+    return client.get_or_create_collection("normativa", metadata={"hnsw:space": "cosine"})
+
+
+@lru_cache
 def cargar_vectores_chroma() -> dict[str, list[float]]:
+    try:
+        col = obtener_coleccion_chroma()
+        datos = col.get(include=["embeddings"])
+        if datos and datos.get("ids") and datos.get("embeddings") is not None and len(datos["embeddings"]) > 0:
+            return {fid: list(emb) for fid, emb in zip(datos["ids"], datos["embeddings"])}
+    except Exception:
+        pass
     if RUTA_CHROMA_JSON.exists():
         try:
-            datos = json.loads(RUTA_CHROMA_JSON.read_text(encoding="utf-8"))
-            return {r["id"]: r["embedding"] for r in datos.get("registros", []) if "embedding" in r}
+            datos_j = json.loads(RUTA_CHROMA_JSON.read_text(encoding="utf-8"))
+            if "registros" in datos_j:
+                return {r["id"]: r["embedding"] for r in datos_j.get("registros", []) if "embedding" in r}
         except Exception:
             pass
     indice = cargar_indice()
@@ -223,7 +234,11 @@ def _cumple_where_document(texto: str, where_document: dict[str, str] | None) ->
 
 def _detectar_abstencion(consulta: str) -> bool:
     c_norm = normalizar(consulta)
-    return any(re.search(pat, consulta.lower()) or re.search(pat, c_norm) for pat in PATRONES_DERIVACION_O_ABSTENCION)
+    q_low = consulta.lower()
+    return (
+        any(re.search(pat, q_low) or re.search(pat, c_norm) for pat in PATRONES_TRAMITES_ADMINISTRATIVOS_ANT)
+        or any(re.search(pat, q_low) or re.search(pat, c_norm) for pat in PATRONES_FUERA_DE_AMBITO_VIAL)
+    )
 
 
 def es_consulta_disputa(consulta: str) -> bool:
@@ -324,8 +339,16 @@ def recuperar(
         similitud_vec = max(0.0, 1.0 - dist_vec)
         if puntaje > 0 or similitud_vec >= 0.42:
             puntaje += similitud_vec * 3.2
+
+        # Normalización por longitud para evitar que glosarios extensos dominen
+        if len(tset) > 300:
+            puntaje *= 0.65
+
         if doc == "COIP" and puntaje > 0:
-            puntaje *= 1.45
+            if any(w in consulta.lower() for w in ["contravencion", "contravención", "multa", "sancion", "sanción", "puntos", "prision", "prisión", "coip"]):
+                puntaje *= 2.8
+            else:
+                puntaje *= 1.45
 
         if puntaje > 0:
             dist_hibrida = round(max(0.04, min(0.95, 0.46 / (1.0 + 0.14 * puntaje) + 0.18 * dist_vec)), 2)
