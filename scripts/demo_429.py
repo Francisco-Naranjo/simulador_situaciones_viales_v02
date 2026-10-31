@@ -1,14 +1,6 @@
-"""DEMO EN VIVO · Provocar un error 429 a propósito y ver la diferencia.
-
-  Ronda 1, sin protección: muchas solicitudes a la vez, sin reintentos → varias fallan con 429.
-  Ronda 2, con protección: las mismas solicitudes pasan por ClienteLLM → esperan, reintentan
-  y, si hace falta, se van al proveedor de respaldo. El usuario no ve ningún error.
-
-    python scripts/demo_429.py                       # sin cuota real: usa el proveedor simulado (5 cada 10 s)
-    python scripts/demo_429.py --proveedor groq --n 40   # con su cuota real de Groq (30 por minuto)
-"""
 import argparse
 import dataclasses
+import logging
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -17,13 +9,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import openai  # noqa: E402
+import openai
 
-from app.config import CATALOGO, Config, _proveedor  # noqa: E402
-from app.services.llm import ClienteLLM, ErrorLLM  # noqa: E402
-import logging  # noqa: E402
+from app.config import CATALOGO, Config, _proveedor
+from app.services.llm import ClienteLLM, ErrorLLM
 
-# En el demo, el registro va solo al archivo logs/llm.jsonl para que la pantalla quede limpia.
 for _h in list(logging.getLogger("llm").handlers):
     if not isinstance(_h, logging.FileHandler):
         logging.getLogger("llm").removeHandler(_h)
@@ -38,8 +28,10 @@ if a.proveedor == "simulado":
     try:
         servidor_simulado.iniciar(limite=5, ventana=10)
     except OSError:
-        sys.exit("El servidor simulado ya está abierto en otra terminal (puerto 8099).\n"
-                 "Vaya a esa terminal, deténgalo con Ctrl+C y vuelva a ejecutar este demo.")
+        sys.exit(
+            "El servidor simulado ya está abierto en otra terminal (puerto 8099).\n"
+            "Vaya a esa terminal, deténgalo con Ctrl+C y vuelva a ejecutar este demo."
+        )
 
 p = _proveedor(a.proveedor)
 MENSAJES = [{"role": "user", "content": "Responde solo: ok"}]
@@ -64,14 +56,13 @@ print("\n".join(r1))
 print(f"-> Fallaron {sum('[ERROR]' in x for x in r1)} de {a.n}. Eso veria su usuario: un error.\n")
 
 if a.proveedor == "simulado":
-    servidor_simulado._tiempos.clear()  # ventana nueva para la ronda 2
+    servidor_simulado._tiempos.clear()
 
-print(f"=== Ronda 2 - CON proteccion (ClienteLLM: reintentos + espera exponencial + respaldo) ===")
+print("=== Ronda 2 - CON proteccion (ClienteLLM: reintentos + espera exponencial + respaldo) ===")
 base = Config(principal=p, respaldo=None, timeout_s=30, max_tokens=256, reintentos=4, razonamiento=None)
 try:
     from app.config import cargar_config
     cfg = cargar_config()
-    # El respaldo es el OTRO proveedor configurado en .env (no el mismo que estamos saturando)
     resp = next((x for x in (cfg.principal, cfg.respaldo) if x and x.nombre != p.nombre), None)
     if resp:
         base = dataclasses.replace(base, respaldo=resp)

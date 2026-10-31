@@ -1,14 +1,3 @@
-"""Evaluación cuantitativa del sistema RAG (`hit@5` y tasa de abstención) · Caso 08 «Vía Segura».
-
-Evalúa las 20 preguntas de `eval/preguntas.json`:
-  - Para preguntas con respuesta en las fuentes (`debe_abstenerse=false`): verifica si el artículo
-    esperado aparece dentro de los primeros 5 fragmentos recuperados (`hit@5`) y en el primer lugar (`hit@1`).
-  - Para preguntas fuera de alcance o de derivación (`debe_abstenerse=true`): verifica que el sistema
-    active la regla de silencio (`abstencion=True`) con el mensaje oficial de derivación.
-
-Uso:
-    python scripts/evaluar_rag.py
-"""
 from __future__ import annotations
 
 import json

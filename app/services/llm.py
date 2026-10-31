@@ -1,17 +1,3 @@
-"""Servicio de IA: la ÚNICA parte del sistema que habla con el modelo.
-
-Qué resuelve este módulo (lo que se pide para el viernes 23):
-  1. Encapsula al proveedor: los endpoints llaman a ClienteLLM y no saben si detrás
-     está Gemini o Groq.
-  2. Pide la salida en JSON con un esquema y la VALIDA con Pydantic.
-  3. Pone límites: tiempo de espera, máximo de tokens y número de intentos.
-  4. Maneja los errores del proveedor: 429 (límite de solicitudes), tiempo agotado,
-     caída del servicio y respuesta vacía, con reintentos y espera exponencial.
-  5. Si el principal no responde, pasa al proveedor de respaldo.
-  6. Deja un registro (log) por solicitud con tokens y tiempo de respuesta.
-
-Idea fuerza: el modelo propone, el código dispone.
-"""
 from __future__ import annotations
 
 import json
@@ -31,7 +17,6 @@ from app.config import Config, Proveedor, cargar_config
 
 T = TypeVar("T", bound=BaseModel)
 
-# ---------------------------------------------------------------- registro (log)
 Path("logs").mkdir(exist_ok=True)
 log = logging.getLogger("llm")
 if not log.handlers:
@@ -45,14 +30,10 @@ if not log.handlers:
 
 
 def _registrar(**datos) -> None:
-    # Nunca se registra el texto del usuario: puede tener datos personales.
     log.info(json.dumps(datos, ensure_ascii=False))
 
 
-# ---------------------------------------------------------------- errores propios
 class ErrorLLM(Exception):
-    """Error que el endpoint puede traducir a un mensaje claro para el usuario."""
-
     mensaje_usuario = "El asistente no pudo responder. Inténtalo de nuevo."
 
 
@@ -65,16 +46,16 @@ class SalidaInvalida(ErrorLLM):
 
 
 class _FalloProveedor(Exception):
-    """Interno: este proveedor se rindió; probar con el siguiente."""
+    pass
 
 
-# Errores que vale la pena reintentar: son pasajeros.
+class _RespuestaVacia(Exception):
+    pass
+
+
 REINTENTABLES = (openai.RateLimitError, openai.APITimeoutError, openai.APIConnectionError, openai.InternalServerError)
-# Errores que NO se arreglan reintentando con el mismo proveedor: clave mala, modelo
-# inexistente, solicitud mal formada. Se pasa directo al respaldo.
 DEFINITIVOS = (openai.AuthenticationError, openai.PermissionDeniedError, openai.NotFoundError, openai.BadRequestError)
-
-ESPERA_MAXIMA_S = 20  # si el proveedor pide esperar más que esto, mejor ir al respaldo
+ESPERA_MAXIMA_S = 20
 
 
 @dataclass
@@ -89,14 +70,11 @@ class Resultado(Generic[T]):
 
 
 def espera_exponencial(intento: int, base: float = 1.0) -> float:
-    """1 s, 2 s, 4 s… La mitad es fija y la otra mitad al azar ("jitter"),
-    para que cien clientes que fallaron juntos no vuelvan a chocar juntos."""
     tope = base * 2 ** (intento - 1)
     return tope / 2 + random.uniform(0, tope / 2)
 
 
 def _retry_after(error: Exception) -> float | None:
-    """Segundos que el proveedor pide esperar (cabecera Retry-After), si los dice."""
     respuesta = getattr(error, "response", None)
     valor = respuesta.headers.get("retry-after") if respuesta is not None else None
     try:
@@ -106,7 +84,6 @@ def _retry_after(error: Exception) -> float | None:
 
 
 def _limpiar_json(texto: str) -> str:
-    """Algunos modelos envuelven el JSON en ```json … ```. Se lo quitamos."""
     texto = texto.strip()
     m = re.match(r"^```(?:json)?\s*(.*?)\s*```$", texto, re.S)
     return m.group(1) if m else texto
@@ -117,14 +94,17 @@ class ClienteLLM:
                  dormir: Callable[[float], None] = time.sleep):
         self.config = config or cargar_config()
         self.proveedores: list[Proveedor] = [p for p in (self.config.principal, self.config.respaldo) if p]
-        self.dormir = dormir  # en las pruebas se reemplaza para no esperar de verdad
+        self.dormir = dormir
         self._clientes = clientes or {
-            p.nombre: OpenAI(api_key=p.api_key, base_url=p.base_url,
-                             timeout=self.config.timeout_s, max_retries=0)  # los reintentos los hacemos nosotros
+            p.nombre: OpenAI(
+                api_key=p.api_key,
+                base_url=p.base_url,
+                timeout=self.config.timeout_s,
+                max_retries=0,
+            )
             for p in self.proveedores
         }
 
-    # ------------------------------------------------------------ llamada con reintentos
     def _llamar(self, p: Proveedor, mensajes: list[dict], extra: dict) -> tuple[object, int, int]:
         cliente = self._clientes[p.nombre]
         opciones = {"max_tokens": self.config.max_tokens, **extra}
@@ -139,22 +119,37 @@ class ClienteLLM:
                 if not contenido.strip():
                     raise _RespuestaVacia()
                 uso = getattr(r, "usage", None)
-                _registrar(evento="ok", proveedor=p.nombre, modelo=p.modelo, intento=intento, latencia_ms=ms,
-                           tokens_entrada=getattr(uso, "prompt_tokens", None),
-                           tokens_salida=getattr(uso, "completion_tokens", None),
-                           fin=r.choices[0].finish_reason)
+                _registrar(
+                    evento="ok",
+                    proveedor=p.nombre,
+                    modelo=p.modelo,
+                    intento=intento,
+                    latencia_ms=ms,
+                    tokens_entrada=getattr(uso, "prompt_tokens", None),
+                    tokens_salida=getattr(uso, "completion_tokens", None),
+                    fin=r.choices[0].finish_reason,
+                )
                 return r, ms, intento
             except DEFINITIVOS as e:
-                _registrar(evento="error_definitivo", proveedor=p.nombre, intento=intento, tipo=type(e).__name__,
-                           estado_http=getattr(e, "status_code", None))
+                _registrar(
+                    evento="error_definitivo",
+                    proveedor=p.nombre,
+                    intento=intento,
+                    tipo=type(e).__name__,
+                    estado_http=getattr(e, "status_code", None),
+                )
                 raise _FalloProveedor() from e
             except (*REINTENTABLES, _RespuestaVacia) as e:
                 pedida = _retry_after(e)
-                # Si el proveedor dice cuánto esperar, se respeta y se suma un poco de azar
                 espera = pedida + random.uniform(0, 0.5) if pedida is not None else espera_exponencial(intento)
-                _registrar(evento="reintento" if intento < self.config.reintentos else "agotado",
-                           proveedor=p.nombre, intento=intento, tipo=type(e).__name__,
-                           estado_http=getattr(e, "status_code", None), espera_s=round(espera, 2))
+                _registrar(
+                    evento="reintento" if intento < self.config.reintentos else "agotado",
+                    proveedor=p.nombre,
+                    intento=intento,
+                    tipo=type(e).__name__,
+                    estado_http=getattr(e, "status_code", None),
+                    espera_s=round(espera, 2),
+                )
                 if intento == self.config.reintentos or espera > ESPERA_MAXIMA_S:
                     raise _FalloProveedor() from e
                 self.dormir(espera)
@@ -170,18 +165,26 @@ class ClienteLLM:
         _registrar(evento="sin_proveedor")
         raise ProveedorNoDisponible()
 
-    # ------------------------------------------------------------ API pública
     def generar_texto(self, system: str, mensajes: list[dict]) -> Resultado[str]:
-        """Respuesta de texto libre (por ejemplo, un chat). mensajes = historial."""
         p, r, ms, intentos = self._con_respaldo([{"role": "system", "content": system}, *mensajes], {})
         uso = getattr(r, "usage", None)
-        return Resultado(r.choices[0].message.content, p.nombre, p.modelo,
-                         getattr(uso, "prompt_tokens", None), getattr(uso, "completion_tokens", None), ms, intentos)
+        return Resultado(
+            r.choices[0].message.content,
+            p.nombre,
+            p.modelo,
+            getattr(uso, "prompt_tokens", None),
+            getattr(uso, "completion_tokens", None),
+            ms,
+            intentos,
+        )
 
     def generar_json(self, system: str, usuario: str, esquema: type[T]) -> Resultado[T]:
-        """Pide JSON con un esquema y lo valida. Si no cumple, pide UNA corrección."""
-        formato = {"response_format": {"type": "json_schema", "json_schema": {
-            "name": esquema.__name__, "strict": True, "schema": esquema.model_json_schema()}}}
+        formato = {
+            "response_format": {
+                "type": "json_schema",
+                "json_schema": {"name": esquema.__name__, "strict": True, "schema": esquema.model_json_schema()},
+            }
+        }
         mensajes = [{"role": "system", "content": system}, {"role": "user", "content": usuario}]
         p, r, ms, intentos = self._con_respaldo(mensajes, formato)
         texto = r.choices[0].message.content
@@ -191,9 +194,12 @@ class ClienteLLM:
             _registrar(evento="salida_invalida", proveedor=p.nombre, errores=e.error_count())
             correccion = mensajes + [
                 {"role": "assistant", "content": texto},
-                {"role": "user", "content": "Tu respuesta no cumple el esquema. Errores:\n"
+                {
+                    "role": "user",
+                    "content": "Tu respuesta no cumple el esquema. Errores:\n"
                     + "\n".join(f"- {'.'.join(map(str, x['loc']))}: {x['msg']}" for x in e.errors())
-                    + "\nDevuelve SOLO el JSON corregido."},
+                    + "\nDevuelve SOLO el JSON corregido.",
+                },
             ]
             p, r, ms2, _ = self._con_respaldo(correccion, formato)
             ms += ms2
@@ -203,17 +209,26 @@ class ClienteLLM:
                 _registrar(evento="salida_invalida_final", proveedor=p.nombre, errores=e2.error_count())
                 raise SalidaInvalida() from e2
         uso = getattr(r, "usage", None)
-        return Resultado(datos, p.nombre, p.modelo, getattr(uso, "prompt_tokens", None),
-                         getattr(uso, "completion_tokens", None), ms, intentos)
+        return Resultado(
+            datos,
+            p.nombre,
+            p.modelo,
+            getattr(uso, "prompt_tokens", None),
+            getattr(uso, "completion_tokens", None),
+            ms,
+            intentos,
+        )
 
     def generar_stream(self, system: str, mensajes: list[dict]) -> Iterator[str]:
-        """Streaming para productos conversacionales: entrega el texto en trozos.
-        Solo se puede cambiar de proveedor ANTES del primer trozo."""
         completos = [{"role": "system", "content": system}, *mensajes]
         for p in self.proveedores:
             try:
                 flujo = self._clientes[p.nombre].chat.completions.create(
-                    model=p.modelo, messages=completos, stream=True, max_tokens=self.config.max_tokens)
+                    model=p.modelo,
+                    messages=completos,
+                    stream=True,
+                    max_tokens=self.config.max_tokens,
+                )
                 for trozo in flujo:
                     if trozo.choices and trozo.choices[0].delta.content:
                         yield trozo.choices[0].delta.content
@@ -224,10 +239,5 @@ class ClienteLLM:
         raise ProveedorNoDisponible()
 
 
-class _RespuestaVacia(Exception):
-    """El proveedor respondió 200 pero sin contenido."""
-
-
 def cargar_prompt(nombre: str) -> str:
-    """Los prompts viven en archivos versionados, no escondidos en el código."""
     return (Path(__file__).resolve().parent.parent / "prompts" / f"{nombre}.md").read_text(encoding="utf-8")

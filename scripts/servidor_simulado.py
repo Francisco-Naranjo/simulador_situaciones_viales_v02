@@ -1,18 +1,11 @@
-"""Un "proveedor" falso que corre en su computadora y responde como la API de OpenAI.
-Sirve para practicar el manejo de errores sin gastar cuota real.
-
-    python scripts/servidor_simulado.py --limite 5           # 429 a partir de la 6.ª solicitud en 10 segundos
-    python scripts/servidor_simulado.py --romper-json 0.5  # la mitad de las respuestas trae JSON roto
-    python scripts/servidor_simulado.py --lento 40         # tarda 40 s (para probar el tiempo límite)
-
-Luego, en .env:  LLM_PRINCIPAL=simulado
-"""
 import argparse
 import json
 import math
 import random
+import re
 import threading
 import time
+import unicodedata
 from collections import deque
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
@@ -22,16 +15,13 @@ _candado = threading.Lock()
 
 
 def _sin_tildes(texto: str) -> str:
-    import unicodedata
     return "".join(c for c in unicodedata.normalize("NFD", texto.lower()) if unicodedata.category(c) != "Mn")
 
 
 def _escenario_simulado(mensajes: list[dict]) -> dict:
-    """Genera un escenario vial válido y coherente con el tema y perfil solicitados."""
-    import re as _re
     texto_usr = "\n".join(m.get("content", "") for m in mensajes if m.get("role") == "user")
     perfil, nivel, tema = "conductor_particular", "baja", ""
-    m_sol = _re.search(r"<solicitud>\s*(\{.*?\})\s*</solicitud>", texto_usr, _re.S)
+    m_sol = re.search(r"<solicitud>\s*(\{.*?\})\s*</solicitud>", texto_usr, re.S)
     if m_sol:
         try:
             sol = json.loads(m_sol.group(1))
@@ -40,8 +30,12 @@ def _escenario_simulado(mensajes: list[dict]) -> dict:
             tema = (sol.get("tema") or "").strip()
         except Exception:
             pass
-    id_contrav, articulo, desc = "CONT-COIP-ART389-1", "Art. 389 num. 1", "Desobedecer las órdenes de los agentes de tránsito, o que no respeten las señales manuales de dichos agentes, en general toda señalización colocada en las vías públicas, tales como: semáforos, pare, ceda el paso, cruce o preferencia de vías."
-    m_tab = _re.search(r"<contravenciones_permitidas>\s*(\[.*?\])\s*</contravenciones_permitidas>", texto_usr, _re.S)
+    id_contrav, articulo, desc = (
+        "CONT-COIP-ART389-1",
+        "Art. 389 num. 1",
+        "Desobedecer las órdenes de los agentes de tránsito, o que no respeten las señales manuales de dichos agentes, en general toda señalización colocada en las vías públicas, tales como: semáforos, pare, ceda el paso, cruce o preferencia de vías.",
+    )
+    m_tab = re.search(r"<contravenciones_permitidas>\s*(\[.*?\])\s*</contravenciones_permitidas>", texto_usr, re.S)
     if m_tab:
         try:
             lista = json.loads(m_tab.group(1))
@@ -69,7 +63,12 @@ def _escenario_simulado(mensajes: list[dict]) -> dict:
         except Exception:
             pass
     contexto_tema = f" ante una situación relacionada con «{tema}»" if tema else ""
-    ciudades = ["Quito (Av. 10 de Agosto)", "Guayaquil (Av. Francisco de Orellana)", "Ambato (Av. Cevallos)", "Cuenca (Av. Remigio Crespo)"]
+    ciudades = [
+        "Quito (Av. 10 de Agosto)",
+        "Guayaquil (Av. Francisco de Orellana)",
+        "Ambato (Av. Cevallos)",
+        "Cuenca (Av. Remigio Crespo)",
+    ]
     ciudad = random.choice(ciudades)
     textos_opciones = [
         ("Priorizar la rapidez y ejecutar la maniobra esperando que no exista control ni fotorradar activo en el sector.", False),
@@ -106,7 +105,6 @@ def _escenario_simulado(mensajes: list[dict]) -> dict:
 
 
 def _ejemplo(esquema: dict, defs: dict):
-    """Inventa un valor que cumpla el esquema (es un simulador, no un modelo)."""
     if "$ref" in esquema:
         return _ejemplo(defs[esquema["$ref"].split("/")[-1]], defs)
     if "anyOf" in esquema:
@@ -122,7 +120,7 @@ def _ejemplo(esquema: dict, defs: dict):
 
 
 class Manejador(BaseHTTPRequestHandler):
-    def log_message(self, *a):  # silencio
+    def log_message(self, *a):
         pass
 
     def _enviar(self, codigo: int, cuerpo: dict, cabeceras: dict | None = None):
@@ -146,8 +144,11 @@ class Manejador(BaseHTTPRequestHandler):
                 _tiempos.popleft()
             if len(_tiempos) >= OPC.limite:
                 espera = max(1, math.ceil(OPC.ventana - (ahora - _tiempos[0])))
-                return self._enviar(429, {"error": {"message": "Rate limit reached (simulado)", "type": "rate_limit"}},
-                                    {"retry-after": str(espera)})
+                return self._enviar(
+                    429,
+                    {"error": {"message": "Rate limit reached (simulado)", "type": "rate_limit"}},
+                    {"retry-after": str(espera)},
+                )
             _tiempos.append(ahora)
         if OPC.lento:
             time.sleep(OPC.lento)
@@ -164,14 +165,16 @@ class Manejador(BaseHTTPRequestHandler):
         if random.random() < OPC.vacio:
             contenido = ""
         self._enviar(200, {
-            "id": "sim-1", "object": "chat.completion", "created": int(time.time()), "model": cuerpo.get("model"),
+            "id": "sim-1",
+            "object": "chat.completion",
+            "created": int(time.time()),
+            "model": cuerpo.get("model"),
             "choices": [{"index": 0, "finish_reason": "stop", "message": {"role": "assistant", "content": contenido}}],
             "usage": {"prompt_tokens": 42, "completion_tokens": 58, "total_tokens": 100},
         })
 
 
 def iniciar(puerto: int = 8099, **opciones) -> ThreadingHTTPServer:
-    """Arranca el servidor en segundo plano (lo usan demo_429.py y las pruebas)."""
     for k, v in opciones.items():
         setattr(OPC, k, v)
     _tiempos.clear()

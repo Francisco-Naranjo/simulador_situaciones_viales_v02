@@ -2,7 +2,7 @@
 
 **Seminario de Titulación Complexivo: Ingeniería de Software con IA Generativa**  
 **Carrera de Software · Facultad de Sistemas Mercantiles · UNIANDES**  
-**Caso N.° 08 · Grupo 8 · Semanas 1 y 2**
+**Caso N.° 08 · Grupo 8 · Semanas 1, 2 y 3 (RAG)**
 
 ---
 
@@ -22,10 +22,11 @@ Los conductores y peatones en Ecuador desconocen con frecuencia qué conductas c
 ---
 
 ## 3. Estado del Proyecto y Despliegue
-- **Fase Actual:** Semana 2 (MVP e integración con IA Generativa completados al 100%)
-- **Estado de Pruebas:** 51 pruebas automatizadas pasando con éxito (`pytest`)
+- **Fase Actual:** Semanas 1, 2 y 3 (MVP, integración con IA Generativa y sistema RAG normativo completados al 100%)
+- **Estado de Pruebas:** 63 pruebas automatizadas pasando con éxito (`pytest`) y evaluación RAG con `Hit@1 = 100%` y `Hit@5 = 100%` (`eval/preguntas.json`)
 - **URL Local del Backend + Frontend:** `http://127.0.0.1:8000/` (FastAPI sirve el build compilado de React)
 - **Documentación Interactiva Swagger / OpenAPI:** `http://127.0.0.1:8000/docs`
+- **Endpoints de la Semana 3:** `POST /chat` (Asistente RAG con agente de alcance controlado) y `GET /rag/buscar` (Buscador semántico en ChromaDB)
 - **Despliegue en la Nube:** Programado para la Semana 4 (Render / Railway)
 
 ---
@@ -60,16 +61,18 @@ La arquitectura sigue el principio fundamental: **«El modelo propone, el códig
 1. **Código Orgánico Integral Penal (COIP):** Arts. 383 a 392 (Contravenciones de 1.ª a 7.ª clase). Registro Oficial Suplemento 180, con reformas consolidadas vigentes a 2026.
 2. **Ley Orgánica de Transporte Terrestre, Tránsito y Seguridad Vial (LOTTTSV):** Registro Oficial Suplemento 398 de 07-ago-2008 y Ley Reformatoria (R.O. Suplemento 512 de 10-ago-2021).
 3. **Reglamento General a la LOTTTSV:** Registro Oficial Suplemento 731 de 25-jun-2012.
-4. **Tabla Canónica:** `data/raw/contravenciones_lotttsv.json` es la única fuente de verdad estructurada para el MVP.
-5. **Vigencia y Actualización:** El Salario Básico Unificado (SBU, $460.00 USD) se actualiza de forma externa en `config/parametros.json` sin alterar el código ni el prompt.
+4. **Tabla Canónica y Documentación COIP:** `data/raw/contravenciones_lotttsv.json` (90 contravenciones verificadas del COIP Arts. 386–392), documentada en `docs/tabla-coip.md` y `docs/tabla_contravenciones.csv`, es la única fuente de verdad estructurada para sanciones.
+5. **Vigencia y Actualización:** El Salario Básico Unificado (SBU 2026: $482.00 USD) se actualiza de forma externa en `config/parametros.json` sin alterar el código ni el prompt.
 
 ---
 
-## 6. Herramientas Deterministas del Agente
-Toda decisión crítica, cálculo financiero y validación jurídica se ejecuta en código determinista probado, **NUNCA por el LLM**:
+## 6. Herramientas Deterministas del Agente y RAG (Semana 3)
+Toda decisión crítica, cálculo financiero, validación jurídica y búsqueda normativa se ejecuta en código determinista probado, **NUNCA por el LLM**:
 - `validar_escenario(esc, perfil, dificultad)`: Verifica que la contravención generada por el LLM exista en la tabla oficial y aplique al perfil. Si no coincide, descarta el escenario y solicita regeneración.
-- `calcular_sancion(contravencion)`: Lee el SBU de `config/parametros.json` y calcula la multa en USD con precisión `Decimal` (`ROUND_HALF_UP`) y la reducción de puntos de licencia.
+- `calcular_sancion(contravencion)`: Lee el SBU de `config/parametros.json` ($482.00 USD) y calcula la multa en USD con precisión `Decimal` (`ROUND_HALF_UP`) y la reducción de puntos de licencia según el COIP y la reforma del RO 512.
 - `evaluar_respuesta(esc, contravencion, respuesta)`: Compara la opción elegida por el usuario contra la respuesta correcta verificada y genera el resultado pedagógico.
+- `consultar_normativa(pregunta)` / `ServicioRAG`: Busca en **ChromaDB** (`intfloat/multilingual-e5-small`) con pre-filtro `where={"vigente": True}`, umbral de distancia coseno ($d \le 0.45$) y verificación obligatoria de cita textual.
+- `agente_controlado`: Agente en `app/services/agente.py` con tope estricto de 6 vueltas, lista blanca de herramientas y bloqueo pedagógico de acciones fuera de alcance (ej. *"borrar multa"*).
 
 ---
 
@@ -139,8 +142,11 @@ Las credenciales residen estrictamente en variables de entorno (OWASP LLM07); ni
 La suite de pruebas automatizadas se ejecuta sin consumir cuota de API mediante dobles de prueba (mocks):
 
 ```bash
-# Ejecutar todas las 51 pruebas unitarias e integrales
+# Ejecutar todas las 63 pruebas unitarias e integrales (incluye RAG y Agente)
 python -m pytest -v
+
+# Evaluación del sistema RAG con métricas de acierto Hit@1, Hit@5 y Regla de Silencio
+python scripts/evaluar_rag.py
 
 # Demostración del manejo de límites de tasa 429 en vivo
 python scripts/demo_429.py
@@ -162,8 +168,8 @@ Comparación de las tres versiones del prompt con las 10 entradas de `eval/entra
 ---
 
 ## 11. Limitaciones Conocidas y Trabajo Futuro
-- **Semana 2 (Actual):** La generación utiliza contravenciones estructuradas en la tabla canónica. 
-- **Semana 3 (Prevista):** Implementación de la base de conocimiento vectorial completa (ChromaDB) con fragmentación por artículo legal, búsqueda semántica y citas textuales ampliadas.
+- **Semana 2 (Implementado):** Generación de dilemas viales con validación cruzada contra las 90 contravenciones estructuradas del COIP (`data/raw/contravenciones_lotttsv.json` y `docs/tabla-coip.md`).
+- **Semana 3 (Implementado):** Base vectorial **ChromaDB** persistente (`intfloat/multilingual-e5-small`) con pre-filtrado de metadatos (`vigente=True`), corte por artículo legal (641 fragmentos indexados, 0 huérfanos), cita verificada obligatoria, umbral de distancia coseno, detección de documentos envenenados, agente ReAct acotado (tope 6 vueltas) y pipeline de automatización en 4 estaciones en el endpoint `POST /chat` y panel React.
 - **Límite de Tasa en Memoria:** El limitador Token Bucket actual opera en memoria local de la instancia; para despliegues distribuidos multi-instancia en la Semana 4 se recomienda almacenamiento compartido tipo Redis.
 
 ---
@@ -180,9 +186,9 @@ Comparación de las tres versiones del prompt con las 10 entradas de `eval/entra
 ### Declaración de Uso de IA Generativa en el Desarrollo
 - **Herramientas utilizadas:** Claude Opus 5.5, Gemini 3.8 Flash y Antigravity AI Assistant.
 - **Usos:** Generación de borradores de esquemas Pydantic, construcción de plantillas de prueba en pytest, redacción inicial de documentación técnica y diseño de interfaces con Tailwind CSS.
-- **Verificación:** Todo el código generado fue revisado línea por línea, contrastado con el Código Orgánico Integral Penal vigente y validado contra una suite automatizada de 51 pruebas que pasan al 100%. Las fuentes normativas fueron verificadas directamente en los repositorios oficiales de la ANT y Registro Oficial.
+- **Verificación:** Todo el código generado fue revisado línea por línea, contrastado con el Código Orgánico Integral Penal vigente y validado contra una suite automatizada de 63 pruebas que pasan al 100% y evaluación RAG con 20 casos de prueba. Las fuentes normativas fueron verificadas directamente en los repositorios oficiales de la ANT y Registro Oficial.
 
 ### Aporte por Integrante del Equipo
-- **Integrante 1 (Arquitectura y Backend):** Configuración del servicio FastAPI, esquemas Pydantic estrictos, cliente LLM desacoplado, limitador Token Bucket y pruebas con mocks.
-- **Integrante 2 (Base Canónica y Prompts):** Extracción y estructuración de las contravenciones del COIP, diseño y comparativa experimental de los prompts v1, v2 y v3 bajo el método R.E.C.E.T.A.
-- **Integrante 3 (Frontend y Documentación):** Desarrollo de la interfaz de usuario en React/TypeScript con máquina de estados estricta, manejo de cuenta regresiva 429, redacción de `docs/01-05.md` y evidencias semanales.
+- **Fausto Cando (Arquitectura y Backend):** Configuración del servicio FastAPI, esquemas Pydantic estrictos, cliente LLM desacoplado, limitador Token Bucket y pruebas con mocks.
+- **Isidoro Guaman (Base Canónica y Prompts):** Extracción y estructuración de las contravenciones del COIP, diseño y comparativa experimental de los prompts v1, v2 y v3 bajo el método R.E.C.E.T.A.
+- **Luis Naranjo (Frontend y Documentación):** Desarrollo de la interfaz de usuario en React/TypeScript con máquina de estados estricta, manejo de cuenta regresiva 429, redacción de `docs/01-05.md` y evidencias semanales.

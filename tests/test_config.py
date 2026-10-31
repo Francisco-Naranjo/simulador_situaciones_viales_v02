@@ -1,5 +1,3 @@
-"""La configuración acepta los nombres del kit Y los de la plantilla de la clase 1,
-tolera líneas vacías y explica con claridad los valores mal escritos."""
 import pytest
 
 from app.config import ErrorConfiguracion, cargar_config
@@ -35,7 +33,6 @@ def test_nombres_de_la_clase_1(monkeypatch):
     monkeypatch.setenv("LLM_TIMEOUT_SECONDS", "20")
     monkeypatch.setenv("LLM_MAX_OUTPUT_TOKENS", "999")
     cfg = cargar_config()
-    # LLM_MODEL es del PRINCIPAL, sea cual sea el proveedor
     assert cfg.principal.nombre == "groq" and cfg.principal.modelo == "modelo-del-principal"
     assert cfg.respaldo.nombre == "simulado"
     assert cfg.timeout_s == 20 and cfg.max_tokens == 999

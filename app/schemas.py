@@ -1,12 +1,3 @@
-"""Esquemas (Pydantic) de lo que ENTRA al sistema, de lo que el MODELO debe devolver
-y de lo que el backend entrega al frontend. Caso 08 · Simulador de situaciones viales.
-
-Reglas para que el esquema funcione con el modo estricto de Gemini y Groq (kit de la semana 2):
-  - extra="forbid" en cada modelo (no se aceptan campos inventados · OWASP LLM05).
-  - Todos los campos de la salida del modelo son obligatorios.
-  - Los límites de longitud y cantidad NO van en el esquema JSON (minLength, minItems…):
-    van en validadores de Python. El esquema GUÍA al modelo; la validación la hace el código.
-"""
 from __future__ import annotations
 
 from typing import Literal
@@ -17,8 +8,6 @@ Perfil = Literal["conductor_particular", "conductor_profesional", "motociclista"
 Dificultad = Literal["baja", "media", "alta"]
 IdOpcion = Literal["A", "B", "C", "D"]
 
-# Marca de abstención: el prompt pide al modelo usarla en id_contravencion_asociada
-# cuando la solicitud está fuera del dominio vial (principio «lo que no sabe, lo dice»).
 MARCA_FUERA_DE_DOMINIO = "FALTA"
 
 
@@ -32,22 +21,29 @@ def _largo(v: str, minimo: int, maximo: int, campo: str) -> str:
     return v.strip()
 
 
-# ====================================================================== entrada
 class SolicitudEscenario(Estricto):
-    """Lo que envía el usuario. Todo acotado: el texto libre (tema) tiene límite de tamaño
-    (defensa contra consumo excesivo, OWASP LLM10) y se trata como dato, no como orden."""
     perfil: Perfil
     nivel_dificultad: Dificultad
-    tema: str | None = Field(default=None, max_length=200,
-                             description="Opcional: tema vial a practicar (p. ej. «velocidad», «paso cebra»)")
+    tema: str | None = Field(default=None, max_length=200)
 
 
 class SolicitudEvaluacion(Estricto):
     id_escenario: str = Field(min_length=1, max_length=64)
-    respuesta: IdOpcion  # cualquier valor fuera de A-D se rechaza con 422 antes de evaluar
+    respuesta: IdOpcion
 
 
-# ====================================================================== salida del modelo
+class SolicitudChat(Estricto):
+    pregunta: str | None = Field(default=None, max_length=500)
+    texto: str | None = Field(default=None, max_length=500)
+    incluir_documento_envenenado_demo: bool = False
+
+    def obtener_pregunta(self) -> str:
+        q = (self.pregunta or self.texto or "").strip()
+        if len(q) < 3:
+            raise ValueError("La pregunta debe tener al menos 3 caracteres")
+        return q
+
+
 class OpcionEscenario(Estricto):
     id_opcion: IdOpcion
     texto: str
@@ -60,7 +56,6 @@ class OpcionEscenario(Estricto):
 
 
 class EscenarioVialSchema(Estricto):
-    """Contrato del Documento Maestro (sección 3). Lo que el MODELO debe devolver."""
     id_escenario: str
     perfil: Perfil
     nivel_dificultad: Dificultad
@@ -84,7 +79,7 @@ class EscenarioVialSchema(Estricto):
     @model_validator(mode="after")
     def _coherencia(self) -> "EscenarioVialSchema":
         if self.id_contravencion_asociada.strip().upper() == MARCA_FUERA_DE_DOMINIO:
-            return self  # abstención: el resto del contenido no se usa
+            return self
         ids = [o.id_opcion for o in self.opciones]
         if sorted(ids) != ["A", "B", "C", "D"]:
             raise ValueError("opciones debe tener exactamente 4 elementos con id_opcion A, B, C y D")
@@ -94,9 +89,7 @@ class EscenarioVialSchema(Estricto):
         return self
 
 
-# ====================================================================== tabla canónica
 class Contravencion(Estricto):
-    """Un registro de data/raw/contravenciones_lotttsv.json (única fuente de verdad)."""
     id_contravencion: str
     codigo_csv: str | None = None
     clase: str
@@ -113,14 +106,12 @@ class Contravencion(Estricto):
     fuente_url: str | None = None
 
 
-# ====================================================================== respuestas del API
 class OpcionPublica(Estricto):
     id_opcion: IdOpcion
     texto: str
 
 
 class EscenarioPublico(Estricto):
-    """Lo que ve el usuario ANTES de responder: sin la respuesta correcta ni la explicación."""
     id_escenario: str
     perfil: Perfil
     nivel_dificultad: Dificultad
@@ -130,7 +121,6 @@ class EscenarioPublico(Estricto):
 
 
 class Sancion(Estricto):
-    """Calculada SIEMPRE por código (app/tools/calcular_sancion.py), nunca por el modelo."""
     porcentaje_sbu: float
     sbu_usd: float
     multa_usd: float
@@ -151,6 +141,17 @@ class ContravencionPublica(Estricto):
     texto_literal_coip: str | None = None
 
 
+class ProgresoUsuario(Estricto):
+    usuario_id: str
+    total_evaluados: int = 0
+    aciertos: int = 0
+    fallos: int = 0
+    multas_acumuladas_usd: float = 0.0
+    puntos_perdidos: float = 0.0
+    dificultad_sugerida: Dificultad = "baja"
+    historial: list[bool] = Field(default_factory=list)
+
+
 class ResultadoEvaluacion(Estricto):
     id_escenario: str
     respuesta_usuario: IdOpcion
@@ -159,4 +160,5 @@ class ResultadoEvaluacion(Estricto):
     explicacion_educativa: str
     contravencion: ContravencionPublica
     sancion: Sancion
+    progreso: ProgresoUsuario | None = None
     aviso: str

@@ -1,9 +1,3 @@
-"""Parámetros que cambian con el tiempo (SBU, límites, avisos): viven en config/parametros.json.
-
-Se leen en CADA llamada (el archivo es diminuto): así, si se cambia el salario básico en
-configuración, la siguiente sanción ya usa el valor nuevo sin reiniciar el servidor
-(prueba mínima del caso 08: «cambio del salario básico en configuración»).
-"""
 from __future__ import annotations
 
 import json

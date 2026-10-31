@@ -1,8 +1,3 @@
-"""Compara las versiones del system prompt (system_v1, v2, v3) con las 10 entradas
-de eval/entradas_prompts.csv y genera docs/05-prompts.md para el Caso 08.
-
-    python scripts/comparar_prompts.py
-"""
 import csv
 import json
 import sys
@@ -37,7 +32,7 @@ for v in versiones:
         solicitud = SolicitudEscenario(
             perfil=e.get("perfil", "conductor_particular"),
             nivel_dificultad=e.get("nivel_dificultad", "baja"),
-            tema=e.get("tema") or e["entrada"][:50]
+            tema=e.get("tema") or e["entrada"][:50],
         )
         msg = construir_mensaje(solicitud, candidatas(solicitud.perfil, tabla))
         try:
