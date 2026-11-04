@@ -3,31 +3,267 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vía Segura · Simulador Educativo de Situaciones Viales</title>
-    <meta name="description" content="Simulador interactivo de dilemas viales y contravenciones de tránsito en Ecuador (COIP y LOTTTSV)." />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310b981'><path d='M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z'/></svg>" />
+    <title>Vía Segura · Simulador Educativo de Situaciones Viales y Contravenciones</title>
+    <meta name="description" content="Simulador interactivo de dilemas viales, RAG vectorial con ChromaDB (multilingual-e5-small) y agente con Tool Calling sobre normativa ecuatoriana (COIP y LOTTTSV)." />
+    <meta property="og:title" content="Vía Segura · Simulador Educativo Vial (COIP & LOTTTSV)" />
+    <meta property="og:description" content="Caso N.° 08 UNIANDES: Simulador interactivo de dilemas viales, cálculo determinista SBU 2026 ($482.00) y consultor RAG con ChromaDB." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2L2 7l10 5 10-5-10-5z'/><path d='M2 17l10 5 10-5'/><path d='M2 12l10 5 10-5'/></svg>" />
     <style>
       :root {
-        --bg-main: #090d16;
-        --bg-surface: #111827;
-        --border-subtle: rgba(255, 255, 255, 0.08);
-        --border-focus: #10b981;
-        --text-primary: #f9fafb;
-        --text-secondary: #9ca3af;
-        --emerald-glow: rgba(16, 185, 129, 0.15);
+        --bg-oled: #05070b;
+        --bg-shell: rgba(255, 255, 255, 0.028);
+        --bg-core: #0a0e17;
+        --bg-core-elevated: #0f1523;
+        --border-hairline: rgba(255, 255, 255, 0.08);
+        --border-inner: rgba(255, 255, 255, 0.06);
+        --inner-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.12);
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --accent-emerald: #10b981;
+        --accent-emerald-soft: rgba(16, 185, 129, 0.14);
+        --accent-amber: #f59e0b;
+        --accent-amber-soft: rgba(245, 158, 11, 0.14);
+        --accent-rose: #f43f5e;
+        --accent-rose-soft: rgba(244, 63, 94, 0.14);
+        --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+        --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
       }
+
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        background-color: var(--bg-main);
+        font-family: var(--font-sans);
+        background-color: var(--bg-oled);
+        background-image:
+          radial-gradient(circle at 12% 10%, rgba(16, 185, 129, 0.11), transparent 38%),
+          radial-gradient(circle at 88% 14%, rgba(245, 158, 11, 0.07), transparent 36%),
+          radial-gradient(circle at 50% 92%, rgba(16, 185, 129, 0.06), transparent 45%);
+        background-attachment: fixed;
         color: var(--text-primary);
-        line-height: 1.5;
-        min-height: 100vh;
+        line-height: 1.6;
+        min-height: 100dvh;
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      /* Fixed SVG Film-Grain Overlay (GPU-safe, pointer-events-none) */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0.028;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Double-Bezel (Doppelrand) Machined Architecture */
+      .bezel-shell {
+        background: var(--bg-shell);
+        border: 1px solid var(--border-hairline);
+        padding: 6px;
+        border-radius: 28px;
+        box-shadow: 0 24px 48px -12px rgba(2, 6, 23, 0.78);
+        transition: transform 0.55s var(--ease-spring), border-color 0.55s var(--ease-spring);
+      }
+
+      .bezel-core {
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(10, 14, 23, 0.98) 100%);
+        border: 1px solid var(--border-inner);
+        border-radius: 22px;
+        box-shadow: var(--inner-highlight);
+        padding: 1.75rem;
+      }
+
+      /* Floating Glass Island Nav */
+      .island-nav {
+        position: sticky;
+        top: 1.25rem;
+        z-index: 30;
+        margin: 0 auto;
+        width: fit-content;
+        max-width: 100%;
+        background: rgba(10, 14, 23, 0.78);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 18px 36px -8px rgba(0, 0, 0, 0.65), var(--inner-highlight);
+        border-radius: 9999px;
+        padding: 0.4rem;
+        display: flex;
+        gap: 0.45rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .island-tab {
+        border: none;
+        border-radius: 9999px;
+        padding: 0.65rem 1.25rem;
+        font-family: var(--font-sans);
+        font-size: 0.86rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        transition: transform 0.45s var(--ease-spring), background-color 0.45s var(--ease-spring), color 0.45s var(--ease-spring);
+      }
+
+      .island-tab:active {
+        transform: scale(0.98);
+      }
+
+      /* Nested CTA Button-in-Button Architecture */
+      .btn-island {
+        border: none;
+        border-radius: 9999px;
+        padding: 0.55rem 0.65rem 0.55rem 1.4rem;
+        font-family: var(--font-sans);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        cursor: pointer;
+        transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-spring), opacity 0.3s var(--ease-spring);
+      }
+
+      .btn-island:hover:not(:disabled) {
+        transform: translateY(-1px);
+      }
+
+      .btn-island:active:not(:disabled) {
+        transform: scale(0.98);
+      }
+
+      .btn-island .btn-icon-wrap {
+        width: 32px;
+        height: 32px;
+        border-radius: 9999px;
+        background: rgba(0, 0, 0, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.5s var(--ease-spring), background-color 0.5s var(--ease-spring);
+      }
+
+      .btn-island:hover:not(:disabled) .btn-icon-wrap {
+        transform: translate(2px, -1px) scale(1.06);
+        background: rgba(0, 0, 0, 0.34);
+      }
+
+      /* Tabular Numbers & Monospace Telemetry */
+      .tabular-nums {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Form Controls */
+      .control-input {
+        background: #070b12;
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 0.7rem 1rem;
+        font-family: var(--font-sans);
+        font-size: 0.92rem;
+        font-weight: 500;
+        outline: none;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+        transition: border-color 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring);
+      }
+
+      .control-input:focus {
+        border-color: var(--accent-emerald);
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18), inset 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Interactive Option Card */
+      .option-card {
+        width: 100%;
+        text-align: left;
+        border-radius: 18px;
+        padding: 1.1rem 1.3rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        font-family: var(--font-sans);
+        font-size: 0.98rem;
+        color: var(--text-primary);
+        transition: transform 0.45s var(--ease-spring), border-color 0.45s var(--ease-spring), background-color 0.45s var(--ease-spring);
+      }
+
+      .option-card:hover:not(:disabled) {
+        transform: translateY(-2px);
+      }
+
+      .option-card:active:not(:disabled) {
+        transform: scale(0.99);
+      }
+
+      /* Entry Reveal & Skeleton Shimmer */
+      @keyframes fadeUpReveal {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .reveal-up {
+        animation: fadeUpReveal 0.65s var(--ease-spring) both;
+      }
+
+      @keyframes pulseOpacity {
+        0%, 100% { opacity: 0.45; }
+        50% { opacity: 0.85; }
+      }
+
+      .skeleton-bar {
+        background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.04) 100%);
+        border-radius: 10px;
+        animation: pulseOpacity 1.6s var(--ease-spring) infinite;
+      }
+
+      /* Bento Responsive Grid */
+      .bento-hero-grid {
+        display: grid;
+        grid-template-columns: 1.55fr 1fr;
+        gap: 1.25rem;
+        align-items: stretch;
+      }
+
+      @media (max-width: 860px) {
+        .bento-hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .bezel-core {
+          padding: 1.25rem;
+        }
+        .island-nav {
+          border-radius: 22px;
+        }
       }
     </style>
   </head>
