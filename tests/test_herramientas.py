@@ -237,3 +237,27 @@ def test_ciclo_completo_modelo_tool_calls_rol_tool_y_respuesta():
     assert msgs_tool[0]["tool_call_id"] == "call_mock_calc_1"
     assert msgs_tool[0]["name"] == "calcular_sancion"
 
+
+def test_construccion_prompt_escenario_y_agente_sin_sbu_quemado():
+    from app.schemas import SolicitudEscenario
+    from app.services.agente import SYSTEM_PROMPT_AGENTE
+    from app.services.generador import PROMPT, construir_mensaje
+    from app.services.llm import cargar_prompt
+    from app.tools.contravenciones import candidatas
+
+    solicitud = SolicitudEscenario(
+        perfil="conductor_particular",
+        nivel_dificultad="media",
+    )
+    mensaje_usuario = construir_mensaje(solicitud, candidatas("conductor_particular", cargar_tabla()))
+    assert "<solicitud>" in mensaje_usuario
+    assert "<contravenciones_permitidas>" in mensaje_usuario
+    assert "Art. 389" in mensaje_usuario
+
+    system_escenarios = cargar_prompt(PROMPT)
+    assert "482" not in system_escenarios
+    assert "460" not in system_escenarios
+    assert "482" not in SYSTEM_PROMPT_AGENTE
+    assert "460" not in SYSTEM_PROMPT_AGENTE
+
+

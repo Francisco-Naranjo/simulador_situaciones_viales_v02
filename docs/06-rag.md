@@ -11,6 +11,8 @@ En el ámbito jurídico ecuatoriano (COIP y LOTTTSV con su Reglamento), la fragm
 
 Por ello, se implementó una **estrategia de fragmentación semántica por artículo legal completo**:
 - **Patrón de corte:** `(?=Art\.\s*\d+\.-)` con validación de cabecera `/^Art\.\s*\d+/`.
+- **Tamaño de fragmento (Chunk Size):** Variable según la extensión natural del artículo jurídico (promedio de **~580 caracteres / ~95 palabras** para artículos ordinarios, preservando íntegramente los artículos de contravenciones con múltiples numerales como los Arts. 386–392 del COIP).
+- **Solapamiento (Chunk Overlap):** **`0` caracteres entre artículos distintos**. En técnica legislativa ecuatoriana cada artículo constituye una proposición jurídica autónoma (supuesto de hecho + consecuencia jurídica); aplicar un solapamiento deslizante entre artículos contiguos contaminaría las sanciones de una clase contravencional con las de la clase inmediata anterior o posterior.
 - **Resultado del script `scripts/ingest.py`:** **641 artículos indexados y 0 fragmentos huérfanos**:
   - COIP (Capítulo de Tránsito, Arts. 371–392): 22 artículos.
   - Reglamento General a la LOTTTSV: 391 artículos.
@@ -26,12 +28,14 @@ Cada fragmento en ChromaDB contiene metadatos tipados para filtrado previo al c�
 | Campo | Tipo | Ejemplo | Propósito en el RAG |
 |---|---|---|---|
 | `documento` | `str` | `"COIP"` / `"Reglamento LOTTTSV"` | Cita verificable y orden de jerarquía normativa. |
+| `seccion` | `str` | `"Capítulo Octavo · Infracciones de Tránsito, Art. 389"` | Ubicación estructural dentro del cuerpo normativo. |
 | `articulo` | `str` | `"389"` | Cita exacta referenciada en la retroalimentación al estudiante. |
 | `clase` | `str` | `"cuarta"` | Permite filtrar por nivel de gravedad o dificultad del escenario. |
 | `puntos` | `str` | `"6"` | Valor de reducción de puntos según el texto del COIP. |
 | `puntos_aplicables` | `str` | `"0"` | Valor ajustado tras la reforma de 2021 (R.O. 512, sin resta en 3.ª a 7.ª clase). |
 | `vigente` | `str/bool` | `"true"` | **Pre-filtro obligatorio:** Excluye artículos derogados de la LOTTTSV 2011 antes del `top-k`. |
 | `archivo` | `str` | `"AMT-COIP-CAPITULO-TRANSITO.pdf"` | Trazabilidad del archivo fuente oficial en `data/raw/`. |
+| `url` | `str` | `"https://www.ant.gob.ec/..."` | Enlace oficial verificable a la fuente pública de la norma. |
 
 ---
 

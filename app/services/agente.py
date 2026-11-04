@@ -23,8 +23,9 @@ from app.tools.calcular_sancion import calcular_sancion
 from app.tools.contravenciones import cargar_tabla
 from app.tools.progreso import ajustar_dificultad, registrar_progreso
 
-TOPE_VUELTAS = 6
-UMBRAL_CONFIANZA_AUTOMATICA = 0.80
+_PARAMS_AGENTE = cargar_parametros()
+TOPE_VUELTAS = int(_PARAMS_AGENTE.get("tope_vueltas_agente", 6))
+UMBRAL_CONFIANZA_AUTOMATICA = float(_PARAMS_AGENTE.get("umbral_confianza_automatizacion", 0.80))
 
 SYSTEM_PROMPT_AGENTE = (
     "Eres el agente normativo de Vía Segura (Ecuador). "

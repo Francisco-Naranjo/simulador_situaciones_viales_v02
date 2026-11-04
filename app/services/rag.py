@@ -9,13 +9,14 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+from app.parametros import cargar_parametros
 from scripts.ingest import MODELO_EMBEDDINGS, codificar_e5_multilingue
 
 RAIZ = Path(__file__).resolve().parent.parent.parent
 RUTA_INDICE = RAIZ / "data" / "processed" / "indice_rag.json"
 RUTA_CHROMA_JSON = RAIZ / "chroma_db" / "normativa_collection.json"
 
-UMBRAL_DISTANCIA_COSENO = 0.45
+UMBRAL_DISTANCIA_COSENO = float(cargar_parametros().get("umbral_distancia_coseno", 0.45))
 
 MENSAJE_ABSTENCION_RAG = (
     "La normativa que tengo cargada (COIP, LOTTTSV y su Reglamento) no responde esta pregunta "

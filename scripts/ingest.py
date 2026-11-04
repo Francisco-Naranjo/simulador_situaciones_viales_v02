@@ -180,12 +180,14 @@ def construir_indice() -> dict:
                 "texto": txt,
                 "metadatos": {
                     "documento": "COIP",
+                    "seccion": f"Capítulo Octavo · Infracciones de Tránsito, Art. {num_art}",
                     "archivo": pdf_coip.name,
                     "articulo": num_art,
                     "clase": clase,
                     "puntos": puntos,
                     "puntos_aplicables": puntos_hoy,
                     "vigente": "true",
+                    "url": "https://www.defensa.gob.ec/wp-content/uploads/downloads/2021/03/COIP_act_feb-2021.pdf",
                 },
             })
         resumen_fuentes.append({"documento": "COIP", "archivo": pdf_coip.name, "fragmentos": len(ares), "huerfanos": huerfanos})
@@ -199,12 +201,14 @@ def construir_indice() -> dict:
                 "texto": txt,
                 "metadatos": {
                     "documento": "Reglamento LOTTTSV",
+                    "seccion": f"Reglamento General de Aplicación a la LOTTTSV, Art. {num_art}",
                     "archivo": pdf_regl.name,
                     "articulo": num_art,
                     "clase": "reglamentaria",
                     "puntos": "0",
                     "puntos_aplicables": "0",
                     "vigente": "true",
+                    "url": "https://www.ant.gob.ec/reglamento-a-la-ley-de-transporte-terrestre-transito-y-seguridad-vial/",
                 },
             })
         resumen_fuentes.append({"documento": "Reglamento LOTTTSV", "archivo": pdf_regl.name, "fragmentos": len(ares), "huerfanos": huerfanos})
@@ -223,12 +227,14 @@ def construir_indice() -> dict:
                 "texto": txt,
                 "metadatos": {
                     "documento": "LOTTTSV",
+                    "seccion": f"Ley Orgánica de Transporte Terrestre, Tránsito y Seguridad Vial, Art. {num_art}",
                     "archivo": pdf_ley.name,
                     "articulo": num_art,
                     "clase": "organica",
                     "puntos": "0",
                     "puntos_aplicables": "0",
                     "vigente": es_vigente,
+                    "url": "https://www.obraspublicas.gob.ec/wp-content/uploads/downloads/2021/08/LOTTTSV-2021.pdf",
                 },
             })
         resumen_fuentes.append({"documento": "LOTTTSV", "archivo": pdf_ley.name, "fragmentos": len(ares), "huerfanos": huerfanos})

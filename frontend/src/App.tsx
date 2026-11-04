@@ -196,6 +196,7 @@ export default function App() {
   const [demoEnvenenado, setDemoEnvenenado] = useState<boolean>(false);
   const [cargandoChat, setCargandoChat] = useState<boolean>(false);
   const [respuestaChat, setRespuestaChat] = useState<RespuestaChatRAG | null>(null);
+  const [confirmacionHumana, setConfirmacionHumana] = useState<'pendiente' | 'confirmada' | 'descartada'>('pendiente');
 
   const [estadisticas, setEstadisticas] = useState({ total: 0, aciertos: 0, multasAcumuladasUSD: 0, puntosPerdidos: 0 });
 
@@ -310,6 +311,7 @@ export default function App() {
     const env = envenenadoPersonalizado ?? demoEnvenenado;
     setCargandoChat(true);
     setMensajeError('');
+    setConfirmacionHumana('pendiente');
     try {
       const res = await fetch('/chat', {
         method: 'POST',
@@ -1215,6 +1217,102 @@ export default function App() {
                       </div>
                     ))}
                   </div>
+                </div>
+
+                {/* Confirmación Humana explícita antes de registrar, enviar o derivar */}
+                <div style={{
+                  background: confirmacionHumana === 'confirmada'
+                    ? 'rgba(16, 185, 129, 0.08)'
+                    : confirmacionHumana === 'descartada'
+                    ? 'rgba(244, 63, 94, 0.08)'
+                    : 'rgba(15, 23, 42, 0.72)',
+                  border: `1px solid ${
+                    confirmacionHumana === 'confirmada'
+                      ? 'rgba(16, 185, 129, 0.4)'
+                      : confirmacionHumana === 'descartada'
+                      ? 'rgba(244, 63, 94, 0.35)'
+                      : 'rgba(255, 255, 255, 0.12)'
+                  }`,
+                  borderRadius: '18px',
+                  padding: '1.15rem 1.35rem',
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                }}>
+                  <div>
+                    <span className="tabular-nums" style={{
+                      fontSize: '0.68rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.14em',
+                      color: confirmacionHumana === 'confirmada' ? '#34d399' : '#fbbf24',
+                    }}>
+                      Control Humano en el Ciclo (HITL · Estación 4)
+                    </span>
+                    <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#f8fafc', marginTop: '0.15rem' }}>
+                      {confirmacionHumana === 'pendiente' && (
+                        respuestaChat.abstencion
+                          ? '¿Confirmas derivar esta consulta a revisión humana / Agencia Nacional de Tránsito (ANT)?'
+                          : '¿Confirmas registrar esta orientación normativa y cálculo determinista en el historial de sesión?'
+                      )}
+                      {confirmacionHumana === 'confirmada' && (
+                        respuestaChat.abstencion
+                          ? 'Derivación confirmada por el usuario y registrada en la bitácora de auditoría.'
+                          : 'Orientación normativa confirmada por el usuario y registrada en el progreso de la sesión.'
+                      )}
+                      {confirmacionHumana === 'descartada' && (
+                        'Acción descartada por el usuario: no se registró ni derivó la consulta.'
+                      )}
+                    </div>
+                  </div>
+
+                  {confirmacionHumana === 'pendiente' ? (
+                    <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+                      <button
+                        onClick={() => setConfirmacionHumana('confirmada')}
+                        className="btn-island"
+                        style={{
+                          background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                          color: '#03120c',
+                          padding: '0.45rem 0.55rem 0.45rem 1.1rem',
+                          fontSize: '0.84rem',
+                        }}
+                      >
+                        <span>{respuestaChat.abstencion ? 'Confirmar Derivación' : 'Confirmar y Registrar'}</span>
+                        <span className="btn-icon-wrap" style={{ color: '#fff', width: '26px', height: '26px' }}>
+                          <IconArrowUpRight />
+                        </span>
+                      </button>
+                      <button
+                        onClick={() => setConfirmacionHumana('descartada')}
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.14)',
+                          color: '#cbd5e1',
+                          borderRadius: '9999px',
+                          padding: '0.45rem 1rem',
+                          fontSize: '0.82rem',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                        }}
+                      >
+                        Descartar
+                      </button>
+                    </div>
+                  ) : (
+                    <span className="tabular-nums" style={{
+                      fontSize: '0.76rem',
+                      fontWeight: 700,
+                      padding: '0.3rem 0.75rem',
+                      borderRadius: '9999px',
+                      background: confirmacionHumana === 'confirmada' ? 'rgba(16, 185, 129, 0.18)' : 'rgba(244, 63, 94, 0.18)',
+                      color: confirmacionHumana === 'confirmada' ? '#34d399' : '#fb7185',
+                    }}>
+                      {confirmacionHumana === 'confirmada' ? 'CONFIRMADO POR HUMANO' : 'DESCARTADO'}
+                    </span>
+                  )}
                 </div>
               </div>
             )}

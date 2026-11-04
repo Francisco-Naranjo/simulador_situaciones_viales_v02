@@ -2,6 +2,9 @@
   "sbu_usd": 482.00,
   "sbu_anio": 2026,
   "sbu_fuente": "Ministerio del Trabajo · Acuerdo ministerial del salario básico unificado vigente (verificar en https://www.trabajo.gob.ec antes de cada despliegue)",
+  "umbral_distancia_coseno": 0.45,
+  "umbral_confianza_automatizacion": 0.80,
+  "tope_vueltas_agente": 6,
   "limite_tasa": {
     "capacidad": 5,
     "recarga_por_segundo": 0.1
