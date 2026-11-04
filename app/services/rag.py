@@ -83,24 +83,30 @@ TESAURO_VIAL = {
     "estribos": ["balde", "carrocerias", "pisaderas"],
 }
 
-PATRONES_TRAMITES_ADMINISTRATIVOS_ANT = [
-    r"\bturno\b",
+ANCLAS_DOMINIO_VIAL: set[str] = {
+    *TESAURO_VIAL.keys(),
+    "transito", "vehiculo", "vehiculos", "conductor", "conductores", "conducir", "manejando", "manejar",
+    "contravencion", "contravenciones", "infraccion", "infracciones", "multa", "multas", "sancion", "sanciones",
+    "coip", "lotttsv", "reglamento", "articulo", "art", "clase", "puntos", "licencia", "sbu",
+    "semaforo", "pare", "velocidad", "limites", "rango", "moderado", "motocicleta", "motocicletas",
+    "casco", "cinturon", "celular", "telefono", "alcohol", "embriaguez", "alcotest", "sangre", "gramos",
+    "peaton", "peatones", "pasajero", "pasajeros", "ciclista", "ciclistas", "ciclovia", "bicicleta", "acera",
+    "placa", "placas", "polarizado", "polarizados", "vidrios", "peliculas", "antisolares",
+    "llantas", "lisas", "neumaticos", "botiquin", "extintor", "bocina", "pito", "sonoros", "escape",
+    "ambulancia", "emergencia", "sirena", "niños", "menores", "basura", "desechos", "arroje",
+    "camioneta", "balde", "estribos", "peaje", "peajes", "puertas", "transporte", "publico", "urbano",
+    "taxi", "taximetro", "agente", "boleta", "citacion", "accidente", "agravantes", "muerte", "culposas",
+    "maltrata", "obra", "palabra", "usuarios", "estacionar", "rebasar", "adelantar", "circular", "prision",
+}
+
+PATRONES_ALCANCE_ADMINISTRATIVO_PERSONAL = [
     r"\bconvenio\s+de\s+pago\b",
-    r"\bprescrib",
     r"cu[aá]ntos\s+puntos\s+me\s+quedan",
-    r"consultar\s+(?:mis\s+)?multas",
-    r"sistema\s+inform[aá]tico\s+de\s+la\s+ant",
+    r"en\s+mi\s+c[eé]dula",
+    r"multas\s+pendientes",
+    r"sistema\s+(?:inform[aá]tico|de\s+la\s+ant)",
     r"anular\s+boleta",
     r"hace\s+\d+\s+a[ñn]os",
-]
-
-PATRONES_FUERA_DE_AMBITO_VIAL = [
-    r"\b(?:salud|m[eé]dico|dosis|ibuprofeno|paracetamol|fiebre|enfermedad|s[ií]ntoma)\b",
-    r"\b(?:laboral|despido|liquidaci[oó]n|indemnizaci[oó]n|remuneraci[oó]n|c[oó]digo\s+del\s+trabajo)\b",
-    r"\b(?:receta|cocina|preparar|encebollado|ingrediente)\b",
-    r"\b(?:impuesto\s+a\s+la\s+renta|sri|tributario)\b",
-    r"\b(?:divorcio|alimentos|penal\s+comun)\b",
-    r"\b(?:capital\s+de|matr[ií]cula\s+en\s+la\s+universidad)\b",
 ]
 
 PATRONES_DISPUTA_LITIGIOSA = [
@@ -235,10 +241,7 @@ def _cumple_where_document(texto: str, where_document: dict[str, str] | None) ->
 def _detectar_abstencion(consulta: str) -> bool:
     c_norm = normalizar(consulta)
     q_low = consulta.lower()
-    return (
-        any(re.search(pat, q_low) or re.search(pat, c_norm) for pat in PATRONES_TRAMITES_ADMINISTRATIVOS_ANT)
-        or any(re.search(pat, q_low) or re.search(pat, c_norm) for pat in PATRONES_FUERA_DE_AMBITO_VIAL)
-    )
+    return any(re.search(pat, q_low) or re.search(pat, c_norm) for pat in PATRONES_ALCANCE_ADMINISTRATIVO_PERSONAL)
 
 
 def es_consulta_disputa(consulta: str) -> bool:
@@ -301,6 +304,17 @@ def recuperar(
     arts_mencionados = set(re.findall(r"\b(3[789]\d|\d{1,3})\b", consulta))
     for m_cod in re.findall(r"C-(\d{3})-\d{2}", consulta.upper()):
         arts_mencionados.add(m_cod)
+
+    tiene_ancla_vial = bool(set(tokens_base).intersection(ANCLAS_DOMINIO_VIAL) or arts_mencionados)
+    if not tiene_ancla_vial:
+        return RespuestaRAG(
+            consulta=consulta,
+            abstencion=True,
+            mensaje_abstencion=MENSAJE_ABSTENCION_RAG,
+            fragmentos=[],
+            cita_principal=None,
+            mejor_distancia=0.76,
+        )
 
     n_docs = max(1, len(candidatos))
     df: dict[str, int] = {}
